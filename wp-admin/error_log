@@ -1,0 +1,1 @@
+[24-Dec-2015 10:11:46 UTC] PHP Fatal error:  Class 'WC_Session' not found in /home/jgacuca2014/public_html/kenafrica/wp-content/plugins/woocommerce/includes/class-wc-session-handler.php on line 21

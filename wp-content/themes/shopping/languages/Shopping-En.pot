@@ -1,0 +1,2708 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Present-project 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-17 09:53+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:3
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:5
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:9
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:10
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:14
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:15
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:4
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:6
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:10
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:11
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:15
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:16
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:3
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:5
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:9
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:10
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:14
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:15
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:3
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:5
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:9
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:10
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:14
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:15
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:3
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:5
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:9
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:10
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:14
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:15
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:3
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:5
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:9
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:10
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:14
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:15
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:4
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:6
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:10
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:11
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:15
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:16
+msgid "Hello World"
+msgstr ""
+
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:6
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:11
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:16
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:7
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:12
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:17
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:6
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:11
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:16
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:6
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:11
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:16
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:6
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:11
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:16
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:6
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:11
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:16
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:7
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:12
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:17
+msgid "Post"
+msgstr ""
+
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:20
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:21
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:20
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:20
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:20
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:20
+#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:3
+#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:8
+#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:15
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:21
+#, php-format
+msgid "%d apple"
+msgstr ""
+
+#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:21
+#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:22
+#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:21
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:21
+#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:21
+#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:21
+#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:4
+#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:9
+#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:16
+#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:22
+#, php-format
+msgid "%d post"
+msgstr ""
+
+#: node_modules/grunt-pot/test/fixtures/some-file.php:3
+msgid "I'm a translatable string."
+msgstr ""
+
+#: node_modules/grunt-pot/test/fixtures/some-other-file.php:4
+msgid "Me too"
+msgstr ""
+
+#: node_modules/grunt-pot/test/fixtures/some-other-file.php:7
+#, php-format
+msgid "I have %d apple"
+msgid_plural "I have %d apples"
+msgstr[0] ""
+msgstr[1] ""
+
+#. / TRANSLATORS: This should be translated as a shorthand for YEAR-MONTH-DAY using 4, 2 and 2 digits.
+#: node_modules/grunt-pot/test/fixtures/some-other-file.php:16
+msgid "yyyy-mm-dd"
+msgstr ""
+
+#. /GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+#. *
+#. * @website  http:/wpopal.com
+#. * @support  http://wpopal.com
+#.
+#: src/shopping/404.php:21
+msgid "page not found"
+msgstr ""
+
+#: src/shopping/comments.php:21
+msgid "0 Comment"
+msgstr ""
+
+#: src/shopping/comments.php:21
+msgid "1 Comment"
+msgstr ""
+
+#: src/shopping/comments.php:21
+msgid "% Comments"
+msgstr ""
+
+#: src/shopping/comments.php:33
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: src/shopping/comments.php:34
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: src/shopping/comments.php:39
+msgid "Comments are closed."
+msgstr ""
+
+#: src/shopping/comments.php:47
+msgid "Leave a Comment"
+msgstr ""
+
+#: src/shopping/comments.php:47
+msgid "<div class=\"title\">"
+msgstr ""
+
+#: src/shopping/comments.php:49
+msgid "Comment:"
+msgstr ""
+
+#: src/shopping/comments.php:56
+msgid "Name:"
+msgstr ""
+
+#: src/shopping/comments.php:60
+#: src/shopping/woocommerce/order/order-details.php:175
+msgid "Email:"
+msgstr ""
+
+#: src/shopping/comments.php:64
+msgid "Website:"
+msgstr ""
+
+#: src/shopping/comments.php:68
+msgid "Post Comment"
+msgstr ""
+
+#: src/shopping/comments.php:69
+msgid "Your email address will not be published."
+msgstr ""
+
+#: src/shopping/framework/admin/templates/options/page.php:29
+#: src/shopping/sub/customfield/page.php:29
+msgid "Fullwidth"
+msgstr ""
+
+#: src/shopping/framework/admin/templates/options/page.php:30
+#: src/shopping/framework/classes/core/options.php:207
+#: src/shopping/framework/classes/core/options.php:497
+#: src/shopping/framework/classes/core/options.php:526
+#: src/shopping/sub/customfield/page.php:30
+msgid "Left Sidebar"
+msgstr ""
+
+#: src/shopping/framework/admin/templates/options/page.php:31
+#: src/shopping/framework/classes/core/options.php:199
+#: src/shopping/framework/classes/core/options.php:489
+#: src/shopping/framework/classes/core/options.php:518
+#: src/shopping/sub/customfield/page.php:31
+msgid "Right Sidebar"
+msgstr ""
+
+#: src/shopping/framework/admin/templates/options/page.php:32
+#: src/shopping/sub/customfield/page.php:32
+msgid "Left & Right Sidebar"
+msgstr ""
+
+#: src/shopping/framework/admin/templates/options/page.php:33
+#: src/shopping/sub/customfield/page.php:33
+msgid "Left & Left Sidebar"
+msgstr ""
+
+#: src/shopping/framework/admin/templates/options/page.php:34
+#: src/shopping/sub/customfield/page.php:34
+msgid "Right & Right Sidebar"
+msgstr ""
+
+#: src/shopping/framework/admin/templates/options/page.php:42
+#: src/shopping/framework/admin/templates/options/page.php:52
+#: src/shopping/sub/customfield/page.php:42
+#: src/shopping/sub/customfield/page.php:52
+msgid "--Please Select Sidebar--"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:79
+#, php-format
+msgid "%s (Invalid)"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:83
+#, php-format
+msgid "%s (Pending)"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:107
+msgid "Move up"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:120
+msgid "Move down"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:122
+#: src/shopping/framework/classes/core/megamenu-config.php:124
+msgid "Edit Menu Item"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:133
+msgid "URL"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:140
+msgid "Navigation Label"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:146
+msgid "Title Attribute"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:153
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:158
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:164
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:170
+msgid "Description"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:172
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:191
+#, php-format
+msgid "Original: %s"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:204
+#: src/shopping/framework/classes/core/shortcodebase.php:186
+#: src/shopping/woocommerce/compare.php:105
+msgid "Remove"
+msgstr ""
+
+#: src/shopping/framework/classes/core/megamenu-config.php:205
+#: src/shopping/woocommerce/myaccount/my-orders.php:77
+msgid "Cancel"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:135
+msgid "General"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:139
+msgid "Logo"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:146
+msgid "Default Theme"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:161
+msgid "404 text"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:168
+msgid "Copyright"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:179
+msgid "Blog Post"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:183
+msgid "Layout Type"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:184
+msgid "Images for layout."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:215
+msgid "Show Title"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:230
+msgid "Social Setting "
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:234
+msgid "Facebook"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:235
+msgid "Check the box to show the facebook sharing icon in blog posts."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:241
+msgid "Twitter"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:242
+msgid "Check the box to show the twitter sharing icon in blog posts."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:248
+msgid "LinkedIn"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:249
+msgid "Check the box to show the linkedin sharing icon in blog posts."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:255
+msgid "Google Plus"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:256
+msgid "Check the box to show the g+ sharing icon in blog posts."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:262
+msgid "Tumblr"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:263
+msgid "Check the box to show the tumblr sharing icon in blog posts."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:269
+msgid "Pinterest"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:270
+msgid "Check the box to show the pinterest sharing icon in blog posts."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:276
+#: src/shopping/woocommerce/single-product-reviews.php:67
+msgid "Email"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:277
+msgid "Check the box to show the email sharing icon in blog posts."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:286
+msgid "SEO Option"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:290
+msgid "Enable SEO"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:291
+msgid "Check the box to enable the SEO options."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:297
+msgid "SEO Keywords"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:298
+msgid ""
+"Paste your SEO Keywords. This will be added into the meta tag keywords in "
+"header."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:304
+msgid "SEO Description"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:305
+msgid ""
+"Paste your SEO Description. This will be added into the meta tag description "
+"in header."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:311
+msgid "Google Analytics Account ID"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:312
+msgid ""
+"Type your Google Analytics Account ID here. This will be added into the "
+"footer template of your theme."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:321
+msgid "Customization"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:325
+msgid "Live Tools Customizing Theme"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:326
+msgid "<a href=\""
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:334
+msgid "Before CSS </body>"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:335
+msgid "Before CSS </body> description."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:341
+msgid "Before JS </body>"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:342
+msgid "Before JS </body> description."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:351
+msgid "Megamenu"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:361
+msgid "menu"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:362
+msgid ""
+"Select a menu to configure Megamenu for the menu items in the selected menu. "
+"<a href=\""
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:370
+#: src/shopping/framework/classes/core/options.php:391
+msgid "Animation"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:371
+msgid "Select animation for Megamenu."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:384
+msgid "Duration"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:385
+msgid "Animation effect duration for dropdown of Megamenu (in miliseconds)"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:392
+msgid "Sidebar transition effect for Off-canvas menu"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:414
+msgid "Menu Vertical"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:415
+msgid ""
+"Select a menu to configure Megamenu Vertical for the menu items in the "
+"selected menu. <a href=\""
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:429
+msgid "Woocommerce"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:433
+msgid "Total number of Products per page"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:441
+msgid "Show number Products of related on single product page"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:449
+msgid "Number of Product per row"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:462
+msgid "Enable Quick View"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:463
+msgid "Check the box to enable Quick View button."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:469
+msgid "Enable Effect Image"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:470
+msgid "Check the box to enable swap effect image product."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:476
+msgid "Layout Archive Product"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:477
+msgid "Display your sidebar like image on Archive pages."
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:505
+msgid "Layout Single Product"
+msgstr ""
+
+#: src/shopping/framework/classes/core/options.php:506
+msgid "Display your sidebar like image on Single page."
+msgstr ""
+
+#: src/shopping/framework/classes/core/pagebuilder.php:146
+msgid "No"
+msgstr ""
+
+#: src/shopping/framework/classes/core/pagebuilder.php:147
+msgid "Top to bottom"
+msgstr ""
+
+#: src/shopping/framework/classes/core/pagebuilder.php:148
+msgid "Bottom to top"
+msgstr ""
+
+#: src/shopping/framework/classes/core/pagebuilder.php:149
+msgid "Left to right"
+msgstr ""
+
+#: src/shopping/framework/classes/core/pagebuilder.php:150
+msgid "Right to left"
+msgstr ""
+
+#: src/shopping/framework/classes/core/pagebuilder.php:151
+msgid "Appear from center"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:221
+msgid "Install Required Plugins"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:222
+msgid "Install Plugins"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:223
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:224
+msgid "Something went wrong."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:235
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:236
+msgid "Return to the dashboard"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:237
+#: src/shopping/framework/classes/core/plugin-activation.php:2102
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:238
+#: src/shopping/framework/classes/core/plugin-activation.php:1764
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:239
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:240
+msgid "Dismiss this notice"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:590
+#: src/shopping/framework/classes/core/plugin-activation.php:2332
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1276
+msgid "Private Repository"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1280
+msgid "Pre-Packaged"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1285
+msgid "WordPress Repository"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1288
+msgid "Required"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1288
+msgid "Recommended"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1291
+msgid "Not Installed"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1294
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1411
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1433
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1476
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\">Return to the Dashboard</"
+"a>"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1492
+msgid "Plugin"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1493
+msgid "Source"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1494
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:94
+msgid "Type"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1495
+#: src/shopping/woocommerce/myaccount/my-orders.php:36
+#: src/shopping/woocommerce/myaccount/my-orders.php:57
+msgid "Status"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1513
+msgid "Install"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1514
+msgid "Activate"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1625
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:1741
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2085
+msgid "Install package not available."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2086
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2087
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2088
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2089
+msgid "Plugin install failed."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2090
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2101
+msgid "Plugin activation failed."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2224
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2225
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2229
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2230
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2230
+#: src/shopping/framework/classes/core/plugin-activation.php:2237
+msgid "Show Details"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2230
+#: src/shopping/framework/classes/core/plugin-activation.php:2237
+msgid "Hide Details"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2231
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2232
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2236
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2237
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2238
+msgid "All installations have been completed."
+msgstr ""
+
+#: src/shopping/framework/classes/core/plugin-activation.php:2239
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: src/shopping/framework/classes/core/shortcodebase.php:181
+msgid "No file chosen"
+msgstr ""
+
+#: src/shopping/framework/classes/core/shortcodebase.php:184
+msgid "Upload"
+msgstr ""
+
+#: src/shopping/framework/classes/core/shortcodebase.php:189
+msgid "Upgrade your version of WordPress for full media support."
+msgstr ""
+
+#: src/shopping/framework/classes/shortcodes.php:93
+msgid "No button for this"
+msgstr ""
+
+#: src/shopping/framework/classes/shortcodes.php:104
+msgid "No data for this"
+msgstr ""
+
+#: src/shopping/framework/classes/woocommerce.php:85
+msgid "Placeholder"
+msgstr ""
+
+#: src/shopping/framework/classes/woocommerce.php:101
+#: src/shopping/woocommerce/myaccount/my-orders.php:83
+msgid "View"
+msgstr ""
+
+#: src/shopping/framework/classes/woocommerce.php:104
+msgid "List"
+msgstr ""
+
+#: src/shopping/framework/classes/woocommerce.php:109
+msgid "Grid"
+msgstr ""
+
+#: src/shopping/framework/functions/functions.php:46
+msgid " seconds ago"
+msgstr ""
+
+#: src/shopping/framework/functions/functions.php:52
+msgid " minutes ago"
+msgstr ""
+
+#: src/shopping/framework/functions/functions.php:58
+msgid " hours ago"
+msgstr ""
+
+#: src/shopping/framework/functions/functions.php:65
+msgid " days ago"
+msgstr ""
+
+#: src/shopping/framework/functions/functions.php:68
+msgid " weeks ago"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/accordion.php:40
+#: src/shopping/framework/shortcodes/accordion.php:57
+msgid "Input 1"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/accordion.php:50
+msgid "Input 2"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/blog_tab.php:40
+msgid "Category Parent"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/blog_tab.php:43
+#: src/shopping/framework/shortcodes/image.php:33
+msgid "Put Your Image Link Here"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/blog_tab.php:49
+#: src/shopping/framework/shortcodes/gmap.php:42
+msgid "Count Item"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/blog_tab.php:58
+#: src/shopping/framework/shortcodes/content.php:39
+#: src/shopping/framework/shortcodes/gallery.php:39
+#: src/shopping/framework/shortcodes/image.php:39
+#: src/shopping/framework/shortcodes/raw_html.php:40
+#: src/shopping/framework/shortcodes/recent_post.php:48
+#: src/shopping/framework/shortcodes/sidebar.php:37
+#: src/shopping/framework/shortcodes/submenu.php:67
+msgid "Addition Class"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/blog_tab.php:61
+#: src/shopping/framework/shortcodes/content.php:42
+#: src/shopping/framework/shortcodes/image.php:42
+#: src/shopping/framework/shortcodes/raw_html.php:43
+#: src/shopping/framework/shortcodes/recent_post.php:51
+#: src/shopping/framework/shortcodes/sidebar.php:40
+#: src/shopping/framework/shortcodes/submenu.php:70
+msgid "Using to make own style"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/content.php:30
+msgid "Content"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/content.php:33
+msgid "Put Content Here"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/gallery.php:30
+#: src/shopping/framework/shortcodes/recent_post.php:29
+msgid "Limited Post"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/gmap.php:51
+msgid "Map Height"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/gmap.php:59
+#: src/shopping/framework/shortcodes/gmap.php:73
+msgid "Map type"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/image.php:30
+msgid "Image Link"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/products.php:59
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:56
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:108
+msgid "Number of products to show"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/raw_html.php:31
+msgid "Raw HTML Code"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/raw_html.php:34
+msgid "Put your html code here"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/recent_post.php:38
+msgid "Display Date"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/sidebar.php:30
+msgid "Sidebar"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/sidebar.php:33
+msgid "Display all widgets on selected sidebar"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/submenu.php:42
+#: src/shopping/sub/vc_shortcodes/theme.php:16
+#: src/shopping/sub/vc_shortcodes/theme.php:57
+#: src/shopping/vc_templates/vc_text_separator.php:4
+msgid "Title"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/submenu.php:45
+msgid "Put Title Here"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/submenu.php:57
+#: src/shopping/sub/vc_shortcodes/theme.php:22
+msgid "Menu"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/submenu.php:60
+msgid "Select Menu"
+msgstr ""
+
+#: src/shopping/framework/shortcodes/tpl/blog_tab.php:64
+#: src/shopping/templates/shortcodes/blog_tab.php:60
+msgid " 0 "
+msgstr ""
+
+#: src/shopping/framework/shortcodes/tpl/blog_tab.php:64
+#: src/shopping/templates/shortcodes/blog_tab.php:60
+msgid " 1 "
+msgstr ""
+
+#: src/shopping/framework/shortcodes/tpl/blog_tab.php:64
+#: src/shopping/templates/shortcodes/blog_tab.php:60
+msgid " % "
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:18
+#: src/shopping/framework/types/brands.php:19
+msgid "Brand"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:20
+#: src/shopping/framework/types/brands.php:21
+msgid "Add New Brand"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:22
+msgid "Edit Brand"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:23
+msgid "New Brand"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:24
+msgid "View Brand"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:25
+msgid "Search Brands"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:26
+msgid "No Brands found"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:27
+msgid "No Brands found in Trash"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:28
+msgid "Parent Brand:"
+msgstr ""
+
+#: src/shopping/framework/types/brands.php:29
+msgid "Brands"
+msgstr ""
+
+#: src/shopping/framework/types/faq.php:23
+msgid "FAQs"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:17
+msgid "Portfolios"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:18
+msgid "Portfolio"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:19
+#: src/shopping/framework/types/portfolio.php:20
+msgid "Add New Portfolio"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:21
+msgid "Edit Portfolio"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:22
+msgid "New Portfolio"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:23
+msgid "View Portfolio"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:24
+msgid "Search Portfolios"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:25
+msgid "No Portfolios found"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:26
+msgid "No Portfolios found in Trash"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:27
+msgid "Parent Portfolio:"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:28
+msgid "WPO Portfolios"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:57
+#: src/shopping/framework/types/portfolio.php:67
+msgid "Skills"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:58
+msgid "Skill"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:59
+msgid "Search Skills"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:60
+msgid "All Skills"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:61
+msgid "Parent Skill"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:62
+msgid "Parent Skill:"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:63
+msgid "Edit Skill"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:64
+msgid "Update Skill"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:65
+msgid "Add New Skill"
+msgstr ""
+
+#: src/shopping/framework/types/portfolio.php:66
+msgid "New Skill Name"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:6
+#: src/shopping/framework/types/sliders.php:17
+msgid "Sliders"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:7
+msgid "Slider"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:8
+#: src/shopping/framework/types/sliders.php:9
+msgid "Add New Slider"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:10
+msgid "Edit Slider"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:11
+msgid "New Slider"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:12
+msgid "View Slider"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:13
+msgid "Search Slider"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:14
+msgid "No Slider found"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:15
+msgid "No Slider found in Trash"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:16
+msgid "Parent Slider:"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:43
+#: src/shopping/framework/types/sliders.php:53
+msgid "Slider groups"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:44
+msgid "Slider group"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:45
+msgid "Search Slider groups"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:46
+msgid "All Slider groups"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:47
+msgid "Parent Slider group"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:48
+msgid "Parent Slider group:"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:49
+msgid "Edit Slider group"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:50
+msgid "Update Slider group"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:51
+msgid "Add New Slider group"
+msgstr ""
+
+#: src/shopping/framework/types/sliders.php:52
+msgid "New Slider group"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:18
+#: src/shopping/framework/types/testimonials.php:19
+msgid "Testimonial"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:20
+#: src/shopping/framework/types/testimonials.php:21
+msgid "Add New Testimonial"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:22
+msgid "Edit Testimonial"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:23
+msgid "New Testimonial"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:24
+msgid "View Testimonial"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:25
+msgid "Search Testimonials"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:26
+msgid "No Testimonials found"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:27
+msgid "No Testimonials found in Trash"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:28
+msgid "Parent Testimonial:"
+msgstr ""
+
+#: src/shopping/framework/types/testimonials.php:29
+msgid "Testimonials"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:18
+#: src/shopping/framework/types/video.php:19
+msgid "Video"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:20
+#: src/shopping/framework/types/video.php:21
+msgid "Add New Video"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:22
+msgid "Edit Video"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:23
+msgid "New Video"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:24
+msgid "View Video"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:25
+msgid "Search Videos"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:26
+msgid "No Videos found"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:27
+msgid "No Videos found in Trash"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:28
+msgid "Parent Video:"
+msgstr ""
+
+#: src/shopping/framework/types/video.php:29
+msgid "Videos"
+msgstr ""
+
+#: src/shopping/framework/widgets/facebook_like/facebook_like.php:21
+msgid "WPO Facebook Like Box"
+msgstr ""
+
+#: src/shopping/framework/widgets/facebook_like/facebook_like.php:23
+msgid "Adds support for Facebook Like Box. "
+msgstr ""
+
+#: src/shopping/framework/widgets/featured_post/featured_post.php:23
+msgid "WPO Featured Post Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/featured_post/featured_post.php:66
+#: src/shopping/framework/widgets/recent_post/recent_post.php:60
+msgid "Type:"
+msgstr ""
+
+#: src/shopping/framework/widgets/featured_post/featured_post.php:78
+#: src/shopping/framework/widgets/top_rate/top_rate.php:122
+msgid "Limit:"
+msgstr ""
+
+#: src/shopping/framework/widgets/featured_post/tpl/default.php:35
+#: src/shopping/framework/widgets/posts/tpl/default.php:40
+#: src/shopping/framework/widgets/recent_post/tpl/default.php:44
+#: src/shopping/framework/widgets/tabs/tpl/default.php:38
+#: src/shopping/framework/widgets/tabs/tpl/default.php:68
+#: src/shopping/templates/widgets/recent_post/default.php:46
+msgid "Posted: "
+msgstr ""
+
+#: src/shopping/framework/widgets/flickr/flickr.php:21
+msgid "WPO Flickr"
+msgstr ""
+
+#: src/shopping/framework/widgets/flickr/flickr.php:23
+msgid "The most recent photos from flickr."
+msgstr ""
+
+#: src/shopping/framework/widgets/menu_vertical/menu_vertical.php:21
+msgid "WPO Menu Vertical Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/menu_vertical/menu_vertical.php:23
+msgid "Show Menu Vertical"
+msgstr ""
+
+#: src/shopping/framework/widgets/menu_vertical/menu_vertical.php:50
+#: src/shopping/framework/widgets/posts/posts.php:50
+#: src/shopping/framework/widgets/recent_comment/recent_comment.php:52
+#: src/shopping/framework/widgets/recent_post/recent_post.php:46
+#: src/shopping/framework/widgets/twitter/twitter.php:123
+msgid "Title:"
+msgstr ""
+
+#: src/shopping/framework/widgets/posts/posts.php:21
+msgid "WPO Posts Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/posts/posts.php:64
+msgid "Posts:"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_comment/recent_comment.php:21
+msgid "WPO Recent Comments Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_comment/recent_comment.php:23
+msgid "Show list of recent comments"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_comment/recent_comment.php:41
+msgid "Latest Post"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_comment/recent_comment.php:65
+msgid "Num Comments:"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_comment/tpl/default.php:33
+#: src/shopping/framework/widgets/tabs/tpl/default.php:92
+msgid "says"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_post/recent_post.php:21
+msgid "WPO Recent Posts Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_post/recent_post.php:23
+msgid "Show list of recent post"
+msgstr ""
+
+#: src/shopping/framework/widgets/recent_post/recent_post.php:72
+msgid "Num Posts:"
+msgstr ""
+
+#: src/shopping/framework/widgets/sliders/sliders.php:20
+msgid "Description "
+msgstr ""
+
+#: src/shopping/framework/widgets/sliders/sliders.php:22
+msgid "WPO Sliders Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/tabs/tabs.php:21
+msgid "WPO Tabs Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/tabs/tabs.php:23
+msgid "Popular posts, recent post and comments."
+msgstr ""
+
+#: src/shopping/framework/widgets/tabs/tpl/default.php:4
+msgid "Popular"
+msgstr ""
+
+#: src/shopping/framework/widgets/tabs/tpl/default.php:9
+msgid "Recent"
+msgstr ""
+
+#: src/shopping/framework/widgets/tabs/tpl/default.php:14
+msgid "Comments"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:23
+msgid "WPO Top Rate Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:25
+msgid "The highest rated posts on your site"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:35
+msgid "Top Rated"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:85
+msgid "Get most rated:"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:94
+msgid "Sort by:"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:96
+msgid "Overall bayesian rating (score)"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:97
+msgid "Average rating"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:98
+msgid "Number of votes"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:105
+msgid "Descending"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:110
+msgid "Ascending"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:115
+msgid "Ignore posts older than:"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:116
+msgid "days"
+msgstr ""
+
+#: src/shopping/framework/widgets/top_rate/top_rate.php:118
+msgid "(0 to ignore date)"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:20
+msgid "Latest Twitter widget "
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:24
+msgid "WPO Twitter Widget"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:120
+msgid "Latest tweets."
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:120
+msgid "leotheme"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:120
+msgid "Sv4hY9ewxyyt6ffBfMiMTg"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:120
+msgid "w2AULbFWTu2kG3DnHRszG7HO4adpGCicE022MhuLYU"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:120
+msgid "1361529829-lItJW8tBYhuy1zRRYpco97TdcChNcAh6wRTZxf4"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:120
+msgid "2MRkUJLBAAp3g3PYRTcjDB4N4QaGCVf5aEuSyFaO9I"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:138
+msgid "Tiwtter Username:"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:142
+msgid "Custommer key:"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:146
+msgid "Custommer Secret:"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:151
+msgid "Accesstoken:"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:155
+msgid "Accesstoken Secret:"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:159
+msgid "Number Status:"
+msgstr ""
+
+#: src/shopping/framework/widgets/twitter/twitter.php:164
+msgid "Display info publicly?"
+msgstr ""
+
+#: src/shopping/header-style2.php:63 src/shopping/header-style3.php:63
+#: src/shopping/header.php:63
+msgid "Welcome visitor you can"
+msgstr ""
+
+#: src/shopping/header-style2.php:64 src/shopping/header-style3.php:64
+#: src/shopping/header.php:64
+msgid "login or register"
+msgstr ""
+
+#: src/shopping/header-style2.php:64 src/shopping/header-style3.php:64
+#: src/shopping/header.php:64
+msgid " login or register "
+msgstr ""
+
+#: src/shopping/header-style2.php:67 src/shopping/header-style3.php:67
+#: src/shopping/header.php:67
+msgid "Welcome "
+msgstr ""
+
+#: src/shopping/header-style2.php:129 src/shopping/header-style3.php:133
+#: src/shopping/header.php:144 src/shopping/sub/functions/woocommerce.php:152
+#: src/shopping/woocommerce/widgets/widget-cart.php:24
+msgid "Cart"
+msgstr ""
+
+#: src/shopping/options.php:46
+msgid "Banner Top"
+msgstr ""
+
+#: src/shopping/options.php:53
+msgid "Image Footer"
+msgstr ""
+
+#. /GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+#. *
+#. * @website  http://www.wpopal.com
+#. * @support  http://www.wpopal.com/support/forum.html
+#.
+#: src/shopping/searchform.php:17
+msgid "Search..."
+msgstr ""
+
+#: src/shopping/sub/customfield/brands.php:3
+msgid "Link Brand"
+msgstr ""
+
+#: src/shopping/sub/customfield/page-advanced.php:28
+msgid "Use Global"
+msgstr ""
+
+#: src/shopping/sub/customfield/page-advanced.php:29
+msgid "Skin 1"
+msgstr ""
+
+#: src/shopping/sub/customfield/page-advanced.php:30
+msgid "Skin 2"
+msgstr ""
+
+#: src/shopping/sub/customfield/page-advanced.php:31
+msgid "Skin 3"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:21
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:72
+msgid "Shopping Cart"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:74
+#: src/shopping/sub/functions/woocommerce.php:78
+#: src/shopping/sub/functions/woocommerce.php:96
+msgid "View your shopping cart"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:75
+#: src/shopping/sub/functions/woocommerce.php:98
+#, php-format
+msgid "%d item"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:90
+#: src/shopping/sub/functions/woocommerce.php:112
+msgid "Previous"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:90
+#: src/shopping/sub/functions/woocommerce.php:112
+msgid "Next"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:99
+#: src/shopping/sub/functions/woocommerce.php:121
+#: src/shopping/woocommerce/loop/result-count.php:28
+msgid "Showing the single result"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:101
+#: src/shopping/sub/functions/woocommerce.php:123
+#: src/shopping/woocommerce/loop/result-count.php:30
+#, php-format
+msgid "Showing all %d results"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:122
+msgid "Availability: In Stock"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:124
+msgid "Availability: Out of Stock"
+msgstr ""
+
+#: src/shopping/sub/functions/theme.php:156
+msgid "Enter search..."
+msgstr ""
+
+#: src/shopping/sub/functions/woocommerce.php:51
+#: src/shopping/sub/functions/woocommerce.php:55
+msgid "Add to wishlist"
+msgstr ""
+
+#: src/shopping/sub/functions/woocommerce.php:140
+#: src/shopping/woocommerce/checkout/thankyou.php:30
+msgid "My Account"
+msgstr ""
+
+#: src/shopping/sub/functions/woocommerce.php:146
+#: src/shopping/woocommerce/cart/mini-cart.php:72
+msgid "Checkout"
+msgstr ""
+
+#: src/shopping/sub/pagebuilder.php:96
+msgid "CSS Animation"
+msgstr ""
+
+#: src/shopping/sub/pagebuilder.php:100
+msgid ""
+"Select animation type if you want this element to be animated when it enters "
+"into the browsers viewport. Note: Works only in modern browsers."
+msgstr ""
+
+#: src/shopping/sub/pagebuilder.php:128
+msgid "Map Type"
+msgstr ""
+
+#: src/shopping/sub/pagebuilder.php:137
+msgid "Select Map Type."
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:9
+msgid "WPO Vertical Menu"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:26
+msgid "Select menu."
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:30
+msgid "Position"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:37
+msgid "Postion Menu Vertical."
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:41
+#: src/shopping/sub/vc_shortcodes/theme.php:64
+#: src/shopping/sub/vc_shortcodes/theme.php:94
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:17
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:75
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:127
+msgid "Extra class name"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:43
+#: src/shopping/sub/vc_shortcodes/theme.php:66
+#: src/shopping/sub/vc_shortcodes/theme.php:96
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:19
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:77
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:129
+msgid ""
+"If you wish to style particular content element differently, then use this "
+"field to add a class name and then refer to it in your css file."
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:50
+msgid "WPO Testimonials"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:76
+msgid "WPO Brands"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:83
+msgid "Number of brands to show"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/theme.php:89
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:70
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:122
+msgid "Icon"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:3
+msgid "WPO Product Deals"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:35
+msgid "WPO Product Category"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:50
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:102
+msgid "Style"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:62
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:114
+msgid "Columns count"
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:66
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:98
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:118
+msgid "Select columns count."
+msgstr ""
+
+#: src/shopping/sub/vc_shortcodes/woocommerce.php:87
+msgid "WPO Products"
+msgstr ""
+
+#. /GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+#. *
+#. * @website  http://www.wpopal.com
+#. * @support  http://www.wpopal.com/support/forum.html
+#.
+#: src/shopping/templates/author-bio.php:17
+msgid "About the Author :"
+msgstr ""
+
+#: src/shopping/templates/blog/blog.php:110
+#: src/shopping/templates/masonry/masonry.php:72
+#: src/shopping/templates/portfolio/portfolio.php:72
+#: src/shopping/templates/single/single.php:73
+#: src/shopping/vc_templates/vc_posts_grid.php:54
+msgid " 0 comment"
+msgstr ""
+
+#: src/shopping/templates/blog/blog.php:110
+#: src/shopping/templates/masonry/masonry.php:72
+#: src/shopping/templates/portfolio/portfolio.php:72
+#: src/shopping/templates/single/single.php:73
+#: src/shopping/vc_templates/vc_posts_grid.php:54
+msgid " 1 comment"
+msgstr ""
+
+#: src/shopping/templates/blog/blog.php:110
+#: src/shopping/templates/masonry/masonry.php:72
+#: src/shopping/templates/portfolio/portfolio.php:72
+#: src/shopping/templates/single/single.php:73
+#: src/shopping/vc_templates/vc_posts_grid.php:54
+#, php-format
+msgid " % comments"
+msgstr ""
+
+#: src/shopping/templates/blog/blog.php:116
+#: src/shopping/templates/masonry/masonry.php:78
+#: src/shopping/templates/portfolio/portfolio.php:78
+#: src/shopping/templates/single/single.php:79
+msgid "Tags: "
+msgstr ""
+
+#. /span>
+#. <span class="author-link"><?php the_author_posts_link(); ?></span>
+#. <?php if(is_tag()): ?>
+#. /span>
+#. <span class="tag-link"><?php the_tags('Tags: ',', '); ?></span>
+#. <?php endif; ?>
+#.
+#: src/shopping/templates/blog/blog.php:121
+#: src/shopping/templates/masonry/masonry.php:86
+#: src/shopping/templates/portfolio/portfolio.php:86
+#: src/shopping/vc_templates/vc_posts_grid.php:67
+msgid "read more"
+msgstr ""
+
+#: src/shopping/templates/breadcrumb.php:45
+msgid "Archive by date \""
+msgstr ""
+
+#: src/shopping/templates/breadcrumb.php:48
+msgid "Archive by month \""
+msgstr ""
+
+#: src/shopping/templates/breadcrumb.php:50
+msgid "Archive by year \""
+msgstr ""
+
+#: src/shopping/templates/breadcrumb.php:90
+msgid "Search results for \""
+msgstr ""
+
+#: src/shopping/templates/breadcrumb.php:92
+msgid "Archive by tag \""
+msgstr ""
+
+#: src/shopping/templates/breadcrumb.php:96
+msgid "Articles posted by \""
+msgstr ""
+
+#: src/shopping/templates/list_comments.php:30
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: src/shopping/templates/list_comments.php:31
+msgid " - Edit"
+msgstr ""
+
+#: src/shopping/templates/list_comments.php:32
+msgid " - Reply"
+msgstr ""
+
+#: src/shopping/templates/list_comments.php:37
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: src/shopping/templates/single/single.php:90
+msgid "Share this Post!"
+msgstr ""
+
+#: src/shopping/vc_templates/vc_accordion_tab.php:6
+msgid "Section"
+msgstr ""
+
+#: src/shopping/vc_templates/vc_button.php:10
+msgid "Text on the button"
+msgstr ""
+
+#: src/shopping/vc_templates/wpo_product_deals.php:97
+msgid "Days"
+msgstr ""
+
+#: src/shopping/vc_templates/wpo_product_deals.php:97
+msgid "Hours"
+msgstr ""
+
+#: src/shopping/vc_templates/wpo_product_deals.php:97
+msgid "Mins"
+msgstr ""
+
+#: src/shopping/vc_templates/wpo_product_deals.php:97
+msgid "Secs"
+msgstr ""
+
+#: src/shopping/vc_templates/wpo_product_deals.php:98
+msgid "Expired"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-empty.php:16
+msgid "Your cart is currently empty."
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-empty.php:20
+msgid "Return To Shop"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-shipping.php:20
+#, php-format
+msgid "Shipping #%d"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-shipping.php:22
+msgid "Shipping and Handling"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-shipping.php:59
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-shipping.php:63
+msgid ""
+"Please continue to the checkout and enter your full address to see if there "
+"are any available shipping methods."
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-shipping.php:67
+msgid "Please fill in your details to see available shipping methods."
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-shipping.php:76
+#: src/shopping/woocommerce/cart/cart-shipping.php:82
+msgid ""
+"There are no shipping methods available. Please double check your address, "
+"or contact us if you need any help."
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-shipping.php:97
+#: src/shopping/woocommerce/cart/cart-totals.php:46
+msgid "Shipping"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-totals.php:19
+msgid "Cart Totals"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-totals.php:24
+#: src/shopping/woocommerce/cart/mini-cart.php:66
+msgid "Subtotal"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-totals.php:78
+#: src/shopping/woocommerce/cart/cart.php:32
+#: src/shopping/woocommerce/myaccount/my-orders.php:37
+#: src/shopping/woocommerce/myaccount/my-orders.php:60
+#: src/shopping/woocommerce/order/order-details.php:24
+msgid "Total"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-totals.php:90
+#, php-format
+msgid " (taxes estimated for %s)"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart-totals.php:93
+#, php-format
+msgid ""
+"Note: Shipping and taxes are estimated%s and will be updated during checkout "
+"based on your billing and shipping information."
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:29
+#: src/shopping/woocommerce/checkout/form-pay.php:19
+#: src/shopping/woocommerce/emails/customer-invoice.php:33
+#: src/shopping/woocommerce/order/order-details.php:23
+msgid "Product"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:30
+#: src/shopping/woocommerce/emails/customer-invoice.php:35
+msgid "Price"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:31
+#: src/shopping/woocommerce/emails/customer-invoice.php:34
+msgid "Quantity"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:49
+msgid "Remove this item"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:76
+msgid "Available on backorder"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:121
+msgid "Coupon"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:121
+msgid "Coupon code"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:121
+msgid "Apply Coupon"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/cart.php:128
+msgid "Update Cart"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/mini-cart.php:58
+msgid "No products in the cart."
+msgstr ""
+
+#: src/shopping/woocommerce/cart/mini-cart.php:71
+msgid "View Cart"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/shipping-calculator.php:22
+msgid "Calculate Shipping"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/shipping-calculator.php:28
+msgid "Select a country&hellip;"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/shipping-calculator.php:45
+#: src/shopping/woocommerce/cart/shipping-calculator.php:51
+#: src/shopping/woocommerce/cart/shipping-calculator.php:63
+msgid "State / county"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/shipping-calculator.php:52
+msgid "Select a state&hellip;"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/shipping-calculator.php:72
+msgid "City"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/shipping-calculator.php:80
+msgid "Postcode / Zip"
+msgstr ""
+
+#: src/shopping/woocommerce/cart/shipping-calculator.php:85
+msgid "Update Totals"
+msgstr ""
+
+#. /Templates
+#. * @version     1.6.4
+#.
+#. Exit if accessed directly
+#: src/shopping/woocommerce/checkout/cart-errors.php:16
+msgid ""
+"There are some issues with the items in your cart (shown above). Please go "
+"back to the cart page and resolve these issues before checking out."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/cart-errors.php:20
+msgid "Return To Cart"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-billing.php:19
+msgid "Billing &amp; Shipping"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-billing.php:23
+msgid "Billing Details"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-billing.php:42
+msgid "Create an account?"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-billing.php:53
+msgid ""
+"Create an account by entering the information below. If you are a returning "
+"customer please login at the top of the page."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-checkout.php:20
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-checkout.php:51
+msgid "Your order"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-pay.php:20
+msgid "Qty"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-pay.php:21
+msgid "Totals"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-pay.php:54
+msgid "Payment"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-pay.php:79
+msgid ""
+"Sorry, it seems that there are no available payment methods for your "
+"location. Please contact us if you require assistance or wish to make "
+"alternate arrangements."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-pay.php:89
+msgid "Pay for order"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-shipping.php:29
+msgid "Ship to a different address?"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/form-shipping.php:55
+#: src/shopping/woocommerce/single-product/tabs/additional-information.php:14
+msgid "Additional Information"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:18
+msgid ""
+"Unfortunately your order cannot be processed as the originating bank/"
+"merchant has declined your transaction."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:22
+msgid "Please attempt your purchase again or go to your account page."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:24
+msgid "Please attempt your purchase again."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:28
+#: src/shopping/woocommerce/myaccount/my-orders.php:70
+msgid "Pay"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:36
+#: src/shopping/woocommerce/checkout/thankyou.php:66
+msgid "Thank you. Your order has been received."
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:40
+msgid "Order:"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:44
+msgid "Date:"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:48
+msgid "Total:"
+msgstr ""
+
+#: src/shopping/woocommerce/checkout/thankyou.php:53
+msgid "Payment method:"
+msgstr ""
+
+#: src/shopping/woocommerce/compare.php:50
+msgid "Product Comparison"
+msgstr ""
+
+#: src/shopping/woocommerce/compare.php:72
+msgid "Close window [X]"
+msgstr ""
+
+#: src/shopping/woocommerce/compare.php:97
+msgid "No products added in the compare table."
+msgstr ""
+
+#: src/shopping/woocommerce/content-product-inner.php:25
+msgid "<i class=\"fa fa-plus\"></i>"
+msgstr ""
+
+#: src/shopping/woocommerce/content-product-inner.php:60
+#: src/shopping/woocommerce/content-product-list.php:111
+msgid "add to compare"
+msgstr ""
+
+#: src/shopping/woocommerce/emails/customer-invoice.php:20
+#, php-format
+msgid ""
+"An order has been created for you on %s. To pay for this order please use "
+"the following link: %s"
+msgstr ""
+
+#: src/shopping/woocommerce/emails/customer-invoice.php:20
+msgid "pay"
+msgstr ""
+
+#: src/shopping/woocommerce/emails/customer-invoice.php:26
+#, php-format
+msgid "Order #%s"
+msgstr ""
+
+#. /Templates/Emails
+#. * @version     2.2.0
+#.
+#. Exit if accessed directly
+#: src/shopping/woocommerce/emails/email-addresses.php:22
+msgid "Billing address"
+msgstr ""
+
+#: src/shopping/woocommerce/emails/email-addresses.php:32
+msgid "Shipping address"
+msgstr ""
+
+#: src/shopping/woocommerce/global/form-login.php:24
+#: src/shopping/woocommerce/myaccount/form-lost-password.php:25
+msgid "Username or email"
+msgstr ""
+
+#: src/shopping/woocommerce/global/form-login.php:30
+#: src/shopping/woocommerce/myaccount/form-login.php:36
+#: src/shopping/woocommerce/myaccount/form-login.php:88
+msgid "Password"
+msgstr ""
+
+#. /Templates
+#. * @version     2.2.6
+#.
+#. Exit if accessed directly
+#: src/shopping/woocommerce/global/form-login.php:40
+#: src/shopping/woocommerce/myaccount/form-login.php:25
+#: src/shopping/woocommerce/myaccount/form-login.php:44
+msgid "Login"
+msgstr ""
+
+#: src/shopping/woocommerce/global/form-login.php:43
+#: src/shopping/woocommerce/myaccount/form-login.php:49
+msgid "Remember me"
+msgstr ""
+
+#: src/shopping/woocommerce/global/form-login.php:47
+#: src/shopping/woocommerce/myaccount/form-login.php:54
+msgid "Lost your password?"
+msgstr ""
+
+#: src/shopping/woocommerce/loop/orderby.php:22
+msgid "Default sorting"
+msgstr ""
+
+#: src/shopping/woocommerce/loop/orderby.php:23
+msgid "Sort by popularity"
+msgstr ""
+
+#: src/shopping/woocommerce/loop/orderby.php:24
+msgid "Sort by average rating"
+msgstr ""
+
+#: src/shopping/woocommerce/loop/orderby.php:25
+msgid "Sort by newness"
+msgstr ""
+
+#: src/shopping/woocommerce/loop/orderby.php:26
+msgid "Sort by price: low to high"
+msgstr ""
+
+#: src/shopping/woocommerce/loop/orderby.php:27
+msgid "Sort by price: high to low"
+msgstr ""
+
+#: src/shopping/woocommerce/loop/sale-flash.php:16
+#: src/shopping/woocommerce/single-product/sale-flash.php:16
+msgid "Sale"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-add-payment-method.php:41
+msgid ""
+"Sorry, it seems that there are no payment methods which support adding a new "
+"payment method. Please contact us if you require assistance or wish to make "
+"alternate arrangements."
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-add-payment-method.php:49
+msgid "Add Payment Method"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-account.php:20
+msgid "First name"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-account.php:24
+msgid "Last name"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-account.php:28
+#: src/shopping/woocommerce/myaccount/form-login.php:83
+msgid "Email address"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-account.php:32
+msgid "Password (leave blank to leave unchanged)"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-account.php:36
+msgid "Confirm new password"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-account.php:40
+msgid "Save changes"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-address.php:16
+#: src/shopping/woocommerce/myaccount/my-address.php:19
+#: src/shopping/woocommerce/myaccount/my-address.php:25
+#: src/shopping/woocommerce/order/order-details.php:192
+msgid "Billing Address"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-address.php:16
+#: src/shopping/woocommerce/myaccount/my-address.php:20
+#: src/shopping/woocommerce/order/order-details.php:211
+msgid "Shipping Address"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-edit-address.php:44
+msgid "Save Address"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-login.php:32
+msgid "Username or email address"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-login.php:67
+#: src/shopping/woocommerce/myaccount/form-login.php:100
+msgid "Register"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-login.php:76
+msgid "Username"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-login.php:93
+msgid "Anti-spam"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-lost-password.php:22
+msgid ""
+"Lost your password? Please enter your username or email address. You will "
+"receive a link to create a new password via email."
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-lost-password.php:31
+msgid "Enter a new password below."
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-lost-password.php:34
+msgid "New password"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-lost-password.php:38
+msgid "Re-enter new password"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-lost-password.php:48
+msgid "Reset Password"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/form-lost-password.php:48
+msgid "Save"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-address.php:17
+msgid "My Addresses"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-address.php:23
+msgid "My Address"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-address.php:35
+msgid "The following addresses will be used on the checkout page by default."
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-address.php:47
+msgid "Edit"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-address.php:67
+msgid "You have not set up this type of address yet."
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-orders.php:26
+msgid "Recent Orders"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-orders.php:34
+msgid "Order"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-orders.php:35
+#: src/shopping/woocommerce/myaccount/my-orders.php:54
+msgid "Date"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-orders.php:49
+msgid "Order Number"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/my-orders.php:61
+#, php-format
+msgid "%s for %s item"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/view-order.php:16
+#, php-format
+msgid ""
+"Order <mark class=\"order-number\">%s</mark> was placed on <mark class="
+"\"order-date\">%s</mark> and is currently <mark class=\"order-status\">%s</"
+"mark>."
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/view-order.php:20
+#: src/shopping/woocommerce/order/tracking.php:31
+msgid "Order Updates"
+msgstr ""
+
+#: src/shopping/woocommerce/myaccount/view-order.php:26
+#: src/shopping/woocommerce/order/tracking.php:37
+msgid "l jS \\o\\f F Y, h:ia"
+msgstr ""
+
+#: src/shopping/woocommerce/order/form-tracking.php:17
+msgid ""
+"To track your order please enter your Order ID in the box below and press "
+"return. This was given to you on your receipt and in the confirmation email "
+"you should have received."
+msgstr ""
+
+#: src/shopping/woocommerce/order/form-tracking.php:22
+msgid "Order ID"
+msgstr ""
+
+#: src/shopping/woocommerce/order/form-tracking.php:23
+msgid "Found in your order confirmation email."
+msgstr ""
+
+#: src/shopping/woocommerce/order/form-tracking.php:28
+msgid "Billing Email"
+msgstr ""
+
+#: src/shopping/woocommerce/order/form-tracking.php:29
+msgid "Email you used during checkout."
+msgstr ""
+
+#: src/shopping/woocommerce/order/form-tracking.php:34
+msgid "Track"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:16
+msgid "Order Details"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:62
+#, php-format
+msgid "Download file%s"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:128
+#: src/shopping/woocommerce/order/order-details.php:132
+#, php-format
+msgid "(Includes %s)"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:150
+msgid "Refunded:"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:159
+msgid "Note:"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:171
+msgid "Customer details"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:176
+msgid "Telephone:"
+msgstr ""
+
+#: src/shopping/woocommerce/order/order-details.php:197
+#: src/shopping/woocommerce/order/order-details.php:216
+msgid "N/A"
+msgstr ""
+
+#: src/shopping/woocommerce/order/tracking.php:18
+#, php-format
+msgid "Order %s which was made %s has the status &ldquo;%s&rdquo;"
+msgstr ""
+
+#: src/shopping/woocommerce/order/tracking.php:18
+msgid "ago"
+msgstr ""
+
+#: src/shopping/woocommerce/order/tracking.php:20
+msgid "and was completed"
+msgstr ""
+
+#: src/shopping/woocommerce/order/tracking.php:20
+msgid " ago"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:24
+#, php-format
+msgid "%s review for %s"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:26
+msgid "Reviews"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:47
+msgid "There are no reviews yet."
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:60
+msgid "Add a review"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:60
+msgid "Be the first to review"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:61
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:65
+msgid "Name"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:70
+msgid "Submit"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:76
+msgid "Your Rating"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:77
+msgid "Rate&hellip;"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:78
+msgid "Perfect"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:79
+msgid "Good"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:80
+msgid "Average"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:81
+msgid "Not that bad"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:82
+msgid "Very Poor"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:86
+msgid "Your Review"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product-reviews.php:95
+msgid ""
+"Only logged in customers who have purchased this product may leave a review."
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/add-to-cart/variable.php:27
+msgid "Choose an option"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/add-to-cart/variable.php:62
+msgid "Clear selection"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/add-to-cart/variable.php:95
+msgid "This product is currently out of stock and unavailable."
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/meta.php:23
+msgid "SKU:"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/meta.php:23
+msgid "n/a"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/meta.php:27
+msgid "Category:"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/meta.php:29
+msgid "Tag:"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/product-attributes.php:30
+msgid "Weight"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/product-attributes.php:37
+msgid "Dimensions"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/rating.php:27
+#, php-format
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/rating.php:29
+#, php-format
+msgid "out of %s5%s"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/rating.php:30
+#, php-format
+msgid "based on %s customer rating"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/rating.php:33
+#, php-format
+msgid "%s customer review"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/related.php:40
+msgid "Related Products"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/review.php:28
+#, php-format
+msgid "Rated %d out of 5"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/review.php:29
+msgid "out of 5"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/review.php:36
+msgid "Your comment is awaiting approval"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/review.php:45
+msgid "verified owner"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/tabs/description.php:14
+msgid "Product Description"
+msgstr ""
+
+#: src/shopping/woocommerce/single-product/up-sells.php:43
+msgid "You may also like&hellip;"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-layered-nav-filters.php:66
+#: src/shopping/woocommerce/widgets/widget-layered-nav-filters.php:73
+#: src/shopping/woocommerce/widgets/widget-layered-nav-filters.php:78
+msgid "Remove filter"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-layered-nav-filters.php:73
+msgid "Min"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-layered-nav-filters.php:78
+msgid "Max"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-layered-nav.php:91
+#, php-format
+msgid "Any %s"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-price-filter.php:143
+msgid "Min price"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-price-filter.php:144
+msgid "Max price"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-price-filter.php:145
+msgid "Filter"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-price-filter.php:147
+msgid "Price:"
+msgstr ""
+
+#: src/shopping/woocommerce/widgets/widget-product-categories.php:146
+msgid "No product categories exist."
+msgstr ""
