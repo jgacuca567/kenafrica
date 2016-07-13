@@ -14,9 +14,13 @@ function kenshopping_scripts() {
 	/** Local Version of jQuery */
 	wp_register_script('jquery', get_template_directory_uri() . '/node_modules/jquery/dist/jquery.min.js', array(), '3.1.0');
 
+	/** Script.JS */
+	wp_register_script('scriptjs', get_template_directory_uri() . 'js/script.js');
+
 	/** Enqueue all registered scripts */
 	wp_enqueue_style('fontawesome');
 	wp_enqueue_script('jquery');
+	wp_enqueue_script('scriptjs');
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
