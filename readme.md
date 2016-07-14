@@ -6,3 +6,5 @@
 4. Update WooCommerce
 5. Convert Wordpress to iOS App and Android App
 6. Install Google Analytics on Site
+7. Add Google ReCaptcha to Website
+8. Add Social Media to Website
