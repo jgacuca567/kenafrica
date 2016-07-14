@@ -10,7 +10,7 @@ module.exports = function(grunt) {
                     sourceMap: false
                 },
                 files: {
-                    'css/main.css': 'scss/main.scss'
+                    'css/style.css': 'scss/style.scss'
                 }
             }
         }, // sass
@@ -59,11 +59,12 @@ module.exports = function(grunt) {
                 reporter: require('jshint-stylish')
             },
             target: ['*.js', 'js/*.js'],
-            all: ['*.js', 'js/*.js']
+            all: ['*.js', 'js/*.js'],
+            force: 'true'
         } //jshint
     });
 
     require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('default', ['autoupdate', 'sass', 'openport:watch.options.livereload:35729', 'watch', 'force:jshint']);
+    grunt.registerTask('default', ['autoupdate', 'sass', 'openport:watch.options.livereload:35729', 'watch', 'jshint']);
 };
