@@ -7,5 +7,5 @@
  */
 ?>
 2015 - 2016 Kenafrica
-<i class="fa fa-copyright"></i> DOSBRANDING <?php echo date(); ?>
+<i class="fa fa-copyright"></i> DOSBRANDING <?php echo the_date(); ?>
 <?php wp_footer();?>
