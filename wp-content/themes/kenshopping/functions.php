@@ -36,3 +36,6 @@ require get_template_directory() . '/inc/theme-setup.php';
 
 /** Custom Login */
 require get_template_directory() . '/inc/login.php';
+
+/** WooCommerce */
+require get_template_directory() . '/inc/woocom.php';
