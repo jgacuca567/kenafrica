@@ -7,10 +7,12 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     outputStyle: 'expanded',
-                    sourceMap: false
+                    sourceMap: false,
+                    includePaths: ['node_modules/bootstrap-sass/assets/stylesheets', 'node_modules/bootstrap-material-design/sass']
                 },
                 files: {
-                    'css/style.css': 'scss/style.scss'
+                    'style.css': 'scss/style.scss',
+                    
                 }
             }
         }, // sass
