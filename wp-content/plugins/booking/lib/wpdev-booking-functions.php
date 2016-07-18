@@ -378,7 +378,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             $type_name = str_replace('[]','',$type_name);
             if ($bktype == substr( $type_name,  -1*$count_pos ) ) $type_name = substr( $type_name, 0, -1*$count_pos ); // $type_name = str_replace($bktype,'',$elemnts[1]);
 
-            if ( ($type_name == 'email') || ($type == 'email')  )               $email_adress = $value;
+            //if ( ($type_name == 'email') || ($type == 'email')  )               $email_adress = $value;                       //FixIn: 6.0.1.9
+            if ( ( ($type_name == 'email') || ($type == 'email')  ) && ( empty($email_adress) )   )    $email_adress = $value;  //FixIn: 6.0.1.9
             if ( ($type_name == 'coupon') || ($type == 'coupon')  )             $coupon_code = $value;
             if ( ($type_name == 'name') || ($type == 'name')  )                 $name_of_person = $value;
             if ( ($type_name == 'secondname') || ($type == 'secondname')  )     $secondname_of_person = $value;
@@ -405,7 +406,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                             //$checkbox_value[ str_replace('[]','',(string) $element_name) ] = 'checkbox';
                     }
 
-                $value = $value .' ' . '['. $type_name .']';
+                $value = '['. $type_name .']';                                  //FixIn: 6.1.1.14
+                //$value = $value .' ' . '['. $type_name .']';              
             }
 
             if ( ( $type == 'select-one') || ( $type == 'select-multiple' ) ) { // add all select box selected items to return array
@@ -432,9 +434,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             $booking_form_show = str_replace( '['. $type_name .']', $value ,$booking_form_show);
         }
 
-
+//debuge($booking_form_show, $all_fields_array_without_types);
         // Remove all shortcodes, which is not replaced early.
-        $booking_form_show = preg_replace ('/[\s]{0,}\[[a-zA-Z0-9.,-_]{0,}\][\s]{0,}/', '', $booking_form_show);
+        // $booking_form_show = preg_replace ('/[\s]{0,}\[[a-zA-Z0-9.,-_]{0,}\][\s]{0,}/', '', $booking_form_show);  //FixIn: 6.1.1.4
 
         if (! isset($all_fields_array_without_types[ 'booking_resource_id'  ])) $all_fields_array_without_types[ 'booking_resource_id'  ] = $bktype;
         if (! isset($all_fields_array_without_types[ 'resource_id'  ]))         $all_fields_array_without_types[ 'resource_id'  ] = $bktype;
@@ -447,6 +449,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             if (! isset($all_fields_array_without_types[  $key_param  ]))            $all_fields_array_without_types[ $key_param  ] = $value_param;
         }
 
+        
+        foreach ( $all_fields_array_without_types as $key_param=>$value_param) {                                  //FixIn: 6.1.1.4
+            if ( ! is_object( $value_param ) )
+                $booking_form_show = str_replace( '['. $key_param .']', $value_param ,$booking_form_show);
+        }
+        // Remove all shortcodes, which is not replaced early.
+        $booking_form_show = preg_replace ('/[\s]{0,}\[[a-zA-Z0-9.,-_]{0,}\][\s]{0,}/', '', $booking_form_show);  //FixIn: 6.1.1.4
+        
+        
         $return_array =   array('content' => $booking_form_show,
                                 'email' => $email_adress,
                                 'name' => $name_of_person,
@@ -1376,8 +1387,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
         $wpbc_email_return_path = new wpbc_email_return_path();
         
         // $mail_recipient = str_replace( '"', '', $mail_recipient );           //FixIn:5.4.3
-        
-        @wp_mail($mail_recipient, $mail_subject, $mail_body, $mail_headers);
+        if ( ! wpdev_bk_is_this_demo() )                                        //FixIn:6.1.1.19
+            @wp_mail($mail_recipient, $mail_subject, $mail_body, $mail_headers);
         
         unset( $wpbc_email_return_path );
     }
@@ -1411,7 +1422,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             $my_dates4emeil_check_in_out = explode(',',get_dates_str($res->booking_id));
 
             $my_check_in_date  = change_date_format($my_dates4emeil_check_in_out[0] );
-            $my_check_out_date = change_date_format($my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] );
+            $my_check_out_date = change_date_format($my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] );            
+            $my_check_out_plus1day = change_date_format( date_i18n( 'Y-m-d H:i:s',  strtotime( $my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] . " +1 day" ) ) ); //FixIn: 6.0.1.11
             
             if ( ( isset($res->sync_gid) ) && (! empty($res->sync_gid)) ) {
                 $res->form .= "~text^sync_gid{$res->booking_type}^{$res->sync_gid}";
@@ -1425,6 +1437,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                                                          'dates'=> $my_dates_4_send,
                                                          'check_in_date' => $my_check_in_date,
                                                          'check_out_date' => $my_check_out_date,
+                                                         'check_out_plus1day' => $my_check_out_plus1day,            //FixIn: 6.0.1.11
                                                          'dates_count' => count($my_dates4emeil_check_in_out),
                                                          'cost' => (isset($res->cost))?wpdev_bk_cost_number_format($res->cost):'',
                                                          'siteurl' => htmlspecialchars_decode( '<a href="'.home_url().'">' . home_url() . '</a>'),
@@ -1454,8 +1467,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             $mail_headers = "From: $mail_sender\n";
             $mail_headers .= "Content-Type: text/html\n";
 
+            // Check  about  sending email  to several  emails from  booking form.
+            $mail_recipients = check_for_several_emails_in_form( $mail_recipients, $res->form, $res->booking_type );     //FixIn: 6.0.1.9
 
-            if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);
+            if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);        //FixIn: 6.0.1.9
             } else if (strpos($mail_recipients, ';')!==false) { $mail_recipients= explode(';', $mail_recipients);
             } else {                                            $mail_recipients= array($mail_recipients); }
 
@@ -1529,6 +1544,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
             $my_check_in_date  = change_date_format($my_dates4emeil_check_in_out[0] );
             $my_check_out_date = change_date_format($my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] );
+            $my_check_out_plus1day = change_date_format( date_i18n( 'Y-m-d H:i:s',  strtotime( $my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] . " +1 day" ) ) ); //FixIn: 6.0.1.11
 
             if ( ( isset($res->sync_gid) ) && (! empty($res->sync_gid)) ) {
                 $res->form .= "~text^sync_gid{$res->booking_type}^{$res->sync_gid}";
@@ -1542,6 +1558,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                                                          'dates'=> $my_dates_4_send,
                                                          'check_in_date' => $my_check_in_date,
                                                          'check_out_date' => $my_check_out_date,
+                                                         'check_out_plus1day' => $my_check_out_plus1day,            //FixIn: 6.0.1.11
                                                          'dates_count' => count($my_dates4emeil_check_in_out),
                                                          'cost' => (isset($res->cost))?wpdev_bk_cost_number_format($res->cost):'',
                                                          'siteurl' => htmlspecialchars_decode( '<a href="'.home_url().'">' . home_url() . '</a>'),
@@ -1569,8 +1586,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             $mail_headers = "From: $mail_sender\n";
             $mail_headers .= "Content-Type: text/html\n";
 
+            // Check  about  sending email  to several  emails from  booking form.
+            $mail_recipients = check_for_several_emails_in_form( $mail_recipients, $res->form, $res->booking_type );     //FixIn: 6.0.1.9   
 
-            if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);
+            if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);        //FixIn: 6.0.1.9
             } else if (strpos($mail_recipients, ';')!==false) { $mail_recipients= explode(';', $mail_recipients);
             } else {                                            $mail_recipients= array($mail_recipients); }
 
@@ -1626,6 +1645,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
         $my_check_in_date  = change_date_format($my_dates4emeil_check_in_out[0] );
         $my_check_out_date = change_date_format($my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] );
+        $my_check_out_plus1day = change_date_format( date_i18n( 'Y-m-d H:i:s',  strtotime( $my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] . " +1 day" ) ) ); //FixIn: 6.0.1.11
 
         $my_cost = apply_bk_filter('get_booking_cost_from_db', '', $booking_id);
         $my_cost = wpdev_bk_cost_number_format( $my_cost );
@@ -1638,6 +1658,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                                                      'dates'=> $my_dates_4_send,
                                                      'check_in_date' => $my_check_in_date,
                                                      'check_out_date' => $my_check_out_date,
+                                                     'check_out_plus1day' => $my_check_out_plus1day,            //FixIn: 6.0.1.11
                                                      'dates_count' => count($my_dates4emeil_check_in_out),
                                                      'cost' => $my_cost,
                                                      'siteurl' => htmlspecialchars_decode( '<a href="'.home_url().'">' . home_url() . '</a>'),
@@ -1660,7 +1681,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
         $mail_recipients =  $booking_form_show['email'];
         $mail_headers = "From: $mail_sender\nContent-Type: text/html\n";
 
-        if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);
+        // Check  about  sending email  to several  emails from  booking form.
+        $mail_recipients = check_for_several_emails_in_form( $mail_recipients, $formdata, $bktype );     //FixIn: 6.0.1.9   
+        
+        if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);       //FixIn: 6.0.1.9
         } else if (strpos($mail_recipients, ';')!==false) { $mail_recipients= explode(';', $mail_recipients);
         } else {                                            $mail_recipients= array($mail_recipients); }
 
@@ -1713,6 +1737,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
         $my_check_in_date  = change_date_format($my_dates4emeil_check_in_out[0] );
         $my_check_out_date = change_date_format($my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] );
+        $my_check_out_plus1day = change_date_format( date_i18n( 'Y-m-d H:i:s',  strtotime( $my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] . " +1 day" ) ) ); //FixIn: 6.0.1.11
 
         $my_cost = apply_bk_filter('get_booking_cost_from_db', '', $booking_id);
         $my_cost = wpdev_bk_cost_number_format( $my_cost );
@@ -1725,6 +1750,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                                                      'dates'=> $my_dates_4_send,
                                                      'check_in_date' => $my_check_in_date,
                                                      'check_out_date' => $my_check_out_date,
+                                                     'check_out_plus1day' => $my_check_out_plus1day,            //FixIn: 6.0.1.11
                                                      'dates_count' => count($my_dates4emeil_check_in_out),
                                                      'cost' => $my_cost,
                                                      'siteurl' => htmlspecialchars_decode( '<a href="'.home_url().'">' . home_url() . '</a>'),
@@ -1766,19 +1792,25 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
             $wpbc_mail = '"' . ((empty($wpbc_email_title))?__('Booking system' ,'booking'):$wpbc_email_title) . '" '    
                          . '<'.$booking_form_show['email'].'>';
+ 
+//            $wpbc_mail = '"' . ((empty($wpbc_email_title))?__('Booking system' ,'booking'):$wpbc_email_title) . '" '   
+//                         . '<your_email@server.com>';            
             
             $mail_sender = str_replace('[visitoremail]',$wpbc_mail,$mail_sender);
         }
         $mail_sender = replace_bk_shortcodes_in_form($mail_sender, $booking_form_show['_all_fields_'], true);
         
         $mail_headers = "From: $mail_sender\nContent-Type: text/html\n";
-//        $mail_headers = "From: $mail_sender\n";
-//        preg_match('/<(.*)>/', $mail_sender, $simple_email_matches );
-//        $reply_to_email = ( count( $simple_email_matches ) > 1 ) ? $simple_email_matches[1] : $mail_sender;
-//        $mail_headers .= 'Reply-To: ' . $reply_to_email . "\n";        
-//        $mail_headers .= 'X-Sender: ' . $reply_to_email . "\n";
-//        $mail_headers .= 'Return-Path: ' . $reply_to_email . "\n";
-//        $mail_headers .= 'Content-type: text/html; charset=' . get_option( 'blog_charset' ) . "\n";
+        
+//$mail_headers = "From: $mail_sender\n";
+//preg_match('/<(.*)>/', $mail_sender, $simple_email_matches );
+//$reply_to_email = ( count( $simple_email_matches ) > 1 ) ? $simple_email_matches[1] : $mail_sender;
+//$mail_headers .= 'Reply-To: ' . $booking_form_show['email'] . "\n"; 
+//$mail_headers .= 'Reply-To: ' . $booking_form_show['email'] . "\n";        
+//$mail_headers .= 'X-Sender: ' . $reply_to_email . "\n";
+//$mail_headers .= 'Return-Path: ' . $reply_to_email . "\n";
+//$mail_headers .= 'Content-type: text/html; charset=' . get_option( 'blog_charset' ) . "\n";
+//debuge(  htmlentities( $mail_headers ) );
 
         if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(',', $mail_recipients);
         } else if (strpos($mail_recipients, ';')!==false) { $mail_recipients= explode(';', $mail_recipients);
@@ -1822,10 +1854,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             if ( strpos($mail_recipients,'[visitoremail]') !== false ) 
                 $mail_recipients = str_replace( '[visitoremail]', $wpbc_mail, $mail_recipients );
             else 
-                $mail_recipients =  $wpbc_mail;
+                $mail_recipients =  $wpbc_mail;  
             
-            
-            $mail_recipients = replace_bk_shortcodes_in_form($mail_recipients, $booking_form_show['_all_fields_'], true);
+           $mail_recipients = check_for_several_emails_in_form( $mail_recipients, $formdata, $bktype );     //FixIn: 6.0.1.9   
+           
+           $mail_recipients = replace_bk_shortcodes_in_form($mail_recipients, $booking_form_show['_all_fields_'], true);
             
             if ( strpos($mail_sender,'[visitoremail]') !== false ) 
                 $mail_sender = str_replace( '[visitoremail]', $wpbc_mail, $mail_sender );
@@ -1884,6 +1917,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
         $my_check_in_date  = change_date_format($my_dates4emeil_check_in_out[0] );
         $my_check_out_date = change_date_format($my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] );
+        $my_check_out_plus1day = change_date_format( date_i18n( 'Y-m-d H:i:s',  strtotime( $my_dates4emeil_check_in_out[ count($my_dates4emeil_check_in_out)-1 ] . " +1 day" ) ) ); //FixIn: 6.0.1.11
 
         $my_cost = apply_bk_filter('get_booking_cost_from_db', '', $booking_id);
         $my_cost = wpdev_bk_cost_number_format( $my_cost );
@@ -1896,6 +1930,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                                                      'dates'=> $my_dates_4_send,
                                                      'check_in_date' => $my_check_in_date,
                                                      'check_out_date' => $my_check_out_date,
+                                                     'check_out_plus1day' => $my_check_out_plus1day,            //FixIn: 6.0.1.11
                                                      'dates_count' => count($my_dates4emeil_check_in_out),
                                                      'cost' => $my_cost,
                                                      'siteurl' => htmlspecialchars_decode( '<a href="'.home_url().'">' . home_url() . '</a>'),
@@ -1920,7 +1955,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
         $mail_recipients =  $booking_form_show['email'];
         $mail_headers = "From: $mail_sender\nContent-Type: text/html\n";
 
-        if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);
+        // Check  about  sending email  to several  emails from  booking form.
+        $mail_recipients = check_for_several_emails_in_form( $mail_recipients, $formdata, $bktype );     //FixIn: 6.0.1.9   
+        
+        if (strpos($mail_recipients, ',')!==false) {        $mail_recipients= explode(';', $mail_recipients);       //FixIn: 6.0.1.9
         } else if (strpos($mail_recipients, ';')!==false) { $mail_recipients= explode(';', $mail_recipients);
         } else {                                            $mail_recipients= array($mail_recipients); }
 
@@ -1954,7 +1992,24 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
     }
 
 
-    
+    function check_for_several_emails_in_form( $mail_recipients, $formdata, $bktype ) {  // FixIn: 6.0.1.9
+
+        $possible_other_emails = explode('~',$formdata);
+        $possible_other_emails = array_map("explode", array_fill(0,count($possible_other_emails),'^'), $possible_other_emails);
+        $other_emails = array();
+        foreach ( $possible_other_emails as $possible_emails ) {
+            if (       ( $possible_emails[0] == 'email' ) 
+                    //&& ( $possible_emails[1] != 'email' . $bktype ) 
+                    && ( ! empty($possible_emails[2]) ) 
+                )
+                    $other_emails[]=$possible_emails[2];
+        }
+        if ( count( $other_emails ) > 1 ) {
+            $other_emails = implode(',',$other_emails);
+            $mail_recipients =  $other_emails;
+        }
+        return $mail_recipients;
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //  D e b u g    f u n c t i o n s       ///////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2343,7 +2398,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
           if  (wpbc_is_field_in_table_exists('booking','is_new') == 0)  return 0;  // do not created this field, so return 0
 
-          $sql_req = "SELECT bk.booking_id FROM {$wpdb->prefix}booking as bk WHERE  bk.is_new = 1" ;
+          $trash_bookings = ' AND bk.trash != 1 ';                                //FixIn: 6.1.1.10  - check also  below usage of {$trash_bookings}
+          
+          $sql_req = "SELECT bk.booking_id FROM {$wpdb->prefix}booking as bk WHERE  bk.is_new = 1 {$trash_bookings} " ;
 
           $sql_req = apply_bk_filter('get_sql_for_checking_new_bookings', $sql_req );
           $sql_req = apply_bk_filter('get_sql_for_checking_new_bookings_multiuser', $sql_req );
@@ -2383,7 +2440,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
 
     function wpdev_bk_is_this_demo(){
-        //  return true;
+//return true;
         if  (
                 ( strpos($_SERVER['SCRIPT_FILENAME'],'wpbookingcalendar.com') !== FALSE ) ||
                 ( strpos($_SERVER['HTTP_HOST'],'wpbookingcalendar.com') !== FALSE )
@@ -2418,7 +2475,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
         $title = __('Bookings' ,'booking');
         $update_title = $title;
-        if ($update_count > 0) {
+        $is_user_activated = apply_bk_filter('multiuser_is_current_user_active',  true );           //FixIn: 6.0.1.17
+
+        if ( ( $update_count > 0 ) && ( $is_user_activated ) ){
             $update_count_title = "&nbsp;<span id='ab-updates' class='booking-count bk-update-count' >" . number_format_i18n($update_count) . "</span>" ; //id='booking-count'
             $update_title .= $update_count_title;
         }

@@ -37,6 +37,9 @@ function wpbc_general_settings_top_menu_submenu_line(){
                 <a href="javascript:void(0)" onclick="javascript:makeScrollInAdminPanel('#bk_general_settings_calendar' );"
                    class="nav-tab booking-submenu-tab go-to-link" ><span><?php _e('Calendar' ,'booking');?></span></a>
 
+                <a href="javascript:void(0)" onclick="javascript:makeScrollInAdminPanel('#bk_general_settings_availability' );"
+                   class="nav-tab booking-submenu-tab go-to-link" ><span><?php _e('Availability' ,'booking');?></span></a>
+
                 <a href="javascript:void(0)" onclick="javascript:makeScrollInAdminPanel('#bk_general_settings_form' );"
                    class="nav-tab booking-submenu-tab go-to-link" ><span><?php _e('Form' ,'booking');?></span></a>
                 
@@ -398,7 +401,29 @@ function wpdev_bk_settings_general() {
                                 $upload_dir = wp_upload_dir(); 
                                 $custom_user_skin_folder = $upload_dir['basedir'] . '/wpbc_skins/';
                                 
-                                $dir_list = wpdev_bk_dir_list( array(  '/css/skins/', '/inc/skins/', $custom_user_skin_folder ) ); 
+                                $dir_list = wpdev_bk_dir_list( array(  '/css/skins/', '/inc/skins/', $custom_user_skin_folder ) );                                 
+//$dir_list = array(
+//                    array(
+//                            'black.css'
+//                            ,'/css/skins/black.css'
+//                            ,'Black'
+//                        )
+//                    , array(
+//                            'standard.css'
+//                            ,'/css/skins/standard.css'
+//                            ,'Standard'
+//                        )
+//                    , array(
+//                            'traditional-light.css'
+//                            ,'/css/skins/traditional-light.css'
+//                            ,'Traditional-light'
+//                        )
+//                    , array(
+//                            'traditional.css'
+//                            ,'/css/skins/traditional.css'
+//                            ,'Traditional'
+//                        )
+//                );
 //debuge($dir_list);
                                 ?>
                                 <select id="booking_skin" name="booking_skin" style="text-transform:capitalize;">
@@ -452,61 +477,9 @@ function wpdev_bk_settings_general() {
                         </tr>
 
                         <tr valign="top"><td colspan="2" style="padding:10px 0px; "><div style="border-bottom:1px solid #cccccc;"></div></td></tr>
-
-                        <tr valign="top">
-                            <th scope="row"><label for="unavailable_days_num_from_today" ><?php _e('Unavailable days from today' ,'booking'); ?>:</label></th>
-                            <td>
-                                <select id="unavailable_days_num_from_today" name="unavailable_days_num_from_today">
-                                    <?php  for ($i = 0; $i < 32; $i++) { ?>
-                                    <option <?php if($unavailable_days_num_from_today == $i) echo "selected"; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                    <?php      } ?>
-                                </select>
-                                <span class="description"><?php _e('Select number of unavailable days in calendar start from today.' ,'booking');?></span>
-                            </td>
-                        </tr>
-
-                        <?php do_action('settings_calendar_unavailable_days'); ?>
-
-                        <tr valign="top">
-                            <th scope="row"><?php _e('Unavailable week days' ,'booking'); ?>:</th>
-                            <td>    
-                                <label for="unavailable_day0" class="wpbc-single-checkbox">
-                                    <input id="unavailable_day0" name="unavailable_day0" <?php if ($unavailable_day0 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day0; ?>"  type="checkbox" />
-                                    <?php _e('Sunday' ,'booking'); ?>
-                                </label>
-                                <label for="unavailable_day1" class="wpbc-single-checkbox">
-                                    <input id="unavailable_day1" name="unavailable_day1" <?php if ($unavailable_day1 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day1; ?>"  type="checkbox" />
-                                    <?php _e('Monday' ,'booking'); ?>
-                                </label>
-                                <label for="unavailable_day2" class="wpbc-single-checkbox">
-                                    <input id="unavailable_day2" name="unavailable_day2" <?php if ($unavailable_day2 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day2; ?>"  type="checkbox" />
-                                    <?php _e('Tuesday' ,'booking'); ?>
-                                </label>
-                                <label for="unavailable_day3" class="wpbc-single-checkbox">
-                                    <input id="unavailable_day3" name="unavailable_day3" <?php if ($unavailable_day3 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day3; ?>"  type="checkbox" />
-                                    <?php _e('Wednesday' ,'booking'); ?>
-                                </label>
-                                <label for="unavailable_day4" class="wpbc-single-checkbox">
-                                    <input id="unavailable_day4" name="unavailable_day4" <?php if ($unavailable_day4 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day4; ?>"  type="checkbox" />
-                                    <?php _e('Thursday' ,'booking'); ?>
-                                </label>
-                                <label for="unavailable_day5" class="wpbc-single-checkbox">
-                                    <input id="unavailable_day5" name="unavailable_day5" <?php if ($unavailable_day5 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day5; ?>"  type="checkbox" />
-                                    <?php _e('Friday' ,'booking'); ?>
-                                </label>
-                                <label for="unavailable_day6" class="wpbc-single-checkbox">
-                                    <input id="unavailable_day6" name="unavailable_day6" <?php if ($unavailable_day6 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day6; ?>"  type="checkbox" />
-                                    <?php _e('Saturday' ,'booking'); ?>
-                                </label>
-                                <p class="description"><?php _e('Check unavailable days in calendars. This option will overwrite all other settings.' ,'booking');?></p>
-                            </td>
-                        </tr>
-
-<?php /* Allow multiple bookings per same day previusly  was here  */ ?>                                                
                         
+                        <?php //FixIn: 6.1.1.18  - removed from  here unavailbale week days and number of unavailbale days from today. ?>
                         
-                        <tr valign="top"><td colspan="2" style="padding:10px 0px; "><div style="border-bottom:1px solid #cccccc;"></div></td></tr>
-
                         <tr valign="top">
                             <th scope="row"><?php _e('Type of days selection in calendar' ,'booking'); ?>:</th>
                             <td>
@@ -569,6 +542,69 @@ function wpdev_bk_settings_general() {
                     </tbody></table>
             </div></div></div>
 
+            <?php //FixIn: 6.1.1.18 ?>
+            <div class='meta-box'>
+                <div <?php $my_close_open_win_id = 'bk_general_settings_availability'; ?>  id="<?php echo $my_close_open_win_id; ?>" class="postbox <?php if ( '1' == get_user_option( 'booking_win_' . $my_close_open_win_id ) ) echo 'closed'; ?>" > <div title="<?php _e('Click to toggle' ,'booking'); ?>" class="handlediv"  onclick="javascript:verify_window_opening(<?php echo get_bk_current_user_id(); ?>, '<?php echo $my_close_open_win_id; ?>');"><br></div>
+                    <h3 class='hndle'><span><?php _e('Availability' ,'booking'); ?></span></h3> <div class="inside">
+                        <table class="form-table"><tbody>
+
+
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Unavailable week days' ,'booking'); ?>:</th>
+                            <td>    
+                                <label for="unavailable_day0" class="wpbc-single-checkbox">
+                                    <input id="unavailable_day0" name="unavailable_day0" <?php if ($unavailable_day0 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day0; ?>"  type="checkbox" />
+                                    <?php _e('Sunday' ,'booking'); ?>
+                                </label>
+                                <label for="unavailable_day1" class="wpbc-single-checkbox">
+                                    <input id="unavailable_day1" name="unavailable_day1" <?php if ($unavailable_day1 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day1; ?>"  type="checkbox" />
+                                    <?php _e('Monday' ,'booking'); ?>
+                                </label>
+                                <label for="unavailable_day2" class="wpbc-single-checkbox">
+                                    <input id="unavailable_day2" name="unavailable_day2" <?php if ($unavailable_day2 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day2; ?>"  type="checkbox" />
+                                    <?php _e('Tuesday' ,'booking'); ?>
+                                </label>
+                                <label for="unavailable_day3" class="wpbc-single-checkbox">
+                                    <input id="unavailable_day3" name="unavailable_day3" <?php if ($unavailable_day3 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day3; ?>"  type="checkbox" />
+                                    <?php _e('Wednesday' ,'booking'); ?>
+                                </label>
+                                <label for="unavailable_day4" class="wpbc-single-checkbox">
+                                    <input id="unavailable_day4" name="unavailable_day4" <?php if ($unavailable_day4 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day4; ?>"  type="checkbox" />
+                                    <?php _e('Thursday' ,'booking'); ?>
+                                </label>
+                                <label for="unavailable_day5" class="wpbc-single-checkbox">
+                                    <input id="unavailable_day5" name="unavailable_day5" <?php if ($unavailable_day5 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day5; ?>"  type="checkbox" />
+                                    <?php _e('Friday' ,'booking'); ?>
+                                </label>
+                                <label for="unavailable_day6" class="wpbc-single-checkbox">
+                                    <input id="unavailable_day6" name="unavailable_day6" <?php if ($unavailable_day6 == 'On') echo "checked"; ?>  value="<?php echo $unavailable_day6; ?>"  type="checkbox" />
+                                    <?php _e('Saturday' ,'booking'); ?>
+                                </label>
+                                <p class="description"><?php _e('Check unavailable days in calendars. This option will overwrite all other settings.' ,'booking');?></p>
+                            </td>
+                        </tr>
+
+                        <tr valign="top"><td colspan="2" style="padding:10px 0px; "><div style="border-bottom:1px solid #cccccc;"></div></td></tr>
+                              
+                        
+                        <tr valign="top">
+                            <th scope="row"><label for="unavailable_days_num_from_today" ><?php _e('Unavailable days from today' ,'booking'); ?>:</label></th>
+                            <td>
+                                <select id="unavailable_days_num_from_today" name="unavailable_days_num_from_today">
+                                    <?php  for ($i = 0; $i < 32; $i++) { ?>
+                                    <option <?php if($unavailable_days_num_from_today == $i) echo "selected"; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php      } ?>
+                                </select>
+                                <span class="description"><?php _e('Select number of unavailable days in calendar start from today.' ,'booking');?></span>
+                            </td>
+                        </tr>
+
+                        <?php do_action('settings_calendar_unavailable_days'); ?>
+                        
+                        </tbody></table>
+            </div></div></div>
+            <?php //FixIn: 6.1.1.18  End ?>
+            
             <div class='meta-box'>
                 <div <?php $my_close_open_win_id = 'bk_general_settings_form'; ?>  id="<?php echo $my_close_open_win_id; ?>" class="postbox <?php if ( '1' == get_user_option( 'booking_win_' . $my_close_open_win_id ) ) echo 'closed'; ?>" > <div title="<?php _e('Click to toggle' ,'booking'); ?>" class="handlediv"  onclick="javascript:verify_window_opening(<?php echo get_bk_current_user_id(); ?>, '<?php echo $my_close_open_win_id; ?>');"><br></div>
                     <h3 class='hndle'><span><?php _e('Form' ,'booking'); ?></span></h3> <div class="inside">
@@ -1336,6 +1372,10 @@ function wpdev_bk_settings_legend_section(){
             update_bk_option( 'booking_legend_is_show_item_approved' ,     $booking_legend_is_show_item_approved );
             update_bk_option( 'booking_legend_text_for_item_approved' ,  $_POST['booking_legend_text_for_item_approved'] );
 
+            
+            update_bk_option( 'booking_legend_is_show_numbers' ,    (isset( $_POST['booking_legend_is_show_numbers'] )) ? 'On' : 'Off' );   //FixIn:6.0.1.4
+            
+            
             if ( class_exists('wpdev_bk_biz_s') ) {
                 if (isset( $_POST['booking_legend_is_show_item_partially'] ))   $booking_legend_is_show_item_partially = 'On';
                 else                                                            $booking_legend_is_show_item_partially = 'Off';
@@ -1343,6 +1383,9 @@ function wpdev_bk_settings_legend_section(){
                 update_bk_option( 'booking_legend_text_for_item_partially' ,  $_POST['booking_legend_text_for_item_partially'] );
             }
         }
+        
+        $booking_legend_is_show_numbers = get_bk_option( 'booking_legend_is_show_numbers');                              //FixIn:6.0.1.4
+        
         $booking_is_show_legend   = get_bk_option( 'booking_is_show_legend');
 
         $booking_legend_is_show_item_available    = get_bk_option( 'booking_legend_is_show_item_available');
@@ -1428,6 +1471,16 @@ function wpdev_bk_settings_legend_section(){
                         </tr>
                     <?php } ?>
                     <tr><td colspan="2" style="padding:0px;"><div style="margin-top:-15px;"><?php make_bk_action('show_additional_translation_shortcode_help'); ?></div></td></tr>
+                    <tr><?php //FixIn:6.0.1.4 ?>
+                        <th scope="row"><label for="booking_legend_is_show_numbers" ><?php _e('Show date number in legend' ,'booking'); ?>:</label></th>
+                        <td>
+                            <input <?php if ($booking_legend_is_show_numbers != 'Off') echo "checked"; ?>  type="checkbox"
+                                value="<?php echo $booking_legend_is_show_numbers; ?>"
+                                name="booking_legend_is_show_numbers"  id="booking_legend_is_show_numbers"  />
+                            <span class="description"><?php printf(__('Check this box to display today date number in legend cells. ' ,'booking'),'<b>','</b>');?></span>
+                        </td>
+                    </tr>
+                    
                 </table>
                 </div>
             </td></tr>
@@ -2306,6 +2359,7 @@ function email_help_section( $skip_shortcodes = array() , $email_example = '') {
                 <p class="description"><?php printf(__('%s - inserting check-in date (first day of reservation),' ,'booking'),'<code>[check_in_date]</code>');?>, </p>
                 <?php } if ( ! in_array('check_out_date', $skip_shortcodes)) { ?>
                 <p class="description"><?php printf(__('%s - inserting check-out date (last day of reservation),' ,'booking'),'<code>[check_out_date]</code>');?>, </p>
+                <p class="description"><?php printf(__('%s - inserting check-out date (last day of reservation),' ,'booking'),'<code>[check_out_plus1day]</code>'); echo ' + 1 ' . __('day', 'booking'); ?>, </p>  <?php //FixIn: 6.0.1.11 ?>
                 <?php } if ( ! in_array('dates_count', $skip_shortcodes)) { ?>
                 <p class="description"><?php printf(__('%s - inserting the number of booking dates ' ,'booking'),'<code>[dates_count]</code>');?>, </p>
                 <?php } ?>
@@ -2427,4 +2481,3 @@ function wpbc_booking_settings_top_menu_submenu_line(){
 
 if ( ! class_exists('wpdev_bk_personal') ) 
     add_bk_action('wpdev_booking_settings_top_menu_submenu_line', 'wpbc_booking_settings_top_menu_submenu_line');    
-?>

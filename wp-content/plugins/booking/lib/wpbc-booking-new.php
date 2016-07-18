@@ -96,6 +96,16 @@ function wpdev_bk_insert_new_booking() {
             $is_edit_booking['booking_id'] = $my_booking_id_type[0];
             $is_edit_booking['booking_type'] = $my_booking_id_type[1];
             $bktype = intval( $is_edit_booking['booking_type'] );
+            
+            // FixIn: 6.1.1.9   
+            // Check situation when  we have editing "child booking resource",  so  need to  reupdate calendar and form  to have it for parent resource.
+            if  (  ( function_exists( 'wpbc_is_this_child_resource') ) && ( wpbc_is_this_child_resource( $bktype ) )  ){
+                $bk_parent_br_id = wpbc_get_parent_resource( $bktype );        
+            
+                $is_edit_booking['booking_type'] = $bk_parent_br_id;
+                $bktype = $bk_parent_br_id; 
+            }
+            // End: 6.1.1.9   
         }
         
     } else {
@@ -247,6 +257,11 @@ function wpbc_add_new_booking( $params , $is_edit_booking = false ){
     $auto_approve_new_bookings_is_active = trim( get_bk_option( 'booking_auto_approve_new_bookings_is_active' ) );
     $is_approved_dates = ( $auto_approve_new_bookings_is_active == 'On' ) ? '1' : '0';   
 
+//    $booking_form_show = get_form_content( $formdata, $bktype, '', array());
+//    if ( intval($booking_form_show['visitors'] ) > 4 )
+//        $is_approved_dates = '1';
+//    else $is_approved_dates = '0';
+    
 //    // Auto Approve booking from Booking > Add booking page for single booking resources 
 //    $admin_uri = ltrim( str_replace( get_site_url( null, '', 'admin' ), '', admin_url('admin.php?') ), '/' ) ;   
 //    if ( strpos( $_SERVER['HTTP_REFERER'], $admin_uri ) !== false )
@@ -301,7 +316,14 @@ function wpbc_add_new_booking( $params , $is_edit_booking = false ){
     // Update the Hash and Cost  of the booking 
     make_bk_action('wpbc_update_booking_hash', $booking_id, $bktype );
     make_bk_action('wpdev_booking_post_inserted', $booking_id, $bktype, $str_dates__dd_mm_yyyy,  array($start_time, $end_time ) , $formdata );
-    
+  
+    // Auto  approve booking if cost = 0.
+//    $booking_cost = apply_bk_filter('get_booking_cost_from_db', '', $booking_id );     // Auto approve booking if  cost = 0.
+//    $booking_cost = floatval( $booking_cost );
+//    if ( empty(  $booking_cost  ) ) {
+//        $is_approved_dates = '1';
+//    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      
     $insert = wpbc_get_SQL_to_insert_dates( $dates_in_diff_formats , $is_approved_dates, $booking_id ); 
@@ -329,7 +351,10 @@ function wpbc_add_new_booking( $params , $is_edit_booking = false ){
 
         // wpbc_integrate_MailChimp($formdata, $bktype);
 
-        if ( ( $auto_approve_new_bookings_is_active == 'On') && ($is_send_emeils != 0 ) ){
+        if (
+             ( ( $auto_approve_new_bookings_is_active == 'On') && ($is_send_emeils != 0 ) )
+//             || ($is_approved_dates == '1')                                   // Auto approve and send email if cost = 0.
+           ) {
             sendApproveEmails($booking_id, 1);
         }
 
@@ -450,10 +475,11 @@ function wpbc_check_dates_intersections( $dates_for_check, $dates_exist  ) {    
             $booking_date = $value;                                             // Its array of string dates
         
         // Check  dates only if these dates already  exist in $what_dates_to_check array
-        if ( isset( $what_dates_to_check[ substr($booking_date, 0, 10) ] ) ) 
+        if ( ( isset( $what_dates_to_check[ substr($booking_date, 0, 10) ] ) ) ) //||  ( intval( substr( $booking_date, -1 ) ) != 0 ) )
             $check_dates[] = $value;
     }
 
+    if ( count( $check_dates ) == 0 ) return $is_intersected;                   // No intersected dates at all in exist bookings. Return.       //FixIn: 6.0.1.13
     
     foreach ( $check_dates as $value ) {
 
@@ -480,7 +506,7 @@ function wpbc_check_dates_intersections( $dates_for_check, $dates_exist  ) {    
     
     asort( $booked_dates );                                                     // Sort dates   
 
-//debuge($booked_dates);    
+//debuge('$booked_dates',$booked_dates);    
     if ( ! $is_intersected ) {
         
         // check  dates and times for intersections 
@@ -614,6 +640,7 @@ function wpbc_check_if_dates_free($bktype, $formdata ,$dates_in_diff_formats, $s
     else 
         $approved_only = '';
     
+    $trash_bookings = ' AND bk.trash != 1 ';                                //FixIn: 6.1.1.10  - check also  below usage of {$trash_bookings}
 
     // Get all booked dates ////////////////////////////////////////////////////
     $sql_req =  "SELECT DISTINCT dt.booking_date
@@ -624,7 +651,7 @@ function wpbc_check_if_dates_free($bktype, $formdata ,$dates_in_diff_formats, $s
 
                         ON bk.booking_id = dt.booking_id
 
-                        WHERE   {$approved_only} {$dates_sql_where} AND bk.booking_type IN ({$bktype})
+                        WHERE   {$approved_only} {$dates_sql_where} {$trash_bookings} AND bk.booking_type IN ({$bktype})
                          
                         ORDER BY dt.booking_date" ;
                            
@@ -661,4 +688,3 @@ function wpbc_check_if_dates_free($bktype, $formdata ,$dates_in_diff_formats, $s
 
     return true;
 }
-?>

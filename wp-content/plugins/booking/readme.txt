@@ -1,19 +1,19 @@
-﻿=== Booking Calendar ===
+=== Booking Calendar ===
 Contributors: wpdevelop
 Donate link: http://wpbookingcalendar.com/buy/
-Tags:  booking, booking calendar, accommodations, appointment, availability, availability calendar, bed and breakfast, booking form, booking system, bookings, calendar, contact form, event, event calendar, events, hotel, meeting, online booking calendar, online reservation, reservation, reservation plugin, rooms, schedule, scheduling
+Tags: booking calendar, availability calendar, event calendar, booking system, booking form, reservation, events, appointment, availability, schedule, calendar, contact form
 Requires at least: 3.3
-Tested up to: 4.4
-Stable tag: 6.0
+Tested up to: 4.5
+Stable tag: 6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Booking Calendar plugin - it's ultimate booking system for online reservation and availability checking service for your site.
+Booking Calendar plugin - is the ultimate booking system for online reservation and availability checking service for your site.
 
 == Description ==
 Booking Calendar plugin will enable **online booking services** for your site.
 It's highly supported, *oldest ([since 2009](http://wpbookingcalendar.com/changelog/)) booking wordpress plugin* with **intuitive interface** and **flexible functionality**, which is possible to use in wide range of businesses.
->[Plugin Homepage](http://wpbookingcalendar.com/ "Booking Calendar Homepage") | [Features](http://wpbookingcalendar.com/features/ "Features") | [Support Forum](http://wpbookingcalendar.com/support/ "Support") | [FAQ](http://wpbookingcalendar.com/faq/ "FAQ on Plugin site") | [Premium Demos](http://wpbookingcalendar.com/demo/ "Live Demos of Premium versions")
+>[Plugin Homepage](http://wpbookingcalendar.com/ "Booking Calendar Homepage") | [Overview](http://wpbookingcalendar.com/overview/ "Overview") | [Features](http://wpbookingcalendar.com/features/ "Features") | [Support Forum](http://wpbookingcalendar.com/support/ "Support") | [Premium Demos](http://wpbookingcalendar.com/demo/ "Live Demos of Premium versions")
 
 Your website visitors can **check availability** of **property** *(like apartment, house, hotel room, etc.)* or any **service** you offer and **make a booking** in a minute.
 
@@ -152,6 +152,63 @@ If you have any further questions, please fill free to <a href="mailto:support@w
 11. **Calendar Skins**. Select calendar skin for better fitting to your web-site design.
 
 == Changelog ==
+= 6.2 =
+- Features and issue fixings in All versions:
+ * **New** Moving bookings to trash instead of complete deleting.
+ * **New** Ability to restore bookings from Trash. 
+ * **Translation** Updated Croatian  translation [99% Completed] by Danijel Prebeg
+ * **Fix** showing warning during managing Booking Calendar widget in "Customizer". Issue was relative to  WordPress 4.5 update (fix:6.1.1.11)
+- Personal / Business Small / Business Medium / Business Large / MultiUser versions features:
+ * **New** Extend booking dates/times interval to extra hours or days. Useful for adding cleaning time, or any other service time. *(Business Medium/Large, MultiUser)*
+ * **Improvement** ability to use [booking_id], [resource_title] shortcodes in the Content of booking fields data form  at Booking > Settings > Fields page,  for ability to  show booking ID and booking resources in payment summary.  *(Business Small/Medium/Large, MultiUser)*
+ * **Improvement** ability to book dates in additional calendar(s), without selection  date(s) in main calendar, if used several calendars of different booking resources and only  1 booking form. Restriction  in this case the "payment summary"  after booking is not showing.  *(Business Medium/Large, MultiUser)*
+ * **Improvement** resolve issue of not showing available day(s), if all start time (example of shortcode in booking form: [select starttime "11:00" "13:00" "15:00"]) have booked for this specific day(s) (fix:6.1.1.6). *(Business Small/Medium/Large, MultiUser)*
+ * **Improvement** Added search  users form  at the Settings Users page. (fix:6.1.1.6). *(MultiUser)*
+ * **Fix** Ability to edit bookings, that belong to the "child booking resources",  when activated option "visitors apply to capacity". If you will edit of booking, this booking editing is belonging to calendar of parent booking resources with  specific capacity. *(Business Large, MultiUser)*
+ * **Fix** issue of not ability to add "Valuation days" cost settings in some servers,  because of conflict.  *(Business Medium/Large, MultiUser)*
+ * **Fix** issue of not ability to submit booking form,  when using [bookingform ...] shortcode. (fix:6.1.1.16) *(Business Large, MultiUser)*
+
+= 6.1 =
+- Features and issue fixings in All versions:
+ * **New** Display or hide **"Today date number"** in legend cells under calendar.
+ * **New** Turkish translation [100% Completed] by EMİNA MESİNOVİC
+ * **Translation** Updated German translation [100% Completed] by Peter Wegmann and Christian
+ * **Translation** Updated Swedish translation [100% Completed] by Mikael Göransson and Jan Österling
+ * **Translation** Updated Ukrainian translation [100% Completed]
+ * **Translation** Updated Russian translation [100% Completed]
+ * **Translation** Updated Finnish translation [100% Completed] by Turo Numminen and Peter Grönberg
+ * **Translation** Updated Slovak translation [100% Completed] by Martin Ambruš and Martin Galdun
+ * **Translation** Updated French translation [100% Completed] by Laurent Thiry and Terry Atkinson
+ * **Translation** Updated Greece translation [100% Completed] by Dimitris Amanatiadis
+ * **Translation** Updated Spanish translation [100% Completed] by Juan C and Juan García Piosa
+ * **Translation** Updated Czech translation [100% Completed] by Ales Dlask
+ * **Translation** Updated Polish translation [100% Completed] by Danek Szczepan
+ * **Translation** Updated Danish translation [100% Completed] by Ib H. Rasmussen
+ * **Translation** Updated Italian translation [100% Completed] by Fabrizio Pecorelli
+ * **Translation** Updated Norwegian translation [100% Completed] by Håvard Hasli
+ * **Translation** Updated Hungarian translation [100% Completed] by István Vincze
+ * **Translation** Updated Dutch translation [100% Completed] by Wim Bommerez
+ * **Fix** some warning notices, while website in debug mode. 
+ * Tons of minor improvements and bug fixes. You should read the full changelog for all of them.
+- Personal / Business Small / Business Medium / Business Large / MultiUser versions features:
+ * **New** Ability to search for additional 2 days in search availability form. Use this shortcode in search  form: **[additional_search "2"]** +/- 2 days.  *(Business Large, MultiUser)*
+ * **New** Ability to show how many search results found. To show use **{searchresults}** shortcode in search form  shortcode. Example: [bookingsearch searchresultstitle='{searchresults} Results Found' searchresults='http://dev/search-results/' noresultstitle='Nothing Found.'] *(Business Large, MultiUser)*
+ * **New** Show Search Results Log at Booking > Settings > Search page in Search Cache section for more easy detect any  issues with search results *(Business Large, MultiUser)*
+ * **New** Ability to transfer custom parameters from  booking form  shortcode into the content of booking form. Example of shortcode usage: *[booking type=1 form_type='standard' nummonths=3 options='{parameter name="my_param" value="value"},{parameter name="other_param" value="other value"}']* Example of booking form customization: [text some_field_name "my_param"] and [text other_field_name "other_param"] *(Personal, Business Small/Medium/Large, MultiUser)*
+ * **Improvement** Ability to use check-boxes in the search form for additional parameters. *(Business Large, MultiUser)* 
+ * **Improvement** Ability to use several times custom fields with  same name in posts for definition several additional parameters with  different values for the search form. *(Business Large, MultiUser)* 
+ * **Improvement** Correctly  showing **change-over day**, as half booked day, that  have **pending** check-in/out and **approved** check-out/in **bookings in the same day**. *(Business Small/Medium/Large, MultiUser)*
+ * **Improvement** Added ability to save "Advanced cost settings" only for selected custom or standard form. Its prevent issue of not saving some values, if exist too many custom forms and too many options for the additional cost. *(Business Medium/Large, MultiUser)*
+ * **Improvement** Showing times in header of Time-Line,  when selected several  booking resources and one day Calendar Overview mode. *(Personal, Business Small/Medium/Large, MultiUser)*
+ * **Improvement** Ability to set constant WP_BK_IS_SEND_EMAILS_ON_COST_CHANGE to true in ../lib/wpbc-constants.php file for sending modification email, if cost  was changed in admin panel *(Business Small/Medium/Large, MultiUser)*
+ * **Improvement** Ability to  use in emails new shortcode: **[check_out_plus1day]** - inserting next day after last selected day in calendar  for specific booking. Its useful in some cases, if business workflow require to  show as checkout day the next  day after last  selected date.   *(Personal, Business Small/Medium/Large, MultiUser)*
+ * **Improvement** Correct work of "Auto-fill" button at  Booking > Add booking page for bookings with change-over days. *(Business Small/Medium/Large, MultiUser)*
+ * **Fix** issue of not showing booked dates in some specific situation (when are using check  in/out times) for booking resources with capacity higher than 1. *(Business Large, MultiUser)*
+ * **Fix** issue of not ability to change booking resource for booking in some situations, while booking resources with capacity higher than 1. *(Business Large, MultiUser)*
+ * **Fix** restriction of parameters during switching to Calendar Overview mode *(Personal, Business Small/Medium/Large, MultiUser)*
+ * **Fix** not sending emails after changing booking resource for specific booking,  if "Emails sending" checkbox unchecked. *(Personal, Business Small/Medium/Large, MultiUser)*
+ * **Fix** selecting correct non English language at PayPal checkout page, depend from website locale *(Business Small/Medium/Large, MultiUser)*
+
 = 6.0 =
 - Features and issue fixings in All versions:
  * **New** Register and Translate everything in [wpml]Some Text to translate[/wpml] tags. Translation can be done at the WPML > "String translation" page. Required WPML 3.2 with String Translation plugin.
@@ -292,66 +349,40 @@ If you have any further questions, please fill free to <a href="mailto:support@w
  * **Fix** issue of not ability to save changes of Form Fields at Settings page in French version of Booking Calendar. *(Personal, Business Small/Medium/Large, MultiUser)*
  * **Fix** Warning: "preg_match(): Compilation failed: invalid range in character class at offset 24 in ../inc/personal.php on line 2347". Its possibly exist in some most recent versions of PCRE (the regular expression library PHP uses). *(Personal, Business Small/Medium/Large, MultiUser)*
 
-= 5.3.2 =
- * **Fix** issue of conflict with WPML plugin in free version of plugin. If the customer use WPML plugin, sometimes was existing issue that labels in the booking form have the same title of first element.
-
-= 5.3.1 =
-- Features and issue fixings in All versions:
- * Updated German translation [100% Completed] by Dirk Gabler. 
- * Updated Swedish translation [100% Completed] by Ruben Salas 
- * Updated Italian translation [100% Completed] by Fabrizio Pecorelli and Astolfo Vesci
- * Updated French translation [100% Completed] by Jean-Sébastien DANGLADE
- * Updated Brazilian Portuguese translation [100% Completed] by David Page
- * Updated Greece translation [100% Completed] by Dimitris Amanatiadis
- * Updated Slovak translation [100% Completed] by Lubomir Host
- * Updated Czech translation [100% Completed] by Ales Dlask
- * Updated Dutch translation [100% Completed] by Wim Bommerez
- * Updated Danish translation [79% Completed] by Karen Skovmand. 
- * **Improvement**. Removed in the email "From" field symbols " and or \",  during sending emails. 
- * **Improvement**. Additional  support of WPML transaltion for the booking form fields. 
- * **Fix** Fixing the Return-Path header in emails.
- * CSS improvements.
-- Personal / Business Small / Business Medium / Business Large / MultiUser versions features:
- * **Improvement**. Ability  to set separator of data for bookings export to CSV format. *(Personal, Business Small/Medium/Large, MultiUser)*
- * **Improvement**. Sort selections of booking resources (from the [bookingselect... shortcode) in the same order as specified in the "type" parameter. *(Personal, Business Small/Medium/Large, MultiUser)*
- * **Improvement**. Loading the default custom booking form for specific booking resource at the Booking > Add booking page. *(Business Medium/Large, MultiUser)*
- * **Fix** issue of deleting custom booking forms in the Booking Calendar MultiUser version. 
- * **Fix** issue of not showing default custom booking forms at the Booking > Resources page for the "regulat users" in the Booking Calendar MultiUser version,  if was activated constant "WP_BK_CUSTOM_FORMS_FOR_REGULAR_USERS". 
- * **Fix** issue of not ability to select 2 or more days during booking for the specific timeslot, if the last selected date contain 2 or more booked timeslots. *(Business Small/Medium/Large, MultiUser)*
-
 For more information, see the [full release notes](http://wpbookingcalendar.com/changelog/).
 
 == Upgrade Notice ==
-= 6.0 =
-Smarter view for faster checking past and actual bookings. Many other improvements.
+= 6.2 =
+Moving bookings to trash instead of complete deleting. Extend booking dates/times interval to extra hours or days (in paid versions).
 
 == Languages ==
 
 Plugin supports following languages:
 
 - English
-- French [100% Completed]
-- Norwegian [100% Completed]
+- German [99% Completed]
+- French [99% Completed]
+- Norwegian [99% Completed]
+- Swedish [99% Completed]
 - Spanish [99% Completed]
 - Dutch [99% Completed]
 - Greece [99% Completed]
 - Polish [99% Completed] 
-- Bulgarian [99% Completed]
 - Ukrainian [99% Completed]
 - Russian [99% Completed]
 - Danish [99% Completed]
 - Czech [99% Completed]
 - Slovak [99% Completed]
 - Italian [99% Completed]
-- Croatian [99% Completed]    
-- German [99% Completed]
-- Swedish [99% Completed]   
 - Hungarian [99% Completed]
 - Finnish [99% Completed]
-- Catalan [99% Completed]
-- Portugal [99% Completed]
-- Brazilian Portuguese [94% Completed]    
-- Hebrew [17% Completed]
+- Turkish [99% Completed]
+- Croatian [99% Completed]    
+- Catalan [98% Completed]
+- Portugal [98% Completed]
+- Bulgarian [98% Completed]
+- Brazilian Portuguese [93% Completed]    
+- Hebrew [16% Completed]
 - Belarusian [11% Completed]
 
 

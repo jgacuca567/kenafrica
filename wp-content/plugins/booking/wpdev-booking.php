@@ -7,7 +7,7 @@ Author: wpdevelop
 Author URI: http://wpbookingcalendar.com/
 Text Domain: booking 
 Domain Path: /languages/
-Version: 6.0
+Version: 6.2
 */
 
 /*  Copyright 2009 - 2015  www.wpbookingcalendar.com  (email: info@wpbookingcalendar.com),

@@ -1845,8 +1845,8 @@ $.extend(Datepick.prototype, {
                                                         '<div class="date-content-top">' +
                                                             ( unselectable ? '': ( ( typeof( wpbc_show_date_info_top ) == 'function' ) ? wpbc_show_date_info_top( inst.id, printDate.getTime() ) : '' ) )  +
                                                         '</div>' +
-							(empty ? '&#xa0;' : // Not showing other months
-							(unselectable ? printDate.getDate() : '<a>' + printDate.getDate() + '</a>')) +                                                                
+							(empty ? '&#xa0;' : // Not showing other months //FixIn:6.0.1.2
+							(unselectable ? '<span>' + printDate.getDate()+ '</span>' : '<a>' + printDate.getDate() + '</a>')) +                                                                
                                                         '<div class="date-content-bottom">'+
                                                            ( unselectable ? '': ( ( typeof( wpbc_show_date_info_bottom ) == 'function' ) ? wpbc_show_date_info_bottom( inst.id, printDate.getTime() ) : '' ) )  +
                                                         '</div>' +                                                        

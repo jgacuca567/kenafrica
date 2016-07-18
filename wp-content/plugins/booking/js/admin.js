@@ -291,6 +291,91 @@ function approve_unapprove_booking(booking_id, is_approve_or_pending, user_id, w
     return true;
 }
 
+//FixIn: 6.1.1.10 
+// Set Booking listing   R O W   Trash
+function set_booking_row_trash( booking_id ){
+    jQuery('#booking_row_'+booking_id + ' .booking-labels .label-trash').removeClass('hidden_items');    
+
+    jQuery('#booking_row_'+booking_id + ' .booking-actions .trash_bk_link').addClass('hidden_items');
+    jQuery('#booking_row_'+booking_id + ' .booking-actions .restore_bk_link').removeClass('hidden_items');
+    jQuery('#booking_row_'+booking_id + ' .booking-actions .delete_bk_link').removeClass('hidden_items');
+
+    //Timeline    
+    jQuery('.cell_bk_id_'+booking_id).addClass('booking_trash');
+}
+
+//FixIn: 6.1.1.10 
+// Set Booking listing   R O W   Restore
+function set_booking_row_restore( booking_id ){    
+    jQuery('#booking_row_'+booking_id + ' .booking-labels .label-trash').addClass('hidden_items');
+    
+
+    jQuery('#booking_row_'+booking_id + ' .booking-actions .trash_bk_link').removeClass('hidden_items');
+    jQuery('#booking_row_'+booking_id + ' .booking-actions .restore_bk_link').addClass('hidden_items');
+    jQuery('#booking_row_'+booking_id + ' .booking-actions .delete_bk_link').addClass('hidden_items');
+
+    //Timeline    
+    jQuery('.cell_bk_id_'+booking_id).removeClass('booking_trash');
+}
+
+//FixIn: 6.1.1.10 
+// Trash or restore booking 
+function trash__restore_booking( is_trash, booking_id, user_id, wpdev_active_locale, is_send_emeils ) {
+
+    // FixIn: 5.4.5
+    wpdev_active_locale = wpbc_get_selected_locale(booking_id,  wpdev_active_locale );
+
+    if ( booking_id !='' ) {
+
+        var wpdev_ajax_path     = wpdev_bk_plugin_url+'/' + wpdev_bk_plugin_filename;
+        var ajax_type_action    = 'TRASH_RESTORE';
+        var ajax_bk_message     = 'Updating...';
+        //var is_send_emeils      = 1;
+        var denyreason          = '';
+        if (is_send_emeils == 1) {
+            if ( jQuery('#is_send_email_for_pending').length ) {
+                is_send_emeils = jQuery('#is_send_email_for_pending').attr('checked');
+                if (is_send_emeils == undefined) {is_send_emeils = 0 ;}
+                else                             {is_send_emeils = 1 ;}                
+            }
+            if ( jQuery('#denyreason').length )
+                denyreason = jQuery('#denyreason').val();
+        } else {
+            is_send_emeils = 0;
+        }
+
+        document.getElementById('ajax_working').innerHTML =
+        '<div class="updated ajax_message" id="ajax_message">\n\
+            <div style="float:left;">'+ajax_bk_message+'</div> \n\
+            <div class="wpbc_spin_loader">\n\
+                   <img src="'+wpdev_bk_plugin_url+'/img/ajax-loader.gif">\n\
+            </div>\n\
+        </div>';
+
+        jQuery.ajax({                                           // Start Ajax Sending
+            // url: wpdev_ajax_path,
+            url: wpbc_ajaxurl, 
+            type:'POST',
+            success: function (data, textStatus){if( textStatus == 'success')   jQuery('#ajax_respond').html( data );},
+            error:function (XMLHttpRequest, textStatus, errorThrown){window.status = 'Ajax sending Error status:'+ textStatus;alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);if (XMLHttpRequest.status == 500) {alert('Please check at this page according this error:' + ' http://wpbookingcalendar.com/faq/#ajax-sending-error');}},
+            // beforeSend: someFunction,
+            data:{
+                //ajax_action : ajax_type_action,         // Action
+                action : ajax_type_action,         // Action
+                booking_id : booking_id,                  // ID of Booking  - separator |
+                is_send_emeils : is_send_emeils,
+                denyreason: denyreason,
+                user_id: user_id,
+                wpdev_active_locale:wpdev_active_locale,
+                is_trash:is_trash,
+                wpbc_nonce: document.getElementById('wpbc_admin_panel_nonce').value 
+            }
+        });
+        return false;
+    }
+
+    return true;
+}
 
 // Delete booking
 function delete_booking(booking_id, user_id, wpdev_active_locale, is_send_emeils ) {

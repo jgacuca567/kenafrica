@@ -1817,7 +1817,7 @@ a.wpbc-season-filter-link {
 .wpdevbk .booking-submenu-tab-selected:hover {
     border: #777 solid 1px;
     border-bottom: 1px solid #888;
-    background: #7a7a88;
+    background: #7a7a88 !important;                                             /* FIxIn: 6.0.1.6*/
     color: #FFF !important;
     text-shadow: 0 -1px 0 #555;
 }
@@ -2709,4 +2709,15 @@ td.bk_resource_selector {
 }
 .matrix_resources .timeslots_in_this_day24 a.first_day_in_bookin {
     margin: 5px 0 0 5px;
+}
+
+/* FixIn:6.1.1.10 */
+/* Past bookins */
+.calendar_overview_cell .time_booked_in_day.booking_trash,  
+.calendar_overview_cell.today_date .time_booked_in_day.booking_trash{
+    background-color: #c55;
+}
+.calendar_overview_cell.past_date .time_booked_in_day.booking_trash,  
+.calendar_overview_cell.today_date .time_booked_in_day.past_time.booking_trash{
+    background-color: #a44;
 }

@@ -215,7 +215,8 @@ div.datepick-inline .datepick-title-row th{
     width: 14.28571429%;  
     overflow: hidden;
 }
-.datepick-inline .datepick-days-cell a{
+.datepick-inline .datepick-days-cell a,
+.datepick-inline .datepick-days-cell span{                                      /* FixIn: 6.0.1.2 */
     position:relative;
     z-index: 99;
 }
@@ -263,6 +264,27 @@ td.timespartly.check_in_time.check_out_time div.check-out-div {
 .datepick-inline .datepick .datepick-current-day.check_out_time div.check-out-div{
     display: none;
     visibility: hidden;
+}
+
+/* Check In Pending & Check Out Approved ||  Check Out Pending & Check In Approved || dates     //FixIn: 6.0.1.2   */ 
+td.timespartly.check_in_time.check_out_time.check_in_time_date_approved.check_out_time_date2approve div.check-in-div, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_in_time_date2approve div.check-out-div, 
+td.timespartly.check_in_time.check_out_time.check_in_time_date2approve.check_out_time_date_approved div.check-in-div, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date2approve.check_in_time_date_approved div.check-out-div {    
+    display: block;
+    visibility: visible;
+    width: 50%;
+    float: left;    
+}
+td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_in_time_date2approve div.check-out-div, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date2approve.check_in_time_date_approved div.check-out-div {    
+    float: right;
+}
+td.timespartly.check_in_time.check_out_time.check_in_time_date_approved.check_out_time_date2approve span, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_in_time_date2approve span,    
+td.timespartly.check_in_time.check_out_time.check_in_time_date_approved.check_out_time_date2approve div, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_in_time_date2approve div {   
+    cursor: default;
 }
 /*******************************************************************************/
 

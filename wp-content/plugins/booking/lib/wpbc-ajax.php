@@ -17,12 +17,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 ////////////////////////////////////////////////////////////////////////////////
 //    S u p p o r t    f u n c t i o n s    f o r     A j a x    ///////////////
 ////////////////////////////////////////////////////////////////////////////////
-
+function wpbc_verify_nonce_failed( $nonce, $action, $user, $token ) {
+    debuge('$nonce, $action, $user, $token',$nonce, $action, $user, $token);
+}
 // Verify the nonce.    
 function wpdev_check_nonce_in_admin_panel( $action_check = 'wpbc_ajax_admin_nonce' ){    
     
     $nonce = ( isset($_REQUEST['wpbc_nonce']) ) ? $_REQUEST['wpbc_nonce'] : '';
-    
+//$nonce .= '1';
+//add_action('wp_verify_nonce_failed', 'wpbc_verify_nonce_failed', 10, 4);
+//debuge(is_user_logged_in(),  wp_get_current_user());       
+//if ( ! wp_verify_nonce( $nonce, $action_check ) && is_user_logged_in() ) {                         // This nonce is not valid.         
     if ( ! wp_verify_nonce( $nonce, $action_check ) ) {                         // This nonce is not valid.     
         ?>
         <script type="text/javascript">
@@ -168,6 +173,62 @@ function wpbc_ajax_UPDATE_APPROVE() {
             </script> <?php
     }
 }
+
+//FixIn: 6.1.1.10       
+function wpbc_ajax_TRASH_RESTORE() {
+        
+    global $wpdb;
+    
+    wpdev_check_nonce_in_admin_panel();
+    make_bk_action('check_multiuser_params_for_client_side_by_user_id', $_POST['user_id'] );
+
+    $booking_id = $_POST[ "booking_id" ];         // Booking ID
+    if ( ! isset($_POST["denyreason"] ) ) 
+        $_POST["denyreason"] = '';
+    $denyreason = $_POST["denyreason"];
+    if (       ( $denyreason == __('Reason for cancellation here' ,'booking')) 
+            || ( $denyreason == __('Reason of cancellation here' ,'booking')) 
+            || ( $denyreason == 'Reason of cancel here') 
+        ) $denyreason = '';
+    $is_send_emeils = intval( $_POST["is_send_emeils"] );
+    $approved_id    = explode('|',$booking_id);
+
+    $is_trash = intval( $_POST["is_trash"] );
+    
+    if ( (count($approved_id)>0) && ($approved_id !=false) && ($approved_id !='')) {
+
+        $approved_id_str = join( ',', $approved_id);
+        $approved_id_str = wpbc_clean_string_for_db( $approved_id_str );
+
+        sendDeclineEmails($approved_id_str, $is_send_emeils,$denyreason);
+
+                
+        if ( false === $wpdb->query( "UPDATE {$wpdb->prefix}booking AS bk SET bk.trash = {$is_trash} WHERE booking_id IN ({$approved_id_str})" ) ){
+            ?> <script type="text/javascript"> document.getElementById('ajax_message').innerHTML = '<div style=&quot;height:20px;width:100%;text-align:center;margin:15px auto;&quot;><?php bk_error('Error during trash booking in DB',__FILE__,__LINE__ ); ?></div>'; </script> <?php
+            die();
+        }
+        ?>
+        <script type="text/javascript">            
+            <?php 
+            if ( $is_trash ) {
+                foreach ($approved_id as $bk_id) { ?>
+                    set_booking_row_trash(<?php echo $bk_id ?>);    
+                    setTimeout(function() { set_booking_row_deleted_in_timeline(<?php echo $bk_id ?>); }, 1000);
+                    //setTimeout(function() { set_booking_row_deleted(<?php echo $bk_id ?>); }, 1000);
+                <?php } ?>                
+                document.getElementById('ajax_message').innerHTML = '<?php echo __('Done' ,'booking'); ?>';
+            <?php } else { 
+                foreach ($approved_id as $bk_id) { ?>
+                    set_booking_row_restore(<?php echo $bk_id ?>);  
+                <?php } ?>    
+                document.getElementById('ajax_message').innerHTML = '<?php echo __('Done' ,'booking'); ?>';
+            <?php } ?>                
+            jQuery('#ajax_message').fadeOut(1000);
+        </script>
+        <?php        
+    }
+}
+
 
 
 function wpbc_ajax_DELETE_APPROVE() {
@@ -355,6 +416,7 @@ if (  is_admin() && ( defined( 'DOING_AJAX' ) ) && ( DOING_AJAX )  ) {
                             ,'UPDATE_READ_UNREAD'           => 'admin'
                             ,'UPDATE_APPROVE'               => 'admin'
                             ,'DELETE_APPROVE'               => 'admin'
+                            ,'TRASH_RESTORE'                => 'admin'          //FixIn: 6.1.1.10
                             ,'DELETE_BY_VISITOR'                    => 'both'
                             ,'SAVE_BK_COST'                 => 'admin'
                             ,'SEND_PAYMENT_REQUEST'         => 'admin'

@@ -484,7 +484,8 @@ class WPBC_Google_Calendar {
         }
         
         $dates_comma = createDateRangeArray( date_i18n("d.m.Y", $start_date ), date_i18n("d.m.Y", $end_date ) ) ;
-        //$dates = wpdevbkGetDaysBetween($start_date, $end_date );
+        //$dates = wpdevbkGetDaysBetween($start_date, $end_date );        
+
 
         //$dates_comma = implode(', ', $dates);
         
@@ -634,7 +635,8 @@ class WPBC_Google_Calendar {
                        onclick="javascript:jQuery('#gcal_imported_events<?php echo $this->getResource(); ?>').remove();" ><?php _e('Hide' ,'booking'); ?></a>                    
                     <a href="javascript:void(0)" class="button"  style="float:none;margin:10px;"                                        
                        onclick="javascript: if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to delete selected booking(s) ?' ,'booking')); ?>') ) {
-                                                    delete_booking( 
+                                                    //delete_booking(           <?php //FixIn: 6.1.1.10  ?>
+                                                      trash_restore( 1,         <?php //FixIn: 6.1.1.10  ?>
                                                                     get_selected_bookings_id_in_this_list('#gcal_imported_events<?php echo $this->getResource(); ?> .events_items', 13) 
                                                                     , <?php echo $this->getUserID(); ?>
                                                                     , '<?php echo getBookingLocale(); ?>' 

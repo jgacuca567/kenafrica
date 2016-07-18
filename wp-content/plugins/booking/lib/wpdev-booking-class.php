@@ -67,6 +67,7 @@ class wpdev_booking {
         add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
         add_filter('plugin_row_meta', array(&$this, 'plugin_row_meta_bk'), 10, 4 );
 
+
         add_action('wp_dashboard_setup', array($this, 'dashboard_bk_widget_setup'));
         add_bk_action('wpdev_booking_technical_booking_section', array(&$this, 'wpdev_booking_technical_booking_section'));
 
@@ -123,6 +124,12 @@ class wpdev_booking {
 
      // Setup Booking widget for dashboard
     function dashboard_bk_widget_setup(){
+        
+        $is_user_activated = apply_bk_filter('multiuser_is_current_user_active',  true );           //FixIn: 6.0.1.17
+        if ( ! $is_user_activated  )
+            return false;
+        
+        
         $user_role = get_bk_option( 'booking_user_role_booking' );
         if ( $user_role == 'administrator' )  $user_role = 'activate_plugins';
         if ( $user_role == 'editor' )         $user_role = 'publish_pages';
@@ -167,7 +174,7 @@ class wpdev_booking {
 
 
     // Show Booking Dashboard Widget content
-    function dashboard_bk_widget_show() {
+    function dashboard_bk_widget_show() { 
         
         wp_nonce_field('wpbc_ajax_admin_nonce',  "wpbc_admin_panel_nonce_dashboard" ,  true , true );
 
@@ -197,12 +204,14 @@ class wpdev_booking {
             }
         }
 
-
+        $trash_bookings = '  bk.trash != 1 ';                                //FixIn: 6.1.1.10  - check also  below usage of {$trash_bookings}
+        
         $sql_req = "SELECT DISTINCT bk.booking_id as id, dt.approved, dt.booking_date, bk.modification_date as m_date , bk.is_new as new
                     FROM {$wpdb->prefix}bookingdates as dt
                     INNER JOIN {$wpdb->prefix}booking as bk
-                        ON bk.booking_id = dt.booking_id " ;
-        if ($my_resources!='') $sql_req .=     " WHERE  bk.booking_type IN ({$my_resources})";
+                        ON bk.booking_id = dt.booking_id "
+                    . " WHERE {$trash_bookings} " ;
+        if ($my_resources!='') $sql_req .=     " AND  bk.booking_type IN ({$my_resources}) ";
 
         $sql_req .=     "ORDER BY dt.booking_date" ;
 
@@ -625,7 +634,8 @@ class wpdev_booking {
 
         $title = __('Booking' ,'booking');
         $update_title = $title;
-        if ($update_count > 0) {
+        $is_user_activated = apply_bk_filter('multiuser_is_current_user_active',  true );           //FixIn: 6.0.1.17
+        if ( ( $update_count > 0 ) && ( $is_user_activated ) ) {
             $update_count_title = "<span class='update-plugins count-$update_count' title='$update_title'><span class='update-count bk-update-count'>" . number_format_i18n($update_count) . "</span></span>" ;
             $update_title .= $update_count_title;
         }
@@ -832,6 +842,8 @@ class wpdev_booking {
         global $wpdb;
         $dates_array = $time_array = array();
         
+        $trash_bookings = ' AND bk.trash != 1 ';                                //FixIn: 6.1.1.10  - check also  below usage of {$trash_bookings}
+        
         if ($approved == 'admin_blank') {
 
             $sql_req = "SELECT DISTINCT dt.booking_date
@@ -842,7 +854,7 @@ class wpdev_booking {
 
                      ON    bk.booking_id = dt.booking_id
 
-                     WHERE  dt.booking_date >= CURDATE()  AND bk.booking_type IN ($bk_type_additional) AND bk.form like '%admin@blank.com%'
+                     WHERE  dt.booking_date >= CURDATE() {$trash_bookings} AND bk.booking_type IN ($bk_type_additional) AND bk.form like '%admin@blank.com%'
 
                      ORDER BY dt.booking_date" ;
             $dates_approve = $wpdb->get_results(  $sql_req  );
@@ -858,7 +870,7 @@ class wpdev_booking {
 
                      ON    bk.booking_id = dt.booking_id
 
-                     WHERE  dt.booking_date >= CURDATE()  AND bk.booking_type IN ($bk_type_additional)
+                     WHERE  dt.booking_date >= CURDATE() {$trash_bookings} AND bk.booking_type IN ($bk_type_additional)
                          
                      ". (($skip_booking_id != '') ? " AND dt.booking_id NOT IN ( ".$skip_booking_id." ) ":"") ."
                          
@@ -873,7 +885,7 @@ class wpdev_booking {
 
                      ON    bk.booking_id = dt.booking_id
 
-                     WHERE  dt.approved = $approved AND dt.booking_date >= CURDATE() AND bk.booking_type IN ($bk_type_additional)
+                     WHERE  dt.approved = $approved AND dt.booking_date >= CURDATE() {$trash_bookings} AND bk.booking_type IN ($bk_type_additional)
                          
                      ". (($skip_booking_id != '') ? " AND dt.booking_id NOT IN ( ".$skip_booking_id." ) ":"") ."
 
@@ -883,90 +895,29 @@ class wpdev_booking {
         }
 
 
-        // loop with all dates which is selected by someone
-//        $my_previous_date = false;
-        if (! empty($dates_approve))
+        // FixIn: 6.1.1.18
+        $prior_check_out_date = false;
+        if ( ! empty( $dates_approve ) )
             foreach ($dates_approve as $my_date) {
             
-                ////////////////////////////////////////////////////////////////
-                // Extend unavailbale interval to extra hours; cleaning time, or any other service time
-                /*
-                $extra_hours_in  = 1;
-                $extra_hours_out = 1;
-                if ( substr( $my_date->booking_date, -1 ) == '1' )
-                    $my_date->booking_date = date( 'Y-m-d H:i:s', strtotime( '-' . $extra_hours_in  . ' hour', strtotime( $my_date->booking_date ) ) );
-                if ( substr( $my_date->booking_date, -1 ) == '2' )
-                    $my_date->booking_date = date( 'Y-m-d H:i:s', strtotime( '+' . $extra_hours_out . ' hour', strtotime( $my_date->booking_date ) ) );
-                
-                // Fix overlap of previous times
-                if ( $my_previous_date !== false ) {
-                    if (
-                           ( substr( $my_date->booking_date, -1 ) == '1' ) 
-                        && ( substr( $my_previous_date, -1 ) == '2' )    
-                        && ( strtotime( $my_previous_date ) >= strtotime( $my_date->booking_date )  )                                
-                       ) {
-                        $my_date->booking_date = date( 'Y-m-d H:i:s', strtotime( '-1 second', strtotime( $my_previous_date ) ) );
-                    }                    
-                }
-                $my_previous_date = $my_date->booking_date;
-                /**/
-                ////////////////////////////////////////////////////////////////                            
-                // Extend unavailbale interval to extra DAYS
-                /*
-                $extra_days_in  = 0;
-                $extra_days_out = 21;
-                $initial_check_in_day = $initial_check_out_day = false;
-                if ( substr( $my_date->booking_date, -1 ) == '1' )  {
-                    $initial_check_in_day = $my_date->booking_date;
-                    $my_date->booking_date = date( 'Y-m-d H:i:s', strtotime( '-' . $extra_days_in . ' day', strtotime( $my_date->booking_date ) ) );
-                } 
-                if ( substr( $my_date->booking_date, -1 ) == '2' ) {
-                    $initial_check_out_day = $my_date->booking_date;
-                    $my_date->booking_date = date( 'Y-m-d H:i:s', strtotime( '+' . $extra_days_out . ' day', strtotime( $my_date->booking_date ) ) );                        
-                } 
-
-                // Fix overlap of previous times
-                if ( $my_previous_date !== false ) {
-                    if (
-                           ( substr( $my_date->booking_date, -1 ) == '1' ) 
-                        && ( substr( $my_previous_date, -1 ) == '2' )    
-                        && ( strtotime( $my_previous_date ) >= strtotime( $my_date->booking_date )  )                                
-                       ) {
-                        $my_date->booking_date = date( 'Y-m-d H:i:s', strtotime( '-1 second', strtotime( $my_previous_date ) ) );
-                    }                    
-                }
-                $my_previous_date = $my_date->booking_date;
-
-                if ( $initial_check_in_day !== false )
-                    for ( $di = 0; $di < $extra_days_in; $di++ ) {
-                        $my_block_date = date( 'Y-m-d', strtotime( '-' . $di . ' day', strtotime( $initial_check_in_day ) ) );
-                        $my_dt = explode( '-', $my_block_date );
-                        array_push( $dates_array , $my_dt );
-                        array_push( $time_array , array( '00', '00', '00' ) );                        
-                    }
-
-                if (  $initial_check_out_day !== false )
-                    for ( $di = 0; $di < $extra_days_out; $di++ ) {
-                        $my_block_date = date( 'Y-m-d', strtotime( '+' . $di . ' day', strtotime( $initial_check_out_day ) ) );        
-                        $my_dt = explode( '-', $my_block_date );
-                        array_push( $dates_array , $my_dt );
-                        array_push( $time_array , array( '00', '00', '00' ) );                        
-                    }
-                 
-                /**/
-                ////////////////////////////////////////////////////////////////
-                
+                $blocked_days_range = array( $my_date->booking_date );    
             
-                $my_date = explode(' ',$my_date->booking_date);
-                
-                $my_dt = explode('-',$my_date[0]);
-                $my_tm = explode(':',$my_date[1]);
+                list( $blocked_days_range, $prior_check_out_date ) = apply_filters( 'wpbc_get_extended_block_dates_filter', array( $blocked_days_range, $prior_check_out_date ) );
+             
+                // Define booked dates and times
+                foreach ( $blocked_days_range as $in_date) {
+                    
+                    $my_date = explode(' ', $in_date );
 
-                array_push( $dates_array , $my_dt );
-                array_push( $time_array , $my_tm );
+                    $my_dt = explode('-',$my_date[0]);
+                    $my_tm = explode(':',$my_date[1]);
+
+                    array_push( $dates_array , $my_dt );
+                    array_push( $time_array , $my_tm );                        
+                }
             }
-       
-        return    array($dates_array,$time_array); 
+        // FixIn: 6.1.1.18   End
+        return array( $dates_array, $time_array ); 
     }
 
     // Generate booking CAPTCHA fields  for booking form
@@ -1111,7 +1062,8 @@ class wpdev_booking {
             $is_can = apply_bk_filter('multiuser_is_user_can_be_here', true, $_GET['booking_type'] ); if ( !$is_can) { return ; }
         }
         echo '<div style="width:100%;">';
-        do_action('wpdev_bk_add_form',$bk_type, get_bk_option( 'booking_client_cal_count'));
+        do_action('wpdev_bk_add_form',$bk_type, get_bk_option( 'booking_client_cal_count'));        
+        //make_bk_action( 'wpdevbk_add_form', $bk_type , 12, 1, 'standard' , '', false, '{calendar months_num_in_row=4 width=100% cell_height=35px}'  );    //FixIn:6.0.1.6
         ?>
         <div style="float:left;border:none;margin:0px 0 10px 1px; color:#777;">            
             <fieldset>
@@ -1458,7 +1410,15 @@ class wpdev_booking {
             $booking_legend_text_for_item_pending   = apply_bk_filter('wpdev_check_for_active_language',  $booking_legend_text_for_item_pending );
             $booking_legend_text_for_item_approved  =  apply_bk_filter('wpdev_check_for_active_language', $booking_legend_text_for_item_approved );
 
+                        
             $text_for_day_cell = ( (0)?'&nbsp;':date('d') );
+            
+            $booking_legend_is_show_numbers = get_bk_option( 'booking_legend_is_show_numbers');     //FixIn:6.0.1.4            
+            if ( $booking_legend_is_show_numbers == 'Off' )
+                $text_for_day_cell = '&nbsp;';
+            else
+                $text_for_day_cell = date('d');
+            
             $my_result .= '<div class="block_hints datepick">';
             if ($booking_legend_is_show_item_available  == 'On') // __('Available' ,'booking')
                 $my_result .= '<div class="wpdev_hint_with_text"><div class="block_free datepick-days-cell"><a>'.$text_for_day_cell.'</a></div><div class="block_text">- '. $booking_legend_text_for_item_available.'</div></div>';
@@ -1467,6 +1427,9 @@ class wpdev_booking {
             if ($booking_legend_is_show_item_pending  == 'On') // __('Pending' ,'booking') 
                 $my_result .= '<div class="wpdev_hint_with_text"><div class="block_pending date2approve">'.$text_for_day_cell.'</div><div class="block_text">- '.$booking_legend_text_for_item_pending.'</div></div>';
 
+//            if ($booking_legend_is_show_item_pending  == 'On') // __('Pending' ,'booking') 
+//                $my_result .= '<div class="wpdev_hint_with_text "><div class="block_pending datepick-unselectable date_user_unavailable" style="background-color:transparent;">'.$text_for_day_cell.'</div><div class="block_text">- '.__('Unavailable', 'booking').'</div></div>';
+            
             if ( class_exists('wpdev_bk_biz_s') ) {
 
                 $booking_legend_is_show_item_partially    = get_bk_option( 'booking_legend_is_show_item_partially');
@@ -1728,14 +1691,24 @@ class wpdev_booking {
             return;
         }
 
+        // FixIn: 6.1.1.9             
+        if ( isset( $_GET['booking_hash'] ) ) {
+            $bk_edit_id = $my_booking_id_type[0];
+            $bk_br_id   = $my_booking_id_type[1];    
+            // Check situation when  we have editing "child booking resource",  so  need to  reupdate calendar and form  to have it for parent resource.
+            if  (  ( function_exists( 'wpbc_is_this_child_resource') ) && ( wpbc_is_this_child_resource( $bk_br_id ) )  ){
+                $bk_parent_br_id = wpbc_get_parent_resource( $bk_br_id );        
+
+                $bk_type = $bk_parent_br_id;
+            }
+        }        
+        // End: 6.1.1.9  
         
-        
-              
         $start_script_code = $this->get_script_for_calendar($bk_type, $additional_bk_types, $my_selected_dates_without_calendar, $cal_count, $start_month_calendar );
         
         // Apply scripts for the conditions in the rnage days selections
         $start_script_code = apply_bk_filter('wpdev_bk_define_additional_js_options_for_bk_shortcode', $start_script_code, $bk_type, $bk_otions);  
-        
+
         $my_result =  ' ' . $this->get__client_side_booking_content($bk_type, $my_booking_form, $my_selected_dates_without_calendar, $cal_count, $bk_otions ) . ' ' . $start_script_code ;
 
         $my_result = apply_filters('wpdev_booking_form', $my_result , $bk_type);
@@ -1797,8 +1770,23 @@ class wpdev_booking {
 
 
         $form = '<a name="bklnk'.$my_boook_type.'"></a><div id="booking_form_div'.$my_boook_type.'" class="booking_form_div">';
+        
+        // FixIn:6.0.1.5
+        $custom_params = array();
+        if (! empty($bk_otions)) {
+            $param ='\s*([name|value]+)=[\'"]{1}([^\'"]+)[\'"]{1}\s*'; // Find all possible options
+            $pattern_to_search='%\s*{([^\s]+)' . $param . $param .'}\s*[,]?\s*%';
+            preg_match_all($pattern_to_search, $bk_otions, $matches, PREG_SET_ORDER);
+            //debuge($matches);  
+            foreach ( $matches as $matche_value ) {
+                if ( $matche_value[1] == 'parameter' ) {
+                    $custom_params[ $matche_value[3] ]= $matche_value[5];
+                }
+            }
+        }
+        // FixIn:6.0.1.5
 
-        if(  $this->wpdev_bk_personal !== false  )   $form .= $this->wpdev_bk_personal->get_booking_form($my_boook_type, $my_booking_form);         // Get booking form
+        if(  $this->wpdev_bk_personal !== false  )   $form .= $this->wpdev_bk_personal->get_booking_form($my_boook_type, $my_booking_form, $custom_params);  // FixIn:6.0.1.5       // Get booking form
         else                                    $form .= $this->get_booking_form($my_boook_type);
 
         // Insert calendar into form
@@ -1867,6 +1855,7 @@ class wpdev_booking {
                                 });
                             </script>';
         } else {
+            if (0)                                                              //FixIn:6.1.1.16
             $return_form .= '<script type="text/javascript">
                                 jQuery(document).ready( function(){            
                                     if(typeof( showCostHintInsideBkForm ) == "function") {
@@ -2022,6 +2011,13 @@ class wpdev_booking {
         if ( isset( $attr['selected_dates'] ) ) { $my_selected_dates_without_calendar = $attr['selected_dates']; }  //$my_selected_dates_without_calendar = '20.08.2010, 29.08.2010';
 
         $res = $this->add_booking_form_action($my_boook_type,$my_boook_count, 0 , $my_booking_form, $my_selected_dates_without_calendar, false );
+        
+        $res .= "<script type='text/javascript'> ";                             //FixIn:6.1.1.16
+        $res .= "jQuery(document).ready( function(){";                          
+        $res .= apply_filters('wpdev_booking_show_availability_at_calendar', '', $my_boook_type);
+        $res .= "}); ";
+        $res .= "</script>";
+        
         return $res;
     }
 
@@ -2137,6 +2133,9 @@ class wpdev_booking {
     
     // Activate
     function wpdev_booking_activate() {
+        
+        ini_set('memory_limit','256M');                                         //FixIn:6.1.1.15
+        
         update_bk_option( 'booking_activation_process','On');
 
         //update_bk_option( 'booking_version_num',WP_BK_VERSION_NUM);             //FixIn:5.4.2
@@ -2296,7 +2295,7 @@ class wpdev_booking {
             add_bk_option( 'booking_legend_is_show_item_partially', 'On' );
             add_bk_option( 'booking_legend_text_for_item_partially', __('Partially booked' ,'booking') );
         }
-
+        add_bk_option( 'booking_legend_is_show_numbers', 'On' );                //FixIn:6.0.1.4
 
 
         // Create here tables which is needed for using plugin
@@ -2341,6 +2340,12 @@ class wpdev_booking {
         if  (wpbc_is_field_in_table_exists('booking','sync_gid') == 0) {
             $wp_queries[]  = "ALTER TABLE {$wpdb->prefix}booking ADD sync_gid varchar(200) NOT NULL default '' AFTER booking_id";            
         }
+        
+        // FixIn: 6.1.1.10
+        if  (wpbc_is_field_in_table_exists('booking','trash') == 0) {
+            $wp_queries[]  = "ALTER TABLE {$wpdb->prefix}booking ADD trash bigint(10) NOT NULL default 0 AFTER booking_id";            
+        }
+        // End: 6.1.1.10
         
         if ( ! wpbc_is_table_exists('bookingdates') ) { // Cehck if tables not exist yet
             $simple_sql = "CREATE TABLE {$wpdb->prefix}bookingdates (
@@ -2485,7 +2490,7 @@ class wpdev_booking {
                 delete_bk_option( 'booking_legend_is_show_item_partially' );
                 delete_bk_option( 'booking_legend_text_for_item_partially' );
             }
-
+            delete_bk_option( 'booking_legend_is_show_numbers' );               //FixIn:6.0.1.4
 
 
 
@@ -2579,8 +2584,10 @@ class wpdev_booking {
               if (empty($my_bk_types))   $my_bk_types=array(13,14,15,16,17);                // The booking resources with these IDs are exist in the Demo sites
               else                       shuffle($my_bk_types);
 
+              $trash_bookings = '  bk.trash != 1 ';                                //FixIn: 6.1.1.10  - check also  below usage of {$trash_bookings}
+              
               // Get NUMBER of Bookings
-              $bookings_count = $wpdb->get_results( "SELECT COUNT(*) as count FROM {$wpdb->prefix}booking as bk" );
+              $bookings_count = $wpdb->get_results( "SELECT COUNT(*) as count FROM {$wpdb->prefix}booking as bk WHERE {$trash_bookings}" );
               if (count($bookings_count)>0)   $bookings_count = $bookings_count[0]->count ;
               if ($bookings_count>=20) return;      
               
@@ -3131,4 +3138,3 @@ class wpdev_booking {
 
 }
 
-?>

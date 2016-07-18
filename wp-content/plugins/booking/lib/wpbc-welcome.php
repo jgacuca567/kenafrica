@@ -15,7 +15,7 @@ class WPBC_Welcome {
     public $minimum_capability = 'read';    //'manage_options';
     
     private $asset_path = 'http://wpbookingcalendar.com/assets/'; 
-// private $asset_path = 'http://dev/assets/'; 
+    //private $asset_path = 'http://dev/assets/'; 
 
 
     public function __construct() {
@@ -150,6 +150,9 @@ class WPBC_Welcome {
         ?>
         <style type="text/css" media="screen">
             /*<![CDATA[*/
+            .wpbc-welcome-page.about-wrap .feature-section.two-col .col {
+                vertical-align: top;
+            }
             .wpbc-welcome-page .about-text {
                 margin-right:0px;
                 margin-bottom:0px;
@@ -329,7 +332,7 @@ class WPBC_Welcome {
                         <?php  list( $display_version ) = explode( '-', WPDEV_BK_VERSION );  ?>
                         Thank you for updating to the latest version. <strong><code><?php echo $display_version; ?></code></strong>
                         <?php /* <br/>Booking Calendar become more polished, powerful and easy to use than ever before. */ ?>
-                        <br/><strong>It's cumulative update that bring several new features and improving of functionality</strong>.
+                        <br/><strong>This update bring several new features and improving of functionality</strong>.
                     </td>
                     <td style="width:10%">
                         <a  href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpbc-getting-started' ), 'index.php' ) ) ); ?>"
@@ -346,8 +349,56 @@ class WPBC_Welcome {
             <h2 style='font-size: 1.8em;line-height: 1.3em;'>What's New in Booking Calendar</h2>
             <?php 
          
-            $this->show_separator();
+            $this->show_col_section( array( 
+                                            array(        
+                                              'img'  => '6.2/trash-booking.png', 'img_style'=>'margin-top:20px;width: 99%;') 
+
+                                          , array( 'h4'   => 'Move bookings to trash instead of complete deleting.',
+                                                 'text' => 'From now you can **move** your bookings to **trash** instead of complete deleting. Its will **make booking dates as available** in calendar and you will not lose this booking info, if you will need it later. Also you can **restore** specific **booking** from trash or **complete delete** it.' ,
+                                          )
+                
+                                              
+                                        ) 
+                                    );  
             
+            $this->show_separator();
+/*            
+            $this->show_col_section( array( 'h3'   => 'Updated Translations', 
+                                        array(  //'h4'   => 'Updated Translations', 
+                                                'text' =>  '<ul>
+                                                                <li style="margin-left: 0.5em;">**Croatian** by Danijel Prebeg</li>
+                                                                <li style="margin-left: 0.5em;">**Turkish** by EMİNA MESİNOVİC</li>
+                                                                <li style="margin-left: 0.5em;">**German** by Peter Wegmann and Christian</li>
+                                                                <li style="margin-left: 0.5em;">**French** by Laurent Thiry and Terry Atkinson</li>
+                                                                <li style="margin-left: 0.5em;">**Italian** by Fabrizio Pecorelli</li>
+                                                                <li style="margin-left: 0.5em;">**Spanish** by Juan C and Juan García Piosa</li>
+                                                                <li style="margin-left: 0.5em;">**Dutch** by Wim Bommerez</li>
+                                                            </ul>'                                                     
+                                              ), 
+                                        array(  //'h4'  => '', 
+                                                 'text' => '<ul>
+                                                                <li style="margin-left: 0.5em;">**Finnish** by Turo Numminen and Peter Grönberg</li>
+                                                                <li style="margin-left: 0.5em;">**Danish** by Ib H. Rasmussen</li>
+                                                                <li style="margin-left: 0.5em;">**Swedish** by Mikael Göransson and Jan Österling</li>
+                                                                <li style="margin-left: 0.5em;">**Norwegian** by Håvard Hasli</li>
+                                                                <li style="margin-left: 0.5em;">**Czech** by Ales Dlask</li> 
+                                                                
+                                                            </ul>'                                                     
+                                               ),
+                                        array(  //'h4'   => '', 
+                                                  'text' => '<ul>
+                                                                <li style="margin-left: 0.5em;">**Hungarian** by István Vincze</li>
+                                                                <li style="margin-left: 0.5em;">**Greece** by Dimitris Amanatiadis</li>
+                                                                <li style="margin-left: 0.5em;">**Ukrainian**</li>
+                                                                <li style="margin-left: 0.5em;">**Russian**</li>                                                                
+                                                                <li style="margin-left: 0.5em;">**Polish** by Danek Szczepan</li>
+                                                                <li style="margin-left: 0.5em;">**Slovak** by Martin Ambruš and Martin Galdun</li>
+                                                                
+                                                            </ul>'                                                     
+                                               )                
+                                        ) 
+                                    );
+/*            
             $this->show_col_section( array( 
                                           array( 'h4'   => 'Faster check actual bookings',
                                                  'text' => 'Showing *past bookings "darker"*, than actual bookings at Calendar Overview page *(timeline)* in admin panel. '
@@ -357,16 +408,6 @@ class WPBC_Welcome {
                                     );  
 
             $this->show_separator();
-
-            $this->show_col_section( array( 
-                                          array(  'img'  => '6.0/today-check-in-out.png', 'img_style' => 'margin:20px 5px 5px;width: 99%;' ) 
-                                        , array(  'h4'   => 'Get  bookings that check in/out during today'
-                                                , 'text' => 'Find exactly bookings, that check in or check out during today.' ) 
-                                        ) 
-                                    );
-  
-            $this->show_separator();
-            
             
             $this->show_col_section( array( 'h3'   => 'Under the Hood', 
                                         array(  //'h4'   => '', 
@@ -387,50 +428,84 @@ class WPBC_Welcome {
                                     );
             
             $this->show_separator();
-            
-            $this->show_col_section( array( 'h3'   => 'Updated Translations', 
-                                        array(  //'h4'   => 'Updated Translations', 
-                                                'text' =>  '<ul>
-                                                                <li style="margin-left: 0.5em;">**French** by Fabien Groslambert, Charles Petitfour</li>
-                                                                <li style="margin-left: 0.5em;">**Norwegian** by Håvard Hasli, Patrick Schneider</li>
-                                                                <li style="margin-left: 0.5em;">**Portugal** by Pedro Morgado</li>
-                                                            </ul>'                                                     
-                                              ), 
-                                        array(  //'h4'  => '', 
-                                                 'text' => '<ul>
-                                                                <li style="margin-left: 0.5em;">**Hungarian** by István Vincze</li>
-                                                                <li style="margin-left: 0.5em;">**Finnish** by Jukka Turunen</li>
-                                                                <li style="margin-left: 0.5em;">**Catalan** by Fiiiu - Gerard H. Serra</li>
-                                                                <li style="margin-left: 0.5em;">**German** by Stefan Fritsche, Dirk Gabler, Andreas Dupp</li>                                                                
-                                                            </ul>'                                                     
-                                               ),
-                                        array(  //'h4'   => '', 
-                                                  'text' => '<ul>
-                                                                <li style="margin-left: 0.5em;">**Italian** by Fabrizio Pecorelli, Astolfo Vesci</li>
-                                                                <li style="margin-left: 0.5em;">**Swedish** by Jan Österling, Ruben Salas</li>
-                                                                <li style="margin-left: 0.5em;">**Russian** by Arm</li>
-                                                                <li style="margin-left: 0.5em;">**Ukrainian** by Ivanka from Coupofy</li>                                                                                                                                
-                                                                <li style="margin-left: 0.5em;">**Croatian** by Borislav Bosnjak</li>
-                                                            </ul>'                                                     
-                                               )                
-                                        ) 
-                                    );
-            
+*/            
                                 
             
             ?><h2 style='font-size: 1.8em;line-height: 1.3em;margin-top:40px;'>New features in Premium versions of Booking Calendar</h2><?php 
             
+         
+            $this->show_col_section( array( 
+                                          array( 'h4'   => 'Extend booking dates/times interval to extra hours or days.',
+                                                 'text' => 'You can define **extra minutes / hours** or even **dates before** and/or **after  bookings** to set as **unavailable time in calendar**. Its useful for adding **cleaning** time, or any other service time,  which  required before or after  the booking. <br>*(Business Medium/Large, MultiUser)*' ,
+                                          ),   array(     
+                                              'img'  => '6.2/cleaning-time.png', 'img_style'=>'margin-top:20px;width: 99%;') 
+                
+                                              
+                                        ) 
+                                    );  
+            
             $this->show_separator();
             
+            $this->show_col_section( array( 'h3'   => 'Under the Hood', 
+                                        array(  
+'text' => '<ul>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement** Ability to use <code>[booking_id]</code>, <code>[resource_title]</code> shortcodes in the Content of booking fields data form  at Booking &gt; Settings &gt; Fields page,  for ability to  show booking ID and booking resources in payment summary.  *(Business Small/Medium/Large, MultiUser)*' . '</li>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement** Resolved issue of not showing available day(s), if all start times have booked for this specific day(s). (Example of shortcode in booking form: <code>[select starttime "11:00" "13:00" "15:00"]</code>). *(Business Small/Medium/Large, MultiUser)*' . '</li>'    
+. '</ul>'
+                                               ), 
+                                        array(  
+'text' => '<ul>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement** Ability to book dates in additional calendar(s), without selection  date(s) in main calendar, if used several calendars of different booking resources and only  1 booking form. Restriction  in this case the "payment summary"  after booking is not showing.  *(Business Medium/Large, MultiUser)*' . '</li>'    
+    . '<li style="margin-left: 0.5em;">' . '**Improvement** Added search  users form  at the Settings Users page. *(MultiUser)*' . '</li>'
+. '</ul>'                                            
+                                               )   
+                                        ) 
+                                    );
+            
+            $this->show_separator();
+
+            ?><h2 style='font-size: 1.8em;line-height: 1.3em;margin-top:40px;'>Other</h2><?php 
+             
             $this->show_col_section( array( 
-                              array( 'h4'   => 'Select language for specific actions',
-                                     'text' => 'Select language of email template during operations like approving, cancellation or sending payment request for exist bookings. Note, you have to have additional languages in email templates.  <br>*(Personal, Business Small/Medium/Large, MultiUser)*' ) 
-                            , array(  'img'  => '6.0/select-language.png', 'img_style'=>'margin-top:20px;width:99%;margin-left:1%;' ) 
+                                array(  'img'  => '6.1/booking-calendar-search-availability.png', 'img_style'=>'margin-top:20px;width:99%;margin-left:1%;' ) 
+                            ,   array(  'h4'   => 'Advanced search availability functionality',
+'text' => '<ul>
+        <li style="margin-left: 0.5em;">**New.** Ability to search for additional 2 days in search availability form. Use this shortcode in search  form: **[additional_search "2"]** +/- 2 days.</li>
+        <li style="margin-left: 0.5em;">**New.** Ability to show how many search results found. To show use **{searchresults}** shortcode in search form  shortcode. <br>Example:<br><code>[bookingsearch searchresultstitle=\'{searchresults} Results Found\' searchresults=\'http://you-server.com/search-results/\' noresultstitle=\'Nothing Found.\']</code></li>                                                                
+        <li style="margin-left: 0.5em;">**New.** Show Search Results Log at Booking &gt; Settings &gt; Search page in Search Cache section for more easy detect any  issues with search results.</li>
+        <li style="margin-left: 0.5em;">**Improvement.** Ability to use check-boxes in the search form for additional parameters.</li>
+        <li style="margin-left: 0.5em;">**Improvement.** Ability to use several times custom fields with  same name in posts for definition several additional parameters with  different values for the search form.</li> 
+    </ul><br>*(Business Large, MultiUser)*'                                                     
+                                    ) 
+                            
                             ) 
                         ); 
+ 
+            $this->show_separator();
+/*            
+            $this->show_col_section( array( 'h3'   => 'Under the Hood', 
+                                        array(  
+'text' => '<ul>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement.** Correctly  showing **change-over days**, as half booked day, that  have **pending** check-in/out and **approved** check-out/in **bookings in the same day**. <br>*(Business Small/Medium/Large, MultiUser)*' . '</li>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement.** Ability to  use in emails new shortcode: **[check_out_plus1day]** - inserting next day after last selected day in calendar  for specific booking. Its useful in some cases, if business workflow require to  show as checkout day the next  day after last  selected date.  *(Personal, Business Small/Medium/Large, MultiUser)*' . '</li>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement.** Added ability to save "Advanced cost settings" only for selected custom or standard form. Its prevent issue of not saving some values, if exist too many custom forms and too many options for the additional cost. <br>*(Business Medium/Large, MultiUser)*' . '</li>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement.** Correct work of "Auto-fill" button at  Booking > Add booking page for bookings with change-over days. <br>*(Business Small/Medium/Large, MultiUser)*' . '</li>' 
+. '</ul>'
+                                               ), 
+                                        array(  
+'text' => '<ul>'
+    . '<li style="margin-left: 0.5em;">' . '**New.** Ability to transfer custom parameters from  booking form  shortcode into the content of booking form. '
+                                         . '<br>Example of shortcode usage: <br><code>[booking type=1 form_type=\'standard\' nummonths=3 options=\'{parameter name="my_param" value="value"},{parameter name="other_param" value="other value"}\']</code> '
+                                         . '<br>Example of booking form customization: <code>[text some_field_name "my_param"]</code> and <code>[text other_field_name "other_param"]</code>. <br>*(Personal, Business Small/Medium/Large, MultiUser)*' . '</li>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement.** Showing times in header of TimeLine,  when selected several  booking resources and one day view mode in Calendar Overview mode. *(Personal, Business Small/Medium/Large, MultiUser)*' . '</li>'
+    . '<li style="margin-left: 0.5em;">' . '**Improvement.** Ability to set constant WP_BK_IS_SEND_EMAILS_ON_COST_CHANGE to TRUE in ../lib/wpbc-constants.php file for sending modification email, if cost  was changed in admin panel. <br>*(Business Small/Medium/Large, MultiUser)*' . '</li>'                                            
+. '</ul>'                                            
+                                               )   
+                                        ) 
+                                    );
             
             $this->show_separator();
-            
+/*
             $this->show_col_section( array( 
                                array( 'img'  => '6.0/duplicate-booking.png', 'img_style'=>'margin-top:20px;width: 99%;margin-left:1%;' ) 
                              , array( 'h4'   => 'Duplicate bookings',
@@ -499,7 +574,7 @@ class WPBC_Welcome {
                                     );
             
             $this->show_separator();            
-            
+*/            
             
           ?><table class="about-text" style="margin-bottom:30px;height:auto;font-size:1em;width:100%;" >
                 <tr>
@@ -1438,4 +1513,3 @@ printf( __( 'Need even more functionality? Check %s higher versions %s','booking
 </div> 
 <?php
 }
-?>

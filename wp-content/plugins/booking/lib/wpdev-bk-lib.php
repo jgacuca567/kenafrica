@@ -95,13 +95,20 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
         }
 
 
-        if ($wpdevbk_saved_filter !== false) {
+        if (     ($wpdevbk_saved_filter !== false) 
+              && ($_REQUEST['view_mode'] == 'vm_listing')                       //FixIn: 6.0.1.14
+            ){
 
             $wpdevbk_saved_filter = str_replace('admin.php?', '', $wpdevbk_saved_filter);
             $wpdevbk_saved_filter = explode('&',$wpdevbk_saved_filter);
             
             foreach ($wpdevbk_saved_filter as $bkfilter) {
                 $bkfilter_key_value = explode('=',$bkfilter);
+                if ( ! isset( $bkfilter_key_value[1] ) ) {                              //FixIn: 6.0.1.13
+                    $bkfilter_key_value[1] = '';
+                }           
+                
+                
                 if ( ! in_array($bkfilter_key_value[0], $exclude_options_from_saved_params) ) { // Exclude some parameters from the saved Default parameters - the values of these parameters are loading from General Booking Settings page or from the request.
                     $wpdevbk_filter_params[ $bkfilter_key_value[0] ] = trim($bkfilter_key_value[1]);
                 }
@@ -648,8 +655,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
     // Show     V i e w    M o d e      Buttons in the Toolbar
     function wpdevbk_booking_view_mode_buttons() {        
         $selected_view_mode = $_REQUEST['view_mode'];
-        $bk_admin_url = get_params_in_url( array('view_mode','wh_booking_id','page_num') );
-
+        $bk_admin_url = get_params_in_url( array('view_mode','wh_booking_id','page_num' ) );
+        $bk_admin_timeline_url = get_params_in_url( array(), array( 'page', 'tab', 'tab_cvm', 'wh_booking_type', 'scroll_start_date', 'scroll_month', 'view_days_num'  
+                                                                    , 'wh_trash'    //FixIn: 6.1.1.10
+                                                                   ) ); //FixIn: 6.0.1.14
         ?><div id="booking-listing-view-mode-buttons" class="btn-group btn-group-vertical" data-toggle="buttons-radio">
                 <a id="btn_vm_listing" rel="tooltip" data-original-title="<?php  _e('Booking Listing' ,'booking'); ?>"  
                    class="tooltip_top button button-secondary" <?php if ($selected_view_mode=='vm_listing') { echo ' data-toggle="button" ' ; } ?>               
@@ -657,7 +666,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                    ><i class="icon-align-justify"></i></a>
                 <a id="btn_vm_calendar" rel="tooltip" data-original-title="<?php  _e('Calendar Overview' ,'booking'); ?>"  
                    class="tooltip_bottom  button button-secondary" <?php if ($selected_view_mode=='vm_calendar') { echo ' data-toggle="button" ' ; } ?>                    
-                   href="<?php echo $bk_admin_url . '&view_mode=vm_calendar'; ?>" onclick="javascript:;"  
+                   href="<?php echo $bk_admin_timeline_url . '&view_mode=vm_calendar'; ?>" onclick="javascript:;"  
                    ><i class="icon-calendar"></i></a>
             </div>
             <script type="text/javascript">
@@ -719,6 +728,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                 'wh_cost2' =>           (isset($_REQUEST['wh_cost2'])) ? wpbc_clean_parameter( $_REQUEST['wh_cost2'] ):'',
 		'or_sort' =>            (isset($_REQUEST['or_sort'])) ? wpbc_clean_parameter( $_REQUEST['or_sort'] ):get_bk_option( 'booking_sort_order'),
 		'page_num' =>           (isset($_REQUEST['page_num'])) ? wpbc_clean_parameter( $_REQUEST['page_num'] ):'1',
+                'wh_trash' =>           (isset($_REQUEST['wh_trash'])) ? wpbc_clean_parameter( $_REQUEST['wh_trash'] ):'',         //FixIn:6.1.1.10
                 'page_items_count' =>   (isset($_REQUEST['page_items_count'])) ? wpbc_clean_parameter( $_REQUEST['page_items_count'] ):$num_per_page_check,
 	);
 //debuge($args, $_REQUEST['wh_booking_type'] );
@@ -901,6 +911,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                 'wh_cost2' =>           '',         //(isset($_REQUEST['wh_cost2']))?$_REQUEST['wh_cost2']:'',                    // ?
 		'or_sort' =>            $or_sort,
 		'page_num' =>           '1',
+                'wh_trash' =>           (isset($_REQUEST['wh_trash']))?$_REQUEST['wh_trash']:'',
                 'page_items_count' =>   '100000'
 	);
 
@@ -931,6 +942,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 		'wh_cost' => '',            'wh_cost2' => '',
 		'or_sort' => get_bk_option( 'booking_sort_order'),
 		'page_num' => '1',
+                'wh_trash' => '',                                               //FixIn: 6.1.1.10
                 'page_items_count' => $num_per_page_check
 	);
 
@@ -947,6 +959,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
         // S Q L
         ////////////////////////////////////////////////////////////////////////
         // GET ONLY ROWS OF THE     B o o k i n g s    - So we can limit the requests
+//debuge($wh_trash);        
+                                                                                //FixIn: 6.1.1.10  - check also  below usage of {$trash_bookings}
+        $trash_bookings = " AND bk.trash = 0 ";
+        if ( isset( $wh_trash ) ) {
+            
+            if ( $wh_trash == "trash" )    $trash_bookings = " AND bk.trash = 1 ";            
+            else if ( $wh_trash == "any" ) $trash_bookings = '';   
+        }
+//debuge($trash_bookings);
         $sql_start_select = " SELECT * " ;
         $sql_start_count  = " SELECT COUNT(*) as count" ;
         $sql = " FROM {$wpdb->prefix}booking as bk" ;
@@ -955,13 +976,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                                 SELECT *
                                 FROM {$wpdb->prefix}bookingdates as dt
                                 WHERE  bk.booking_id = dt.booking_id " ;
-                if ($wh_approved !== '')
+                if ( $wh_approved !== '' )
                     $sql_where.=           " AND approved = $wh_approved  " ;            // Approved or Pending
 
             $sql_where.= set_dates_filter_for_sql($wh_booking_date, $wh_booking_date2) ;
 
             $sql_where.=   "   ) " ;
 
+        $sql_where .= " {$trash_bookings} ";                                    //FixIn: 6.1.1.10 
+            
         if ( $wh_is_new !== '' )    $sql_where .= " AND  bk.is_new = " . $wh_is_new . " ";
 
             // P
@@ -1115,6 +1138,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 		'wh_cost' => '',            'wh_cost2' => '',
 		'or_sort' => get_bk_option( 'booking_sort_order'),
 		'page_num' => '1',
+                'wh_trash' => '',                                               //FixIn: 6.1.1.10
                 'page_items_count' => $num_per_page_check
 	);
 
@@ -1622,6 +1646,22 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                             wpdevbk_selectbox_filter($wpdevbk_id, $wpdevbk_selectors, $wpdevbk_control_label, $wpdevbk_help_block, $wpdevbk_default_value);
                             ?>
                             
+                            <?php 
+                                                                                //FixIn: 6.1.1.10
+                            // Actual | Trash | Any
+                            $wpdevbk_id =              'wh_trash';                           //  {'', '0', '1' }
+                            $wpdevbk_selectors = array(__('Exist' ,'booking')    => '',
+                                                       __('In Trash' ,'booking') => 'trash',
+                                                       'divider0'=>'divider',
+                                                       __('Any' ,'booking')     => 'any');
+                            $wpdevbk_control_label =   '';
+                            $wpdevbk_help_block =      __('Bookings' ,'booking');;//__('In Trash' ,'booking');
+                            // Pending, Active, Suspended, Terminated, Cancelled, Fraud
+                            wpdevbk_selectbox_filter($wpdevbk_id, $wpdevbk_selectors, $wpdevbk_control_label, $wpdevbk_help_block);
+                                                                                //End FixIn: 6.1.1.10
+                            ?>
+                            
+                            
                             <?php if (function_exists('wpdevbk_booking_resource_selection_for_booking_listing')) {
                                       wpdevbk_booking_resource_selection_for_booking_listing();
                             } ?>
@@ -1725,13 +1765,29 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                                " /><?php _e('Reject' ,'booking'); ?> <i class="icon-ban-circle"></i></a>
                     </div>
                     <div class="btn-group" style="width:340px">
+                        <?php //FixIn: 6.1.1.10  ?>
+                        <a  data-original-title="<?php _e('Move selected bookings to trash' ,'booking'); ?>"  rel="tooltip" class="tooltip_top button button-secondary"
+                            onclick="javascript: 
+                                    if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to do this ?' ,'booking')); ?>') )
+                                        trash__restore_booking(1, get_selected_bookings_id_in_booking_listing() ,
+                                                        <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1  );
+                                    " >
+                            <?php _e('Trash' ,'booking'); ?> <i class="icon-trash"></i></a>
+                        <a  data-original-title="<?php _e('Restore selected bookings' ,'booking'); ?>"  rel="tooltip" class="tooltip_top button button-secondary"
+                            onclick="javascript: 
+                                    if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to do this ?' ,'booking')); ?>') )
+                                        trash__restore_booking(0, get_selected_bookings_id_in_booking_listing() ,
+                                                        <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1  );
+                                    " >
+                            <?php _e('Restore' ,'booking'); ?> <i class="icon-repeat"></i></a>
                         <a  data-original-title="<?php _e('Delete selected bookings' ,'booking'); ?>"  rel="tooltip" class="tooltip_top button button-secondary"
                             onclick="javascript: 
                                     if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to delete selected booking(s) ?' ,'booking')); ?>') )
                                         delete_booking( get_selected_bookings_id_in_booking_listing() ,
                                                         <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1  );
                                     " >
-                            <?php _e('Delete' ,'booking'); ?> <i class="icon-trash"></i></a>
+                            <?php _e('Delete' ,'booking'); ?> <i class="icon-remove"></i></a>
+                            <?php //End FixIn: 6.1.1.10  ?>
                         <input  type="text" placeholder="<?php echo __('Reason of cancellation' ,'booking'); ?>"
                                 class="span2" value="" id="denyreason" name="denyreason" />
                     </div>
@@ -1865,6 +1921,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             $bk_dates_short_id = array(); if (count($bk->dates) > 0 ) $bk_dates_short_id      = (isset($bk->dates_short_id))?$bk->dates_short_id:array();      // Array ([0] => [1] => .... [4] => 6... [11] => [12] => 8 )
 
             $is_approved = 0;   if (count($bk->dates) > 0 )     $is_approved = $bk->dates[0]->approved ;
+
+            //Is booking in Trash.
+            $is_trash = $bk->trash ;                                            //FixIn: 6.1.1.10                                             
+
             //BS
             $is_paid = 0;
             $payment_status_titles_current = '';
@@ -1996,6 +2056,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                   <?php make_bk_action('wpdev_bk_listing_show_payment_label', $is_paid,  $pay_print_status, $payment_status_titles_current);  ?>
                   <span class="label label-pending <?php if ($is_approved) echo ' hidden_items '; ?> "><?php _e('Pending' ,'booking'); ?></span>
                   <span class="label label-approved <?php if (! $is_approved) echo ' hidden_items '; ?>"><?php _e('Approved' ,'booking'); ?></span>
+                  <span class="label label-trash label-important <?php if (! $is_trash) echo ' hidden_items '; ?> "><?php _e('Trash' ,'booking'); ?></span><?php //FixIn: 6.1.1.10 ?>                  
               </div>
 
               <div class="wpbc_column_3 booking-listing-collumn bktextjustify span<?php echo ($is_free?'5':'6'); ?> ">
@@ -2032,14 +2093,26 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                             onclick="javascript:if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to set booking as pending ?' ,'booking')); ?>') ) approve_unapprove_booking(<?php echo $booking_id; ?>,0, <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1  );"
                             data-original-title="<?php _e('Reject' ,'booking'); ?>"  rel="tooltip" 
                         ><i class="icon-ban-circle"></i><?php
-                        /** ?><img src="<?php echo WPDEV_BK_PLUGIN_URL; ?>/img/remove-16x16.png" style="width:15px; height:15px;"><?php /**/ ?></a><a                     
-                            href="javascript:void(0)" 
-                            onclick="javascript:if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to delete this booking ?' ,'booking')); ?>') ) delete_booking(<?php echo $booking_id; ?>, <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1   );"
-                            data-original-title="<?php _e('Delete' ,'booking'); ?>"  rel="tooltip" 
-                            class="tooltip_top button-secondary button"
-                        ><i class="icon-trash"></i><?php
-                        /** ?><img src="<?php echo WPDEV_BK_PLUGIN_URL; ?>/img/delete_type.png" style="width:13px; height:13px;"><?php /**/ ?></a><?php 
+                        /** ?><img src="<?php echo WPDEV_BK_PLUGIN_URL; ?>/img/remove-16x16.png" style="width:15px; height:15px;"><?php /**/ ?></a><?php 
                         
+                        //FixIn: 6.1.1.10 
+                        ?><a                     
+                            href="javascript:void(0)" class="tooltip_top button-secondary button trash_bk_link <?php if ( $is_trash ) echo ' hidden_items '; ?>"
+                            onclick="javascript:if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to delete this booking ?' ,'booking')); ?>') ) trash__restore_booking(1, <?php echo $booking_id; ?>, <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1   );"
+                            data-original-title="<?php _e('Move to Trash' ,'booking'); ?>"  rel="tooltip"                             
+                        ><i class="icon-trash"></i></a><?php 
+                        ?><a                     
+                            href="javascript:void(0)" class="tooltip_top button-secondary button restore_bk_link <?php if ( ! $is_trash ) echo ' hidden_items '; ?>"
+                            onclick="javascript:trash__restore_booking(0, <?php echo $booking_id; ?>, <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1   );"
+                            data-original-title="<?php _e('Restore' ,'booking'); ?>"  rel="tooltip" 
+                        ><i class="icon-repeat"></i></a><?php 
+                        ?><a                     
+                            href="javascript:void(0)" class="tooltip_top button-secondary button delete_bk_link <?php if ( ! $is_trash ) echo ' hidden_items '; ?>"
+                            onclick="javascript:if ( bk_are_you_sure('<?php echo esc_js(__('Do you really want to delete this booking ?' ,'booking')); ?>') ) delete_booking(<?php echo $booking_id; ?>, <?php echo $user_bk_id; ?>, '<?php echo getBookingLocale(); ?>' , 1   );"
+                            data-original-title="<?php _e('Completely Delete' ,'booking'); ?>"  rel="tooltip" 
+                        ><i class="icon-remove"></i></a><?php                         
+                        //End FixIn: 6.1.1.10 
+
                          make_bk_action('wpdev_bk_listing_show_print_btn', $booking_id );
                          
                          make_bk_action('wpdev_bk_listing_show_payment_status_btn', $booking_id );                           

@@ -111,7 +111,10 @@ div.datepick-inline .datepick-title-row th{
 /* A P P R O V E D  - BACKGROUND */
 .block_hints .date_approved.block_check_in_out, 
 .block_hints .block_booked, 
-.datepick-inline .date_approved  {
+.datepick-inline .date_approved, 
+/* A P P R O V E D  - BACKGROUND for Check In Pending & Check Out Approved ||  Check Out Pending & Check In Approved   Dates    //FixIn: 6.0.1.2 */
+td.timespartly.check_in_time.check_out_time.check_in_time_date2approve.check_out_time_date_approved div.check-in-div, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date2approve.check_in_time_date_approved div.check-out-div {    
     background-color: #C60B0B;
 }
 /* A P P R O V E D  -  T E X T /including partially booked - timeslots/ */
@@ -138,7 +141,10 @@ div.datepick-inline .datepick-title-row th{
 /* P E N D I N G  - BACKGROUND */
 .block_hints .date2approve.block_check_in_out, 
 .block_hints .block_pending, 
-.datepick-inline .date2approve  {
+.datepick-inline .date2approve, 
+/* P E N D I N G  - BACKGROUND for Check In Approved & Check Out Pending ||  Check Out Approved & Check In Pending    Dates     // FixIn: 6.0.1.2  */
+td.timespartly.check_in_time.check_out_time.check_in_time_date_approved.check_out_time_date2approve div.check-in-div, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_in_time_date2approve div.check-out-div {    
   background-color: #DF9A00;
 }
 /* P E N D I N G  -  T E X T /including partially booked - timeslots/ */
@@ -184,3 +190,12 @@ div.datepick-inline .datepick-title-row th{
     text-shadow: 0 -1px 0 #888;
 }
 /*******************************************************************************/
+/* FixIn: 6.0.1.2 */
+/* Text style for Check In Approved & Check Out Pending ||  Check Out Approved & Check In Pending || Check In Pending & Check Out Approved ||  Check Out Pending & Check In Approved   */
+td.timespartly.check_in_time.check_out_time.check_in_time_date_approved.check_out_time_date2approve span, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_in_time_date2approve span, 
+td.timespartly.check_in_time.check_out_time.check_in_time_date2approve.check_out_time_date_approved span, 
+td.timespartly.check_in_time.check_out_time.check_out_time_date2approve.check_in_time_date_approved span {    
+    font-weight: bold;
+    text-shadow: none;
+}

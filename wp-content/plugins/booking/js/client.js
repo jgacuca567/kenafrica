@@ -34,8 +34,10 @@ function init_datepick_cal(bk_type,  date_approved_par, my_num_month, start_day_
         var bkMaxDate = booking_max_monthes_in_calendar;
 
         var is_this_admin = false;
-        if ( (location.href.indexOf('wpdev-booking.phpwpdev-booking-reservation') != -1 ) &&
-             (location.href.indexOf('booking_hash') != -1 ) ) {
+        if ( 
+                ( location.href.indexOf('wpdev-booking.phpwpdev-booking-reservation') != -1 ) 
+             && ( location.href.indexOf('booking_hash') != -1 ) 
+            ) {
             is_this_admin = true; 
             bkMinDate = null;
             bkMaxDate = null;
@@ -70,11 +72,10 @@ function init_datepick_cal(bk_type,  date_approved_par, my_num_month, start_day_
         function applyCSStoDays(date ){
             var class_day = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
             var additional_class = ' wpbc_weekday_' + date.getDay() + '  ';
-
             if(typeof( prices_per_day  ) !== 'undefined')
                 if(typeof(  prices_per_day[bk_type] ) !== 'undefined')
                     if(typeof(  prices_per_day[bk_type][class_day] ) !== 'undefined') {
-                        additional_class += ' rate_'+prices_per_day[bk_type][class_day];
+                        additional_class += (' rate_'+prices_per_day[bk_type][class_day]).replace('.','_');
                     }
 
             // define season filter names as classes
@@ -96,7 +97,14 @@ function init_datepick_cal(bk_type,  date_approved_par, my_num_month, start_day_
 
             if (typeof( is_this_day_available ) == 'function') {
                 var is_day_available = is_this_day_available( date, bk_type);
-                if (! is_day_available) {return [false, 'cal4date-' + class_day +' date_user_unavailable date_approved'];}
+              //if (! is_day_available) {return [false, 'cal4date-' + class_day +' date_user_unavailable date_approved'];}
+                var season_filter = '';                                         //FixIn: 6.0.1.8
+                if ( is_day_available instanceof Array ) { 
+                    season_filter = ' season_filter_id_' + is_day_available[1]; 
+                    is_day_available = is_day_available[0];                     
+                }
+                if (! is_day_available) {return [false, 'cal4date-' + class_day +' date_user_unavailable ' + season_filter ];}
+                
             }
 
             // Time availability
@@ -143,6 +151,7 @@ function init_datepick_cal(bk_type,  date_approved_par, my_num_month, start_day_
             // we have 0 available at this day - Only for resources, which have childs
             if (  wpdev_in_array( parent_booking_resources, bk_type ) )
                     if (reserved_days_count <= 0) {
+//                      if ( ( reserved_days_count - both_check_in_out_num ) <= 0) { // This line does not check  about pending or approved. 
                             if(typeof(date2approve[ bk_type ]) !== 'undefined')
                                if(typeof(date2approve[ bk_type ][ class_day ]) !== 'undefined')
                                  return [false, 'cal4date-' + class_day +' date2approve date_unavailable_for_all_childs ' + blank_admin_class_day];
@@ -166,8 +175,8 @@ function init_datepick_cal(bk_type,  date_approved_par, my_num_month, start_day_
                           return [false, 'cal4date-' + class_day +' date2approve' + blank_admin_class_day]; // Orange
                       else {
                           if ( is_booking_used_check_in_out_time === true ) {
-                              if (ts == '1')  additional_class += ' check_in_time';
-                              if (ts == '2')  additional_class += ' check_out_time';
+                              if (ts == '1')  additional_class += ' check_in_time' + ' check_in_time_date2approve';         //FixIn: 6.0.1.2
+                              if (ts == '2')  additional_class += ' check_out_time'+ ' check_out_time_date2approve';        //FixIn: 6.0.1.2
                           }
                           time_return_value = [true, 'date_available cal4date-' + class_day +' date2approve timespartly' + additional_class]; // Times
                           if(typeof( isDayFullByTime ) == 'function') {
@@ -192,8 +201,8 @@ function init_datepick_cal(bk_type,  date_approved_par, my_num_month, start_day_
                         return [false, 'cal4date-' + class_day +' date_approved' + blank_admin_class_day]; //Blue or Grey in client
                       else {
                           if ( is_booking_used_check_in_out_time === true ) {
-                              if (ts == '1')  additional_class += ' check_in_time';
-                              if (ts == '2')  additional_class += ' check_out_time';
+                              if (ts == '1')  additional_class += ' check_in_time' + ' check_in_time_date_approved';        //FixIn: 6.0.1.2
+                              if (ts == '2')  additional_class += ' check_out_time'+ ' check_out_time_date_approved';       //FixIn: 6.0.1.2
                           }
                         time_return_value = [true,  'date_available cal4date-' + class_day +' date_approved timespartly' + additional_class]; // Times
                         if(typeof( isDayFullByTime ) == 'function') {
@@ -226,19 +235,36 @@ function init_datepick_cal(bk_type,  date_approved_par, my_num_month, start_day_
                     if ( ( additional_class.indexOf('check_in_time') != -1 ) && ( additional_class.indexOf('check_out_time') != -1 ) ){ 
                         // Make this date unavailbale
                         time_return_value[0] = false;                             
-                        // Remove CSS classes from this date
-                        time_return_value[1]=time_return_value[1].replace("check_in_time",""); 
-                        time_return_value[1]=time_return_value[1].replace("check_out_time",""); 
-                        time_return_value[1]=time_return_value[1].replace("timespartly",""); 
+                        //FixIn: 6.0.1.2                                                 
+                        if ( ! (
+                                    ( ( additional_class.indexOf('check_in_time_date_approved') != -1 ) && ( additional_class.indexOf('check_out_time_date2approve') != -1 ) )
+                                  || ( ( additional_class.indexOf('check_out_time_date_approved') != -1 ) && ( additional_class.indexOf('check_in_time_date2approve') != -1 ) )
+                            ) ) { 
+                            // Remove CSS classes from this date
+                            time_return_value[1]=time_return_value[1].replace("check_in_time",""); 
+                            time_return_value[1]=time_return_value[1].replace("check_out_time",""); 
+                            time_return_value[1]=time_return_value[1].replace("timespartly","");        
+                        }
                         time_return_value[1]=time_return_value[1].replace("date_available",""); 
                     }
+                }
+                if (  (  wpdev_in_array( parent_booking_resources, bk_type ) ) && ( (reserved_days_count - both_check_in_out_num ) <= 0 ) ) {    //FixIn: 6.0.1.2
+                    time_return_value[0] = false;  
+                    time_return_value[1]=time_return_value[1].replace("check_in_time",""); 
+                    time_return_value[1]=time_return_value[1].replace("check_out_time",""); 
+                    time_return_value[1]=time_return_value[1].replace("timespartly","");                                
+                    time_return_value[1]=time_return_value[1].replace("date_available","");                     
                 }
                 return time_return_value;
 
             } else { 
 
-                if ( ( is_booking_used_check_in_out_time === true ) && ( is_exist_check_in_out_for_parent_resource > 0 ) ) { // Check  Check  In / Out dates for the parent resources.
-
+//                if ( ( is_booking_used_check_in_out_time === true ) && ( is_exist_check_in_out_for_parent_resource > 0 ) ) { // Check  Check  In / Out dates for the parent resources.
+                  if ( 
+                          ( is_booking_used_check_in_out_time === true ) 
+                       && (  ( is_exist_check_in_out_for_parent_resource > 0 ) || ( (reserved_days_count - both_check_in_out_num ) <= 0 )  )
+                    ) { // Check  Check  In / Out dates for the parent resources. // reserved_days_count - number of available items,  including check in/out dates ||  both_check_in_out_num number of items with both  check in/out   //FixIn: 6.0.1.12
+                
                     // Unavailable 
                     if ( (reserved_days_count - both_check_in_out_num ) <= 0 ) {
                         // Check  Pending or Approved by the Check In date
@@ -556,7 +582,7 @@ function mybooking_submit( submit_form , bk_type, wpdev_active_locale){
             }
 
 
-            // Recheck for max num. available visitors selection
+            // Recheck for max num. available visitors selection          
             if ( element.name == ('visitors'+bk_type) )
                 if( typeof( is_max_visitors_selection_more_than_available ) == 'function' )
                     if ( is_max_visitors_selection_more_than_available( bk_type, inp_value, element ) )
@@ -642,30 +668,71 @@ function mybooking_submit( submit_form , bk_type, wpdev_active_locale){
     }  // End Fields Loop
 
 
-    // Recheck Times
-    if( typeof( is_this_time_selections_not_available ) == 'function' )
-        if ( is_this_time_selections_not_available( bk_type, submit_form.elements ) )
-            return;
+    //FixIn:6.1.1.3
+    if( typeof( is_this_time_selections_not_available ) == 'function' ) {
+        
+        if ( document.getElementById('date_booking' + bk_type).value == '' )  {         // Primary calendar not selected.    
 
+            if ( document.getElementById('additional_calendars' + bk_type ) != null ) { // Checking additional calendars.
 
-    if (document.getElementById('calendar_booking'+bk_type) != null ) {
-        var inst = jQuery.datepick._getInst(document.getElementById('calendar_booking'+bk_type));
-        if (bk_days_selection_mode == 'dynamic') 
-            if (bk_2clicks_mode_days_min != undefined) {
-                if(typeof( check_conditions_for_range_days_selection_for_check_in ) == 'function') { 
-                    var first_date  = get_first_day_of_selection(document.getElementById('date_booking' + bk_type).value);                  
-                    var date_sections = first_date.split("."); 
-                    var selceted_first_day = new Date;       
-                    selceted_first_day.setFullYear( parseInt(date_sections[2]-0) ,parseInt(date_sections[1]-1), parseInt(date_sections[0]-0) );
-                    check_conditions_for_range_days_selection_for_check_in(selceted_first_day, bk_type); 
-                } 
-                if (inst.dates.length < bk_2clicks_mode_days_min ) {
-                    alert(message_verif_selectdts);
-                    return;
+                var id_additional_str = document.getElementById('additional_calendars' + bk_type).value; //Loop have to be here based on , sign
+                var id_additional_arr = id_additional_str.split(',');
+                var is_times_dates_ok = false;
+                for ( var ia=0;ia<id_additional_arr.length;ia++ ) {
+                    if (
+                            ( document.getElementById('date_booking' + id_additional_arr[ia] ).value != '' ) 
+                         && ( ! is_this_time_selections_not_available( id_additional_arr[ia], submit_form.elements ) )
+                       ){
+                        is_times_dates_ok = true;
+                    }
+                }
+                if ( ! is_times_dates_ok ) return;
+            }
+        } else {                                                                        //Primary calendar selected.
+            if ( is_this_time_selections_not_available( bk_type, submit_form.elements ) )
+                return;            
+        }
+    }
+    if (bk_days_selection_mode == 'dynamic') {
+        // Get ID of calendars,  where selected dates.                              //FixIn:6.1.1.5
+        var selected_dates_cal_id = [];
+        if ( document.getElementById('date_booking' + bk_type).value != '' )  
+            selected_dates_cal_id[selected_dates_cal_id.length] = bk_type;    
+        if ( document.getElementById('additional_calendars' + bk_type) != null ) {  // Checking according additional calendars.
+
+            var id_additional_str = document.getElementById('additional_calendars' + bk_type).value; //Loop have to be here based on , sign
+            var id_additional_arr = id_additional_str.split(',');
+            var is_all_additional_days_unselected = true;
+            for (var ia=0;ia<id_additional_arr.length;ia++) {
+                if (document.getElementById('date_booking' + id_additional_arr[ia] ).value != '' ) {
+                    selected_dates_cal_id[selected_dates_cal_id.length] = id_additional_arr[ia];
                 }
             }
-    }
+        }     
+        for( var ci = 0; ci < selected_dates_cal_id.length; ci++) {
+            var abk_type = selected_dates_cal_id[selected_dates_cal_id.length]
+            if (document.getElementById('calendar_booking'+abk_type) != null ) {
+                var inst = jQuery.datepick._getInst(document.getElementById('calendar_booking'+abk_type));
 
+                    if (bk_2clicks_mode_days_min != undefined) {
+                        if(typeof( check_conditions_for_range_days_selection_for_check_in ) == 'function') { 
+                            var first_date  = get_first_day_of_selection(document.getElementById('date_booking' + abk_type).value);                  
+                            var date_sections = first_date.split("."); 
+                            var selceted_first_day = new Date;       
+                            selceted_first_day.setFullYear( parseInt(date_sections[2]-0) ,parseInt(date_sections[1]-1), parseInt(date_sections[0]-0) );
+                            check_conditions_for_range_days_selection_for_check_in(selceted_first_day, abk_type); 
+                        } 
+                        if (inst.dates.length < bk_2clicks_mode_days_min ) {
+
+                            showMessageUnderElement( '#date_booking' + abk_type, message_verif_selectdts, '');                             
+                            makeScroll('#calendar_booking' + abk_type);            // Scroll to the calendar    
+                            return;
+                        }
+                    }
+            }
+        }
+    }
+    
     // Cpatch  verify
     var captcha = document.getElementById('wpdev_captcha_challenge_' + bk_type);
 
@@ -698,8 +765,13 @@ function form_submit_send( bk_type, formdata, captcha_chalange, user_captcha ,wp
         if (is_send_emeils) is_send_emeils = 1;
         else                is_send_emeils = 0;
     }
-    send_ajax_submit(bk_type,formdata,captcha_chalange,user_captcha,is_send_emeils,my_booking_hash,my_booking_form,wpdev_active_locale   ); // Ajax sending request
-
+    if ( document.getElementById('date_booking' + bk_type).value != '' )        //FixIn:6.1.1.3
+        send_ajax_submit(bk_type,formdata,captcha_chalange,user_captcha,is_send_emeils,my_booking_hash,my_booking_form,wpdev_active_locale   ); // Ajax sending request
+    else {
+        jQuery('#booking_form_div' + bk_type ).hide();
+        jQuery('#submiting' + bk_type ).hide();        
+    }
+        
     var formdata_additional_arr;
     var formdata_additional;
     var my_form_field;

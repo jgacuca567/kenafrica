@@ -320,9 +320,16 @@ function wpdev_bk_timeline_booking_row( $current_resource_id, $start_date, $book
                                 $tm = floor(24 / $time_selles_num);
                                 $tt = 0 ;
                                 $my_bkid_title = '';
+                                
+                                if ( ! empty( $previous_booking_id ) )                          //FixIn:6.1.1.10    
+                                    $is_trash = $bookings[$previous_booking_id]->trash;
+                                else 
+                                    $is_trash = false;
+                                
                                 echo '<div class="'.write_bk_id_css_classes('cell_bk_id_',$previous_booking_id).' time_section_in_day timeslots_in_this_day' . $time_selles_num .
                                                  ' time_hour'.($tt*$tm).'  time_in_days_num_'.$view_days_num.' '.
                                                  ( $is_bk ?'time_booked_in_day':'' ).' '.( $is_approved ?'approved':'' ).
+                                                 ( $is_trash? ' booking_trash ': '') .                 //FixIn:6.1.1.10    
                                                ' ">'.
                                 (($is_bk)?($my_bkid_title):'').
                                 '</div>';
@@ -392,9 +399,15 @@ function wpdev_bk_timeline_booking_row( $current_resource_id, $start_date, $book
                                         $is_past_time = ' past_time ';
                                 }
 
+                                if ( $is_bk )                                   //FixIn:6.1.1.10    
+                                    $is_trash = $bookings[ $bk_id ]->trash;
+                                else 
+                                    $is_trash = false;
+                                
                                 echo '<div class="'.write_bk_id_css_classes('cell_bk_id_',$previous_booking_id).' time_section_in_day timeslots_in_this_day' . $time_selles_num .
                                                  ' time_hour'.($tt*$tm).'  time_in_days_num_'.$view_days_num.' '.
                                                  ( $is_bk ? ' time_booked_in_day' . $is_past_time : '' ).' '.( $is_approved ?'approved':'' ).
+                                                 ( $is_trash? ' booking_trash ': '') .                 //FixIn:6.1.1.10    
                                                ' ">'.
                                 (($is_bk)?($my_bkid_title):'').
                                 '</div>';
@@ -402,10 +415,11 @@ function wpdev_bk_timeline_booking_row( $current_resource_id, $start_date, $book
 
                            } else { // Just  time borders
                                 $tm = floor(24 / $time_selles_num);
+                                                                
                                 for ($tt = 0; $tt < $time_selles_num; $tt++) {
                                     echo '<div class="time_section_in_day timeslots_in_this_day' . $time_selles_num .
                                                      ' time_hour'.($tt*$tm).'  time_in_days_num_'.$view_days_num.' '.
-                                                     ( $is_bk ?'time_booked_in_day':'' ).' '.( $is_approved ?'approved':'' ).
+                                                     ( $is_bk ?'time_booked_in_day':'' ).' '.( $is_approved ?'approved':'' ).                                                   
                                                    ' ">'.
                                     (($is_bk)?($my_bkid_title):'').
                                     '</div>';
@@ -541,7 +555,8 @@ function wpdev_bk_timeline_header_row( $start_date = false ) {
                     if ($is_show_resources_matrix) {
                         if ($view_days_num==1) {
                           $day_title =  wpdevbk_get_date_in_correct_format( $yy.'-'.$mm.'-'.$dd.' 00:00:00');
-                          $day_title  = $day_week . '<br/>' .  $day_title[0];
+                          //$day_title  = $day_week . '<br/>' .  $day_title[0];
+                          $day_title  =   '(' . $day_week . ') &nbsp; ' . $day_title[0] ;                           //FixIn:6.0.1
                         }
                         if ($view_days_num==7) {
                           $day_title =  wpdevbk_get_date_in_correct_format( $yy.'-'.$mm.'-'.$dd.' 00:00:00');  
@@ -988,7 +1003,14 @@ function get_booking_info_4_tooltip( $bk_id, $bookings, $booking_types, $title_i
    
    $title .= '<a class=\'button button-secondary approve_bk_link '.($is_approved?'hidden_items':'').'\' style=\'margin-right:5px;\' href=\'javascript:;\' onclick=\'javascript:approve_unapprove_booking('. $bk_id.',1, '. $user_bk_id .', &quot;'. getBookingLocale() .'&quot; , 1   );\' ><i class=\'icon-ok-circle\'></i></a>';   
    $title .= '<a class=\'button button-secondary pending_bk_link '.($is_approved?'':'hidden_items').'\' style=\'margin-right:5px;\' href=\'javascript:;\' onclick=\'javascript:approve_unapprove_booking('. $bk_id.',0, '. $user_bk_id .', &quot;'. getBookingLocale() .'&quot; , 1   );\' ><i class=\'icon-ban-circle\'></i></a>';
-   $title .= '<a class=\'button button-secondary\' style=\'margin-right:5px;\' href=\'javascript:;\' onclick=\'javascript:delete_booking('. $bk_id.', '. $user_bk_id .', &quot;'. getBookingLocale() .'&quot; , 1   );\' ><i class=\'icon-trash\'></i></a>';
+   //FixIn: 6.1.1.10 
+   $is_trash = $bookings[$bk_id]->trash;
+   //$title .= '<a class=\'button button-secondary\' style=\'margin-right:5px;\' href=\'javascript:;\' onclick=\'javascript:delete_booking('. $bk_id.', '. $user_bk_id .', &quot;'. getBookingLocale() .'&quot; , 1   );\' ><i class=\'icon-trash\'></i></a>';
+   $title .= '<a class=\'button button-secondary trash_bk_link'.(($is_trash)?' hidden_items ':'').'\' style=\'margin-right:5px;\' href=\'javascript:;\' onclick=\'javascript:trash__restore_booking(1,'. $bk_id.', '. $user_bk_id .', &quot;'. getBookingLocale() .'&quot; , 1   );\' ><i class=\'icon-trash\'></i></a>';
+   $title .= '<a class=\'button button-secondary restore_bk_link'.((!$is_trash)?' hidden_items ':'').'\' style=\'margin-right:5px;\' href=\'javascript:;\' onclick=\'javascript:trash__restore_booking(0,'. $bk_id.', '. $user_bk_id .', &quot;'. getBookingLocale() .'&quot; , 1   );\' ><i class=\'icon-repeat\'></i></a>';
+   $title .= '<a class=\'button button-secondary delete_bk_link'.((!$is_trash)?' hidden_items ':'').'\' style=\'margin-right:5px;\' href=\'javascript:;\' onclick=\'javascript:delete_booking('. $bk_id.', '. $user_bk_id .', &quot;'. getBookingLocale() .'&quot; , 1   );\' ><i class=\'icon-remove\'></i></a>';
+   //End FixIn: 6.1.1.10 
+   
     }   
    $title .= '</div>';
 
@@ -998,4 +1020,3 @@ function get_booking_info_4_tooltip( $bk_id, $bookings, $booking_types, $title_i
 
    return( array($title_in_day, $title, $title_hint, $is_approved) );
 }        
-?>

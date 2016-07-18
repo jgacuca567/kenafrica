@@ -10,15 +10,28 @@ class BookingWidget extends WP_Widget {
     /** @see WP_Widget::widget */
     function widget($args, $instance) {
         extract( $args );
-        $booking_widget_title = apply_filters('widget_title', $instance['booking_widget_title']);
+        
+        $booking_widget_title = __('Booking Calendar', 'booking');              //FixIn: 6.1.1.11
+        $booking_widget_show = 'booking_form';
+        $booking_widget_type = 1;
+        $booking_widget_calendar_count = 1;
+        $booking_widget_last_field = '';
+        
+        
+        if ( isset( $instance['booking_widget_title'] ) )                       //FixIn: 6.1.1.11
+            $booking_widget_title = apply_filters('widget_title', $instance['booking_widget_title']);
         if (function_exists('icl_translate')) 
             $booking_widget_title = icl_translate( 'wpml_custom', 'wpbc_custom_widget_booking_title1', $booking_widget_title);
         
-        $booking_widget_show = $instance['booking_widget_show'];
-        $booking_widget_type = $instance['booking_widget_type'];
+        if ( isset( $instance['booking_widget_show'] ) )                        //FixIn: 6.1.1.11
+            $booking_widget_show = $instance['booking_widget_show'];
+        if ( isset( $instance['booking_widget_type'] ) )                        //FixIn: 6.1.1.11
+            $booking_widget_type = $instance['booking_widget_type'];
         if (empty($booking_widget_type)) $booking_widget_type=1;
-        $booking_widget_calendar_count = $instance['booking_widget_calendar_count'];
-        $booking_widget_last_field = $instance['booking_widget_last_field'];
+        if ( isset( $instance['booking_widget_calendar_count'] ) )              //FixIn: 6.1.1.11
+            $booking_widget_calendar_count = $instance['booking_widget_calendar_count'];
+        if ( isset( $instance['booking_widget_last_field'] ) )                  //FixIn: 6.1.1.11
+            $booking_widget_last_field = $instance['booking_widget_last_field'];
 
 
         echo $before_widget;
@@ -37,6 +50,7 @@ class BookingWidget extends WP_Widget {
             make_bk_action('wpdevbk_add_form', $booking_widget_type , $booking_widget_calendar_count, true, $my_booking_form_name );
             
         } else {
+            echo "<div id='calendar_booking_unselectable" . $booking_widget_type . "'></div>";          //FixIn: 6.1.1.13
             do_action('wpdev_bk_add_calendar', $booking_widget_type , $booking_widget_calendar_count);
         }
 
@@ -154,5 +168,3 @@ class BookingWidget extends WP_Widget {
 
 // register widget - New, since WordPress - 2.8
 add_action('widgets_init', create_function('', 'return register_widget("BookingWidget");'));
-
-?>

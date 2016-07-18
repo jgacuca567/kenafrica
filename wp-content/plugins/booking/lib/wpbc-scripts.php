@@ -33,11 +33,12 @@ function wpbc_define_js_vars( $where_to_load = 'both' ) {
     wp_localize_script('wpbc-global-vars', 'wpbc_global1', array(
           'wpbc_ajaxurl'         => admin_url( 'admin-ajax.php' )
         , 'wpdev_bk_plugin_url'  => plugins_url( '' , WPDEV_BK_FILE )                                                     
-        , 'wpdev_bk_today'       => 'new Array( parseInt('. intval(date_i18n('Y')) 
-                                                .'), parseInt('. intval(date_i18n('m')) 
-                                                .'), parseInt('. intval(date_i18n('d'))
-                                                .'), parseInt('. intval(date_i18n('H'))
-                                                .'), parseInt('. intval(date_i18n('i')).') )'
+        , 'wpdev_bk_today'       => '['     . intval(date_i18n('Y'))            //FixIn:6.1
+                                        .','. intval(date_i18n('m')) 
+                                        .','. intval(date_i18n('d'))
+                                        .','. intval(date_i18n('H'))
+                                        .','. intval(date_i18n('i'))
+                                    .']'
         , 'visible_booking_id_on_page' => '[]'
         , 'booking_max_monthes_in_calendar' => get_bk_option( 'booking_max_monthes_in_calendar')
         , 'user_unavilable_days' => '['. ( ( get_bk_option( 'booking_unavailable_day0') == 'On' ) ? '0,' : '' )
@@ -57,7 +58,7 @@ function wpbc_define_js_vars( $where_to_load = 'both' ) {
         , 'message_verif_requred_for_check_box' => esc_js(__('This checkbox must be checked' ,'booking'))
         , 'message_verif_requred_for_radio_box' => esc_js(__('At least one option must be selected' ,'booking'))
         , 'message_verif_emeil' => esc_js(__('Incorrect email field' ,'booking'))
-        , 'message_verif_same_emeil' => esc_js(__('Your emails do not the same' ,'booking'))          // Email Addresses Do Not Match
+        , 'message_verif_same_emeil' => esc_js(__('Your emails do not match' ,'booking'))          // Email Addresses Do Not Match
         , 'message_verif_selectdts' =>  esc_js(__('Please, select booking date(s) at Calendar.' ,'booking'))
         , 'parent_booking_resources' => '[]'
         , 'new_booking_title' => esc_js( apply_bk_filter('wpdev_check_for_active_language', get_bk_option( 'booking_title_after_reservation' ) ) )
