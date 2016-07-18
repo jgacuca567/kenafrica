@@ -8,3 +8,6 @@
 6. Install Google Analytics on Site
 7. Add Google ReCaptcha to Website
 8. Add Social Media to Website
+9. Add Coffee as an image
+10. Add Dashiki Wrap Skirts to the site.
+11. Watch Lynda Wordpress WooCommerce
