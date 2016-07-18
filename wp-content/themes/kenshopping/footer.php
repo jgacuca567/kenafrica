@@ -6,8 +6,9 @@
  * @package kenshopping
  */
 ?>
-<footer class="navbar navbar-default navbar-fixed-bottom">
+<footer class="navbar navbar-default navbar-fixed-bottom text-center">
   2015 - 2016 Kenafrica
-  <i class="fa fa-copyright"></i> DOSBRANDING <?php echo the_date(); ?>
+  <br>
+    <i class="fa fa-copyright"></i> Designed by <a href="https://dosbranding.com">DOSBRANDING</a> <?php echo the_date(); ?>
 </footer>
 <?php wp_footer();?>
