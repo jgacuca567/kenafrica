@@ -11,3 +11,4 @@
 9. Add Coffee as an image
 10. Add Dashiki Wrap Skirts to the site.
 11. Watch Lynda Wordpress WooCommerce
+12. Add the MailChimp API for the ReadMe Key
