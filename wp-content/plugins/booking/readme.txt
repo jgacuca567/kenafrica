@@ -4,7 +4,7 @@ Donate link: http://wpbookingcalendar.com/buy/
 Tags: booking calendar, availability calendar, event calendar, booking system, booking form, reservation, events, appointment, availability, schedule, calendar, contact form
 Requires at least: 3.3
 Tested up to: 4.5
-Stable tag: 6.2
+Stable tag: 6.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -152,6 +152,14 @@ If you have any further questions, please fill free to <a href="mailto:support@w
 11. **Calendar Skins**. Select calendar skin for better fitting to your web-site design.
 
 == Changelog ==
+= 6.2.1 =
+- Features and issue fixings in All versions:
+ * **Fix** Improve security checking during saving settings and searching in booking listing pages.
+- Personal / Business Small / Business Medium / Business Large / MultiUser versions features:
+ * **Fix** showing of error message instead of stop working, during submitting new booking, if this booking possible only  in different booking resources for different days,  but system have not allow this.  This issue exist  in some situations for booking resources with  specific capacity, when  all payment options are deactivated. (fix:6.2.1.1) *(Business Large, MultiUser)*
+ * **Fix** issue of incorrect  working with  required radio-button options. (fix:6.2.1.2)  *(Personal, Business Small/Medium/Large, MultiUser)*
+ * **Fix** issue of not calculating "LAST" option in "Valuation days" if previously used "Together" term.  (fix:6.2.1.3) Description: the number of selected days in calendar = to  the number of days in settings "Together",  then Booking Calendar stop  any other interaction of checking cost  and just  return  cost  depend from  settings in this "Together" term. Thats why  the "LAST" row cost  settings was ignored. *(Business Medium/Large, MultiUser)*
+
 = 6.2 =
 - Features and issue fixings in All versions:
  * **New** Moving bookings to trash instead of complete deleting.
@@ -239,7 +247,7 @@ If you have any further questions, please fill free to <a href="mailto:support@w
  * **New** filer at Booking Listing page. Showing bookings that **"check in" or "check out" during today**. 
  * **Improvement** Replaced "wpdev-booking" language locale to "booking". Prepare for ability to use Language Packs functionality.
  * **Translation** New Portugal translation [100% Completed] by Pedro Morgado  
- * **Translation** New Ukrainian translation [100% Completed] by Ivanka from [Coupofy](http://www.coupofy.com/)
+ * **Translation** New Ukrainian translation [100% Completed] by Ivanka
  * **Translation** Updated French translation [100% Completed] by Charles Petitfour.
  * Fix email format issue during sending emails. From this format '"\"John Smith\"" <email@some-server.com>' to this: 'John Smith <email@some-server.com>'
  * Fix language file locale for the Finnish language. Renamed suffix of translation file from fi_Fl to fi.

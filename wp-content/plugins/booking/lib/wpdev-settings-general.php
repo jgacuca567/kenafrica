@@ -95,7 +95,14 @@ function wpdev_bk_settings_general() {
     $is_can = apply_bk_filter('multiuser_is_user_can_be_here', true, 'only_super_admin');
     if ($is_can===false) return;
 
+    //FixIn:6.2.1.4
+    $submit_form = 'post_settings_general';
+    if ( isset( $_POST['is_form_sbmitted_'. $submit_form ] ) ) {
+           check_admin_referer( 'wpbc_settings_page_'.$submit_form  );
+    }
+    //FixIn:6.2.1.4 - end
 
+    
     if ( isset( $_POST['start_day_weeek'] ) ) {
         $booking_skin  = $_POST['booking_skin'];
 
@@ -368,6 +375,13 @@ function wpdev_bk_settings_general() {
     <div  class="clear" style="height:10px;"></div>
     <div class="wpdevbk-not-now">
     <form  name="post_option" action="" method="post" id="post_option" class="form-horizontal">
+        <?php 
+            //FixIn:6.2.1.4
+            $submit_form = 'post_settings_general';
+            ?><input type="hidden" name="is_form_sbmitted_<?php echo $submit_form; ?>" id="is_form_sbmitted_<?php echo $submit_form; ?>" value="1" /><?php 
+            wp_nonce_field( 'wpbc_settings_page_' . $submit_form );  
+            //FixIn:6.2.1.4 - end
+        ?>
 
         <div class="booking_settings_row"  style="width:64%; float:left;margin-right:1%;">
             <?php /** ?>
@@ -1490,11 +1504,26 @@ function wpdev_bk_settings_legend_section(){
 
 
 function wpdev_bk_settings_form_labels(){ 
+    
+    //FixIn:6.2.1.4
+    $submit_form = 'post_settings_fields';
+    if ( isset( $_POST['is_form_sbmitted_'. $submit_form ] ) ) {
+           check_admin_referer( 'wpbc_settings_page_'.$submit_form  );
+    }
+    //FixIn:6.2.1.4 - end
+    
     ?>
     <div class="clear" style="height:0px;"></div>
     <div id="ajax_working"></div>
     <div id="poststuff0" class="metabox-holder">
         <form  name="post_settings_form_fields" action="" method="post" id="post_settings_form_fields" class="form-horizontal">
+            <?php 
+                //FixIn:6.2.1.4
+                $submit_form = 'post_settings_fields';
+                ?><input type="hidden" name="is_form_sbmitted_<?php echo $submit_form; ?>" id="is_form_sbmitted_<?php echo $submit_form; ?>" value="1" /><?php 
+                wp_nonce_field( 'wpbc_settings_page_' . $submit_form );  
+                //FixIn:6.2.1.4 - end
+            ?>
 
           <div id="visibility_container_form_fields" class="visibility_container wpdevbk wpbc_settings_form_fields_free" style="display:block;">
             <div class='meta-box'>
@@ -1808,6 +1837,13 @@ function wpdev_bk_settings_form_labels(){
 // Emails Settings
 function wpbc_settings_emails(){
 
+    //FixIn:6.2.1.4
+    $submit_form = 'post_settings_email_templates';
+    if ( isset( $_POST['is_form_sbmitted_'. $submit_form ] ) ) {
+           check_admin_referer( 'wpbc_settings_page_'.$submit_form  );
+    }
+    //FixIn:6.2.1.4 - end
+    
      if ( isset( $_POST['email_reservation_adress'] ) ) {
 
          $email_reservation_adress      = htmlspecialchars( str_replace('\"','"',$_POST['email_reservation_adress']));
@@ -1979,7 +2015,13 @@ function wpbc_settings_emails(){
     <div id="ajax_working"></div>
     <div id="poststuff0" class="metabox-holder">
         <form  name="post_settings_email_templates" action="" method="post" id="post_settings_email_templates" >
-
+            <?php 
+                //FixIn:6.2.1.4
+                $submit_form = 'post_settings_email_templates';
+                ?><input type="hidden" name="is_form_sbmitted_<?php echo $submit_form; ?>" id="is_form_sbmitted_<?php echo $submit_form; ?>" value="1" /><?php 
+                wp_nonce_field( 'wpbc_settings_page_' . $submit_form );  
+                //FixIn:6.2.1.4 - end
+            ?>
             <div id="visibility_container_email_new_to_admin" class="visibility_container" style="display:block;">
 
                 <div class='meta-box'> <div <?php $my_close_open_win_id = 'bk_settings_emails_to_admin'; ?>  id="<?php echo $my_close_open_win_id; ?>" class="postbox <?php if ( '1' == get_user_option( 'booking_win_' . $my_close_open_win_id ) ) echo 'closed'; ?>" > <div title="<?php _e('Click to toggle' ,'booking'); ?>" class="handlediv"  onclick="javascript:verify_window_opening(<?php echo get_bk_current_user_id(); ?>, '<?php echo $my_close_open_win_id; ?>');" ><br></div>

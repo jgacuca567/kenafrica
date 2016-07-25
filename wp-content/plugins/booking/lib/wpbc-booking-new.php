@@ -57,29 +57,32 @@ function wpbc_check_CAPTCHA( $the_answer_from_respondent, $prefix, $bktype ) {
 
 // Customization  for the integration  of Mail Chimp Subscription.
 function wpbc_integrate_MailChimp($formdata , $bktype) {
-    /*    
+
+return false;   // Exit
+
     // Start Mail Chimp Customization
     $booking_form_show = get_form_content ($formdata , $bktype );
-    if ( ( isset ($booking_form_show['subscribe_me'] )) && ( $booking_form_show['subscribe_me'] == 'yes') ) {
+    
+    if ( ( isset ($booking_form_show['subscribe_me'] )) && ( $booking_form_show['subscribe_me'] == 'yes') ) {   // In booking form  at the Booking > Settings > Fields page you need to  have this:      <p>[checkbox subscribe_me ""] Subscribe Me</p>
 
-        if (file_exists(WPDEV_BK_PLUGIN_DIR. '/lib/MailChimp.class.php')) { // Include MailChimp class (You can download it from  here https://github.com/drewm/mailchimp-api/ )
-            require_once(WPDEV_BK_PLUGIN_DIR. '/lib/MailChimp.class.php' ); 
+        if (file_exists(WPDEV_BK_PLUGIN_DIR. '/lib/MailChimp.php')) {           // Include MailChimp class (You can download (API v2) !!! from  here https://github.com/drewm/mailchimp-api/tree/api-v2
+            require_once( WPDEV_BK_PLUGIN_DIR. '/lib/MailChimp.php' ); 
 
-            $MailChimp = new MailChimp('key-my');                          // You are need to specify here YOUR KEY !!!!
+            $MailChimp = new MailChimp('key-my');                               // You are need to specify here YOUR KEY !!!!
+            $list_id = '3344044af8';                                            // Specify List ID here 
 
             $result = $MailChimp->call('lists/subscribe', array(
-                            'id'                => 'id' . $booking_id ,          
-                            'email'             => array('email'=>$booking_form_show['email']),
-                            'merge_vars'        => array('FNAME'=>$booking_form_show['name'], 'LNAME'=>$booking_form_show['secondname']),
-                            'double_optin'      => false,
-                            'update_existing'   => true,
-                            'replace_interests' => false,
-                            'send_welcome'      => false,
-                        ));
-            // print_r($result);
+                                        'id'                => $list_id, //'id' . $booking_id ,          
+                                        'email'             => array('email'=>$booking_form_show['email']),
+                                        'merge_vars'        => array('FNAME'=>$booking_form_show['name'], 'LNAME'=>$booking_form_show['secondname']),
+                                        'double_optin'      => false,
+                                        'update_existing'   => true,
+                                        'replace_interests' => false,
+                                        'send_welcome'      => false,
+                                    ));
+//debuge($result);   
         }
     } // End Mail Chimp Customization
-    /**/
 }
 
 
@@ -349,7 +352,7 @@ function wpbc_add_new_booking( $params , $is_edit_booking = false ){
         else
             do_action('wpbc_update_cost_of_new_booking',$booking_id, $bktype, $str_dates__dd_mm_yyyy, array($start_time, $end_time ) ,$formdata );
 
-        // wpbc_integrate_MailChimp($formdata, $bktype);
+        wpbc_integrate_MailChimp( $formdata, $bktype );
 
         if (
              ( ( $auto_approve_new_bookings_is_active == 'On') && ($is_send_emeils != 0 ) )

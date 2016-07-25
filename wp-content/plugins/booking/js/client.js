@@ -568,7 +568,8 @@ function mybooking_submit( submit_form , bk_type, wpdev_active_locale){
                 if (element.checked) 
                     inp_value = element.value; 
                 else 
-                    continue;
+                    inp_value = '';                                             //FixIn:6.2.1.2
+                    
 
             } else {
                 inp_value = element.value;
@@ -611,7 +612,7 @@ function mybooking_submit( submit_form , bk_type, wpdev_active_locale){
                         return;                            
                     }
                 }
-                if  ((element.type !='checkbox') && ( inp_value === '')) {
+                if  ((element.type !='checkbox') && (element.type !='radio') && ( inp_value === '')) {       //FixIn:6.2.1.2
                     showErrorMessage( element , message_verif_requred);
                     return;
                 }

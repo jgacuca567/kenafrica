@@ -26,10 +26,9 @@ if (!defined('WP_BK_IS_SEND_EMAILS_ON_COST_CHANGE'))    define('WP_BK_IS_SEND_EM
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //   SYSTEM  CONSTANTS                        //////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-if (!defined('WP_BK_VERSION_NUM'))      define('WP_BK_VERSION_NUM',     '6.2' );
-if (!defined('WP_BK_MINOR_UPDATE'))     define('WP_BK_MINOR_UPDATE',    ! true );    
+if (!defined('WP_BK_VERSION_NUM'))      define('WP_BK_VERSION_NUM',     '6.2.1' );
+if (!defined('WP_BK_MINOR_UPDATE'))     define('WP_BK_MINOR_UPDATE',    true );    
 if (!defined('IS_USE_WPDEV_BK_CACHE'))  define('IS_USE_WPDEV_BK_CACHE', true );    
 if (!defined('WP_BK_DEBUG_MODE'))       define('WP_BK_DEBUG_MODE',      false );
 if (!defined('WP_BK_MIN'))              define('WP_BK_MIN',             false );//TODO: Finish  with  this contstant, right now its not working correctly with TRUE status
 if (!defined('WP_BK_RESPONSE'))         define('WP_BK_RESPONSE',        false );
-?>

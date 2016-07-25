@@ -2375,6 +2375,61 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
         return $clean_formdata;
     }
 
+    
+    
+    /** Check  paramter  if it number or comma separated list  of numbers
+     * 
+     * @global type $wpdb
+     * @param string $value
+     * @return string
+     */
+    function wpbc_clean_digit_or_csd( $value ) {                                //FixIn:6.2.1.4 
+        
+        if ( $value === '' ) return $value;
+        
+        
+        if ( is_array( $value ) ) {
+            foreach ( $value as $key => $check_value ) {
+                $value[ $key ] = wpbc_clean_digit_or_csd( $check_value ); 
+            }
+            return $value;
+        }
+        
+        
+        global $wpdb;
+        
+        $value = str_replace( ';', ',', $value );
+
+        $array_of_nums = explode(',', $value);
+
+        $result = array();
+        foreach ($array_of_nums as $check_element) {
+            $result[] = $wpdb->prepare( "%d", $check_element );
+        }
+        $result = implode(',', $result );
+        return $result;
+    }
+    
+    
+    /** Cehck  about Valid date,  like 2016-07-20 or digit
+     * 
+     * @param string $value
+     * @return string or int
+     */
+    function wpbc_clean_digit_or_date( $value ) {                               //FixIn:6.2.1.4
+    
+        if ( $value === '' ) return $value;
+        
+        if ( preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $value ) ) {
+            
+            return $value;                                                      // Date is valid in format: 2016-07-20
+        } else {
+            return intval( $value );
+        }
+        
+    }
+    
+    
     // check $value for injection here
     function wpbc_clean_parameter( $value ) {
         $value = preg_replace( '/<[^>]*>/', '', $value ); // clean any tags

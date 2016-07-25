@@ -273,6 +273,8 @@ function wpbc_remove_conflict_scripts(){
         if (function_exists('wp_dequeue_style')) {
            wp_dequeue_style( 'toolset-font-awesome-css' );                               // Remove this script sitepress-multilingual-cms/res/css/font-awesome.min.css?ver=3.1.6, which is load by the "sitepress-multilingual-cms"                      
            wp_dequeue_style( 'toolset-font-awesome' );                          //FixIn: 5.4.5.8
+           wp_dequeue_style( 'the7-fontello' );                             //FixIn: 6.1.1.21
+           
         }
     }
     

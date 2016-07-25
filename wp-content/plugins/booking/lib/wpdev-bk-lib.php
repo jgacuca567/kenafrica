@@ -704,15 +704,93 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //  Bookings listing    E N G I N E        ///////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //FixIn:6.2.1.4
+    /** Clean Request Parameters
+     * 
+     */
+    function wpbc_check_request_paramters() {
+    
+//debuge($_REQUEST);
+        $clean_params = array();  
+        
+        $clean_params['wh_booking_id']                  = 'digit_or_csd';
+        $clean_params['wh_booking_type']                = 'digit_or_csd';
+        $clean_params['wh_approved']                    = 'digit_or_csd';       // '0' | '1' | ''
+        
+        $clean_params['wh_booking_date']                = 'digit_or_date';      // number | date 2016-07-20
+        $clean_params['wh_booking_date2']               = 'digit_or_date';      // number | date 2016-07-20
+        $clean_params['wh_booking_datenext']            = 'd';                  // '1' | '2' ....
+        $clean_params['wh_booking_dateprior']           = 'd';                  // '1' | '2' ....
+        $clean_params['wh_booking_datefixeddates']      = 'digit_or_date';      // number | date 2016-07-20
+        $clean_params['wh_booking_date2fixeddates']     = 'digit_or_date';      // number | date 2016-07-20
+        
+        $clean_params['wh_is_new']                      = 'd';                  // '1' | ''
+        
+        $clean_params['wh_modification_date']           = 'digit_or_date';      // number | date 2016-07-20
+        $clean_params['wh_modification_date2']          = 'digit_or_date';      // number | date 2016-07-20
+        $clean_params['wh_modification_dateprior']      = 'd';                  // '1' | '2' ....
+        $clean_params['wh_modification_datefixeddates'] = 'digit_or_date';      // number | date 2016-07-20
+        $clean_params['wh_modification_date2fixeddates']= 'digit_or_date';      // number | date 2016-07-20
+        
+        $clean_params['wh_keyword']                     = 's';                  //string
+        
+        $clean_params['wh_pay_statuscustom']            = 's';                  //string
+        $clean_params['wh_pay_status']                  = 's';                  //string
+        $clean_params['wh_cost']                        = 'd';                  // '1' | ''
+        $clean_params['wh_cost2']                       = 'd';                  // '1' | ''
+        $clean_params['or_sort']                        = 's';                  //string
+        $clean_params['wh_trash']                       = 's';                  //string
 
+        foreach ( $clean_params as $request_key => $clean_type ) {
+            switch ( $clean_type ) {
+                
+                case 'digit_or_date':                                            // digit or comma separated digit
+                    if ( isset( $_REQUEST[ $request_key ] ) ) 
+                        $_REQUEST[ $request_key ] = wpbc_clean_digit_or_date( $_REQUEST[ $request_key ] );        // nums    
+
+                    break;
+                    
+                case 'digit_or_csd':                                            // digit or comma separated digit
+                    if ( isset( $_REQUEST[ $request_key ] ) ) 
+                        $_REQUEST[ $request_key ] = wpbc_clean_digit_or_csd( $_REQUEST[ $request_key ] );        // nums    
+
+                    break;
+
+                case 's':                                                       // string
+                    if ( isset( $_REQUEST[ $request_key ] ) ) 
+                        $_REQUEST[ $request_key ] = wpbc_clean_string_for_db( $_REQUEST[ $request_key ] );
+
+                    break;
+
+                case 'd':                                                       // digit
+                    if ( isset( $_REQUEST[ $request_key ] ) ) 
+                        if ( $_REQUEST[ $request_key ] !== '' )
+                            $_REQUEST[ $request_key ] = intval( $_REQUEST[ $request_key ] );
+
+                    break;
+
+                default:
+                    if ( isset( $_REQUEST[ $request_key ] ) ) {
+                        $_REQUEST[ $request_key ] = intval( $_REQUEST[ $request_key ] );                    
+                    }
+                    break;
+            }
+        }
+        
+//debuge($_REQUEST);
+    }
+    
     // Get Default params or from Request
     function wpdev_get_args_from_request_in_bk_listing(){
 //debuge($_REQUEST);        
+        
         $num_per_page_check = get_bk_option( 'bookings_num_per_page');
         if (empty( $num_per_page_check)) {
             $num_per_page_check = '10';
             update_bk_option( 'bookings_num_per_page', $num_per_page_check );
         }
+                
         $args = array(
 		'wh_booking_type' =>    (isset($_REQUEST['wh_booking_type'])) ? wpbc_clean_parameter( $_REQUEST['wh_booking_type'] ):'',
                 'wh_approved' =>        (isset($_REQUEST['wh_approved'])) ? wpbc_clean_parameter( $_REQUEST['wh_approved'] ):'',
@@ -731,7 +809,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
                 'wh_trash' =>           (isset($_REQUEST['wh_trash'])) ? wpbc_clean_parameter( $_REQUEST['wh_trash'] ):'',         //FixIn:6.1.1.10
                 'page_items_count' =>   (isset($_REQUEST['page_items_count'])) ? wpbc_clean_parameter( $_REQUEST['page_items_count'] ):$num_per_page_check,
 	);
-//debuge($args, $_REQUEST['wh_booking_type'] );
+        
+
+//debuge($args);  
+//$args['wh_booking_id']  = wpbc_clean_digit_or_csd( $args['wh_booking_id'] );
+//$args['wh_keyword']     = wpbc_clean_string_for_db( $args['wh_keyword'] );
+//debuge($args);
+
         return $args;
     }
     
@@ -1153,7 +1237,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
         // Get Number of booking for the pages
         $bookings_count = $wpdb->get_results( $sql_start_count . $sql . $sql_where   );
-
+//debuge( $bookings_count );
         // Get NUMBER of Bookings
         if (count($bookings_count)>0)   $bookings_count = $bookings_count[0]->count ;
         else                            $bookings_count = 0;
@@ -1329,6 +1413,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
     //        B o o k i n g        P A G E s        ////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function wpdevbk_show_booking_page(){ 
+        
+        wpbc_check_request_paramters();                                         //FixIn:6.2.1.4
+        
         wpbc_welcome_panel(); 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Get from SETTINGS (if its not set in request yet) the "tab"  & "view_mode" and set to $_REQUEST        
