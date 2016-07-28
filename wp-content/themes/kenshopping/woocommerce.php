@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: WooCommerce
  * The template for displaying all pages.
  *
  * This is the template that displays all pages by default.
@@ -9,16 +10,15 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package kenshopping
  */
 
 get_header();?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-			<?php woocommerce_content();?>
-		</main><!-- #main -->
-	</div><!-- #primary -->
+<div class="container">
+	<main class="row">
+		<?php woocommerce_content();?>
+	</main><!--#main-->
+</div><!--#container-->
 
 <?php
 get_sidebar();
