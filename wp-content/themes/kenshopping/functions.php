@@ -39,3 +39,6 @@ require get_template_directory() . '/inc/login.php';
 
 /** WooCommerce */
 require get_template_directory() . '/inc/woocom.php';
+
+/** Google Analytics */
+require get_template_directory() . '/inc/googleanalytics.php';
