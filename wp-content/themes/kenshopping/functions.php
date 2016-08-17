@@ -42,3 +42,6 @@ require get_template_directory() . '/inc/woocom.php';
 
 /** Google Analytics */
 require get_template_directory() . '/inc/googleanalytics.php';
+
+/** SVG */
+require get_template_directory() . '/inc/svg.php';
