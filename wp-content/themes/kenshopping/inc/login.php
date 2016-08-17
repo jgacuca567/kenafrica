@@ -1,10 +1,10 @@
 <?php
 /**
  * Custom Login Page for WP-Admin
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: JamesVanWaza @jeezysevenrwd
  * AuthorURI: https://jamesvanwaza.com
- * Email: jgacuca@kenshopping.com
+ * Email: jgacuca@dosbranding.com
  */
 
 function kenshopping_login_logo_url() {
@@ -13,7 +13,7 @@ function kenshopping_login_logo_url() {
 add_filter('login_headerurl', 'kenshopping_login_logo_url');
 
 function kenshopping_login_logo_url_title() {
-	return 'kenshopping Web Design Agency';
+	return 'Kenafrica Arts';
 }
 add_filter('login_headertitle', 'kenshopping_login_logo_url_title');
 
