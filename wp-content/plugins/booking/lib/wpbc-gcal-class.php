@@ -609,14 +609,14 @@ class WPBC_Google_Calendar {
                         <td style="border-right: 0px;border-left: 1px solid #ccc;text-align: center;" <?php echo $alternative_color; ?> >
                             <span class="booking-listing-collumn booking-dates">
                                 <span class="wpbc_mobile_legend"><?php _e('Dates' ,'booking'); ?>:</span>
-                                <div class="booking_dates_full" style="font-size: 11px;padding:3px 5px;" ><?php 
+                                <div class="booking_dates_full" style="font-size: 12px;padding:3px 5px;" ><?php 
                                     $bt['dates'] = explode(', ', $bt['dates']);
                                     foreach ($bt['dates'] as $keyd=>$valued) {
                                         
                                         $valued = explode( '.', $valued );
                                         $valued = wpdevbk_get_date_in_correct_format( sprintf("%04d-%02d-%02d" ,$valued[2], $valued[1], $valued[0] ) ) ;
                                          
-                                        $bt['dates'][$keyd] = '<a href="javascript:void(0)" class="field-booking-date" style="font-weight: normal;">' . $valued[0] . '</a>';
+                                        $bt['dates'][$keyd] = '<a href="javascript:void(0)" class="field-booking-date" style="font-weight: 400;">' . $valued[0] . '</a>';
                                     }
                                     $bt['dates'] = implode('<span class="date_tire" style="font-size: 12px;">, </span>', $bt['dates']);
                                     echo $bt['dates'];//date_i18n('d.m.Y H:i',$bt['start_time'] ), ' - ', date_i18n('d.m.Y H:i',$bt['end_time']); ?>

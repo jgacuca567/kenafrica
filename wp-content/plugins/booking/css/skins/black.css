@@ -48,20 +48,20 @@
 .datepick-inline .calendar-links .datepick-prev a:hover,
 .datepick-inline .calendar-links .datepick-next a:hover{
     color: #595959;
-    font-weight: bold;
+    font-weight: 600;
     text-shadow: 0 0px 0 #ddd;
 }
 /* Month Titles */
 .datepick-inline .datepick-header {
   color: #595959;
-  font-weight: bold;
+  font-weight: 600;
   text-shadow: 0 0px 0 #DDDDDD;  
 }
 /* Week Titles */
 div.datepick-inline .datepick-title-row th{
     border: 1px solid #999;     
     color: #aaa;
-    font-weight: bold;    
+    font-weight: 600;    
     text-transform: uppercase;    
 }
 /* Cell border*/
@@ -96,7 +96,7 @@ div.datepick-inline .datepick-title-row th{
 .block_hints .block_time, 
 .datepick-inline .date_available a{
     color: #ddd;
-    font-weight: bold;
+    font-weight: 600;
     text-shadow: 0 -1px 0 #000;
 }
 /*******************************************************************************/
@@ -126,7 +126,7 @@ td.timespartly.check_in_time.check_out_time.check_out_time_date2approve.check_in
 .block_hints .block_booked a, 
 .datepick-inline .date_approved a{
     color: #d93;
-    font-weight: bold;
+    font-weight: 600;
     text-shadow: 0 -1px 0 #793300;
 }
 /* CHECK IN and CHECK OUT  Borders for the approved cells - the COLOR have to be the SAME as BACKGROUND of this cell*/
@@ -156,7 +156,7 @@ td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_i
 .block_hints .block_pending a, 
 .datepick-inline .date2approve a {
     color: #850;
-    font-weight: bold;
+    font-weight: 600;
     text-shadow: 0 1px 0 #FFAA00;
 }
 /* CHECK IN and CHECK OUT  Borders for the approved cells - the COLOR have to be the SAME as BACKGROUND of this cell*/
@@ -198,7 +198,7 @@ td.timespartly.check_in_time.check_out_time.check_in_time_date_approved.check_ou
 td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_in_time_date2approve span, 
 td.timespartly.check_in_time.check_out_time.check_in_time_date2approve.check_out_time_date_approved span, 
 td.timespartly.check_in_time.check_out_time.check_out_time_date2approve.check_in_time_date_approved span {    
-    font-weight: bold;
+    font-weight: 600;
     text-shadow: none;
     color: #b70;
 }

@@ -52,7 +52,6 @@ class WPBC_Dismiss {
                     line-height: 1;
                     outline: 0 none;
                     cursor: pointer;
-                    font-family: sans-serif;
             }
             .wpbc-panel-dismiss:before {
                     content: ' ';

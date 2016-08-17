@@ -97,13 +97,15 @@ function wpdev_bk_settings_general() {
 
     //FixIn:6.2.1.4
     $submit_form = 'post_settings_general';
+    $is_nonce_cheked = false;
     if ( isset( $_POST['is_form_sbmitted_'. $submit_form ] ) ) {
            check_admin_referer( 'wpbc_settings_page_'.$submit_form  );
+           $is_nonce_cheked = true;                                             //FixIn: 6.2.2.5
     }
     //FixIn:6.2.1.4 - end
 
     
-    if ( isset( $_POST['start_day_weeek'] ) ) {
+    if ( isset( $_POST['start_day_weeek'] ) && $is_nonce_cheked ) {             //FixIn: 6.2.2.5              
         $booking_skin  = $_POST['booking_skin'];
 
 //        $email_reservation_adress      = htmlspecialchars( str_replace('\"','"',$_POST['email_reservation_adress']));
@@ -366,7 +368,7 @@ function wpdev_bk_settings_general() {
     if (empty($type_of_thank_you_message)) $type_of_thank_you_message = 'message';
     
     
-    if ( isset( $_POST['start_day_weeek'] ) ) {
+    if ( isset( $_POST['start_day_weeek'] ) && $is_nonce_cheked  ) {
         $wpbc = wpbookingcalendar();
         if ( isset($wpbc->notice) )
             $wpbc->notice->show_message( __('Settings saved' ,'booking'), 15 );    
@@ -625,7 +627,7 @@ function wpdev_bk_settings_general() {
 
                         <table class="form-table"><tbody>
                             <?php // Is using the BootStrap CSS //////////////////////////////////////////////////////////////////////////
-                            if (isset( $_POST['start_day_weeek'] )) {
+                            if (isset( $_POST['start_day_weeek'] ) && $is_nonce_cheked ) {
                                 if (isset( $_POST['booking_form_is_using_bs_css'] )) $booking_form_is_using_bs_css = 'On';
                                 else                                                 $booking_form_is_using_bs_css = 'Off';
                                 update_bk_option( 'booking_form_is_using_bs_css',    $booking_form_is_using_bs_css );
@@ -667,7 +669,7 @@ function wpdev_bk_settings_general() {
 
 
                                     <?php
-                                    wpdev_bk_settings_legend_section();
+                                    wpdev_bk_settings_legend_section( $is_nonce_cheked );
                                     /** ?>
 
                                     <tr valign="top">
@@ -1032,9 +1034,9 @@ function wpdev_bk_settings_general() {
 
                             <tr valign="top"> <td colspan="2">
                                 <div style="width:100%;">
-                                    <span style="color:#21759B;cursor: pointer;font-weight: bold;"
+                                    <span style="color:#21759B;cursor: pointer;font-weight: 600;"
                                        onclick="javascript: jQuery('#togle_settings_javascriptloading').slideToggle('normal');jQuery('.bk_show_advanced_settings_js').toggle('normal');"
-                                       style="text-decoration: none;font-weight: bold;font-size: 11px;">
+                                       style="text-decoration: none;font-weight: 600;font-size: 12px;">
                                          <span class="bk_show_advanced_settings_js">+ <span style="border-bottom:1px dashed #21759B;"><?php _e('Show advanced settings of JavaScript loading' ,'booking'); ?></span></span>
                                          <span class="bk_show_advanced_settings_js" style="display:none;">- <span style="border-bottom:1px dashed #21759B;"><?php _e('Hide advanced settings of JavaScript loading' ,'booking'); ?></span></span>
 
@@ -1119,9 +1121,9 @@ function wpdev_bk_settings_general() {
 
                             <tr valign="top"> <td colspan="2">
                                 <div style="width:100%;">
-                                    <span style="color:#21759B;cursor: pointer;font-weight: bold;"
+                                    <span style="color:#21759B;cursor: pointer;font-weight: 600;"
                                        onclick="javascript: jQuery('.bk_show_advanced_settings_powered').toggle('normal'); jQuery('#togle_settings_powered').slideToggle('normal');"
-                                       style="text-decoration: none;font-weight: bold;font-size: 11px;">
+                                       style="text-decoration: none;font-weight: 600;font-size: 12px;">
                                          <span class="bk_show_advanced_settings_powered">+ <span style="border-bottom:1px dashed #21759B;"><?php _e('Show settings of powered by notice' ,'booking'); ?></span></span>
                                          <span class="bk_show_advanced_settings_powered" style="display:none;">- <span style="border-bottom:1px dashed #21759B;"><?php _e('Hide settings of powered by notice' ,'booking'); ?></span></span>
                                     </span>
@@ -1353,7 +1355,7 @@ function wpdev_bk_upgrade_window($version) {
                         </script>                           
                 </div>
                 <p style="line-height:25px;text-align:center;padding-top:15px;" class="wpdevbk">                    
-                    <a class="button button-primary" style="font-size: 1.1em;font-weight: bold;height: 2.5em;line-height: 1.1em;padding: 8px 25px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank"><?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?></a>
+                    <a class="button button-primary" style="font-size: 1.1em;font-weight: 600;height: 2.5em;line-height: 1.1em;padding: 8px 25px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank"><?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?></a>
                 </p>    
 
             </div>
@@ -1364,8 +1366,8 @@ function wpdev_bk_upgrade_window($version) {
 }
 
 // Settings for selecting default booking resource
-function wpdev_bk_settings_legend_section(){
-        if (isset($_POST['booking_legend_text_for_item_available'])) {
+function wpdev_bk_settings_legend_section( $is_nonce_cheked = false ){
+        if (isset($_POST['booking_legend_text_for_item_available']) && $is_nonce_cheked ) {
 
             if (isset( $_POST['booking_is_show_legend'] ))      $booking_is_show_legend = 'On';
             else                                                $booking_is_show_legend = 'Off';
@@ -1506,9 +1508,11 @@ function wpdev_bk_settings_legend_section(){
 function wpdev_bk_settings_form_labels(){ 
     
     //FixIn:6.2.1.4
+    $is_nonce_cheked = false;
     $submit_form = 'post_settings_fields';
     if ( isset( $_POST['is_form_sbmitted_'. $submit_form ] ) ) {
            check_admin_referer( 'wpbc_settings_page_'.$submit_form  );
+           $is_nonce_cheked = true;                                             //FixIn: 6.2.2.5
     }
     //FixIn:6.2.1.4 - end
     
@@ -1532,7 +1536,7 @@ function wpdev_bk_settings_form_labels(){
 
 
                         <?php // FIELD # 1 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        if (isset( $_POST['Submit'] )) {
+                        if (isset( $_POST['Submit'] ) && $is_nonce_cheked ) {
 
                             if (isset( $_POST['booking_form_field_active1'] )) $booking_form_field_active1 = 'On';
                             else                                               $booking_form_field_active1 = 'Off';
@@ -1552,7 +1556,7 @@ function wpdev_bk_settings_form_labels(){
                         
                         
                         <div class="control-group">
-                          <label for="name" class="control-label" style="font-weight:bold;"><?php _e('Field Label' ,'booking'); ?> #1:</label>
+                          <label for="name" class="control-label" style="font-weight: 600;"><?php _e('Field Label' ,'booking'); ?> #1:</label>
                           <div class="controls"> 
 
                             <input type="text" class="large-text" 
@@ -1577,7 +1581,7 @@ function wpdev_bk_settings_form_labels(){
                         </div>
 
                         <?php // FIELD # 2 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        if (isset( $_POST['Submit'] )) {
+                        if (isset( $_POST['Submit'] ) && $is_nonce_cheked ) {
 
                             if (isset( $_POST['booking_form_field_active2'] )) $booking_form_field_active2 = 'On';
                             else                                               $booking_form_field_active2 = 'Off';
@@ -1595,7 +1599,7 @@ function wpdev_bk_settings_form_labels(){
 
                         ?>
                         <div class="control-group">
-                          <label for="name" class="control-label" style="font-weight:bold;"><?php _e('Field Label' ,'booking'); ?> #2:</label>
+                          <label for="name" class="control-label" style="font-weight: 600;"><?php _e('Field Label' ,'booking'); ?> #2:</label>
                           <div class="controls"> 
 
                             <input type="text" class="large-text" 
@@ -1620,7 +1624,7 @@ function wpdev_bk_settings_form_labels(){
                         </div>
 
                         <?php // FIELD # 3 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        if (isset( $_POST['Submit'] )) {
+                        if (isset( $_POST['Submit'] ) && $is_nonce_cheked ) {
 
                             //if (isset( $_POST['booking_form_field_active3'] )) $booking_form_field_active3 = 'On';
                             //else                                               $booking_form_field_active3 = 'Off';
@@ -1640,7 +1644,7 @@ function wpdev_bk_settings_form_labels(){
 
                         ?>
                         <div class="control-group">
-                          <label for="name" class="control-label" style="font-weight:bold;"><?php _e('Email Label' ,'booking'); ?>:</label>
+                          <label for="name" class="control-label" style="font-weight: 600;"><?php _e('Email Label' ,'booking'); ?>:</label>
                           <div class="controls"> 
 
                             <input type="text" class="large-text" 
@@ -1665,7 +1669,7 @@ function wpdev_bk_settings_form_labels(){
                         </div>
 
                         <?php // FIELD # 6 - SELECT BOX /////////////////////////////////////////////////////////////////////////////////////////////
-                        if (isset( $_POST['Submit'] )) {
+                        if (isset( $_POST['Submit'] ) && $is_nonce_cheked ) {
 
                             if (isset( $_POST['booking_form_field_active6'] )) $booking_form_field_active6 = 'On';
                             else                                               $booking_form_field_active6 = 'Off';
@@ -1686,7 +1690,7 @@ function wpdev_bk_settings_form_labels(){
                         
                         $show_untill_version_update = '5.4';  $wpbc_settings_element = 'dismiss_new_selectbox_field_free'; if ( ( version_compare(WP_BK_VERSION_NUM, $show_untill_version_update ) < 0 ) && ( '1' != get_user_option( 'booking_win_' . $wpbc_settings_element ) ) ) { ?><div id="<?php echo $wpbc_settings_element; ?>"  class="new-label clearfix-height new-label-settings" style="margin-left: -31px;"><a class="tooltip_bottom" data-original-title="<?php _e('Hide' ,'booking'); ?>" rel="tooltip" href="javascript:void(0)"  onclick="javascript:verify_window_opening(<?php echo get_bk_current_user_id(); ?>, '<?php echo $wpbc_settings_element; ?>');jQuery('#<?php echo $wpbc_settings_element; ?>').hide();" ><img src="<?php echo WPDEV_BK_PLUGIN_URL; ?>/img/label_new_blue.png" style="width:24px; height:24px;"></a></div><?php } /**/ ?> 
                         <div class="control-group">
-                          <label for="booking_form_field_label6" class="control-label" style="font-weight:bold;"><?php _e('Selectbox Label' ,'booking'); ?> :</label>
+                          <label for="booking_form_field_label6" class="control-label" style="font-weight: 600;"><?php _e('Selectbox Label' ,'booking'); ?> :</label>
                           <div class="controls"> 
                             <div style="float:left;">  
                                 <input type="text" class="large-text" 
@@ -1708,7 +1712,7 @@ function wpdev_bk_settings_form_labels(){
                                 
                             </div>    
                             <div style="float:left;margin-top:-23px;">  
-                                <label for="booking_form_field_values6" class="control-label" style="font-weight:bold;"><?php 
+                                <label for="booking_form_field_values6" class="control-label" style="font-weight: 600;"><?php 
                                     _e('Selectbox Values' ,'booking');  ?> :
                                 </label>
                                 <textarea name="booking_form_field_values6" id="booking_form_field_values6" rows="3" ><?php echo $booking_form_field_values6; ?></textarea>
@@ -1722,7 +1726,7 @@ function wpdev_bk_settings_form_labels(){
                         
                         
                         <?php // FIELD # 4 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        if (isset( $_POST['Submit'] )) {
+                        if (isset( $_POST['Submit'] ) && $is_nonce_cheked ) {
 
                             if (isset( $_POST['booking_form_field_active4'] )) $booking_form_field_active4 = 'On';
                             else                                               $booking_form_field_active4 = 'Off';
@@ -1740,7 +1744,7 @@ function wpdev_bk_settings_form_labels(){
 
                         ?>
                         <div class="control-group">
-                          <label for="name" class="control-label" style="font-weight:bold;"><?php _e('Field Label' ,'booking'); ?> #3:</label>
+                          <label for="name" class="control-label" style="font-weight: 600;"><?php _e('Field Label' ,'booking'); ?> #3:</label>
                           <div class="controls"> 
 
                             <input type="text" class="large-text" 
@@ -1765,7 +1769,7 @@ function wpdev_bk_settings_form_labels(){
                         </div>
 
                         <?php // FIELD # 5 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        if (isset( $_POST['Submit'] )) {
+                        if (isset( $_POST['Submit'] ) && $is_nonce_cheked ) {
 
                             if (isset( $_POST['booking_form_field_active5'] )) $booking_form_field_active5 = 'On';
                             else                                               $booking_form_field_active5 = 'Off';
@@ -1783,7 +1787,7 @@ function wpdev_bk_settings_form_labels(){
 
                         ?>
                         <div class="control-group">
-                          <label for="name" class="control-label" style="font-weight:bold;"><?php _e('Textarea Label' ,'booking'); ?>:</label>
+                          <label for="name" class="control-label" style="font-weight: 600;"><?php _e('Textarea Label' ,'booking'); ?>:</label>
                           <div class="controls"> 
 
                             <input type="text" class="large-text" 
@@ -1838,13 +1842,15 @@ function wpdev_bk_settings_form_labels(){
 function wpbc_settings_emails(){
 
     //FixIn:6.2.1.4
+    $is_nonce_cheked = false;
     $submit_form = 'post_settings_email_templates';
     if ( isset( $_POST['is_form_sbmitted_'. $submit_form ] ) ) {
            check_admin_referer( 'wpbc_settings_page_'.$submit_form  );
+           $is_nonce_cheked = true;                                             //FixIn: 6.2.2.5
     }
     //FixIn:6.2.1.4 - end
     
-     if ( isset( $_POST['email_reservation_adress'] ) ) {
+     if ( isset( $_POST['email_reservation_adress'] )  && $is_nonce_cheked ) {
 
          $email_reservation_adress      = htmlspecialchars( str_replace('\"','"',$_POST['email_reservation_adress']));
          $email_reservation_from_adress = htmlspecialchars( str_replace('\"','"',$_POST['email_reservation_from_adress']));
@@ -2376,13 +2382,13 @@ function email_help_section( $skip_shortcodes = array() , $email_example = '') {
         ?>
             <div class="wpbc-help-message" style="margin-top:10px;">
                 <?php if ( class_exists('wpdev_bk_personal') ) { ?>
-                <p class="description" style="font-weight:normal;"><?php printf(__('You can use (in subject and content of email template) any shortcodes, which you used in the booking form. Use the shortcodes in the same way as you used them in the content form at Settings Fields page.' ,'booking'));?></p>
+                <p class="description" style="font-weight: 400;"><?php printf(__('You can use (in subject and content of email template) any shortcodes, which you used in the booking form. Use the shortcodes in the same way as you used them in the content form at Settings Fields page.' ,'booking'));?></p>
                 <br/>
                 <p class="description"><strong><?php printf(__('You can use following shortcodes in content of this template' ,'booking'));?></strong>: </p>
                 <?php } else { ?>
                 <p class="description"><strong><?php printf(__('You can use following shortcodes in content of this template' ,'booking'));?></strong>: </p>
                 <?php }  ?>
-                <p class="description" style="font-weight:normal;"><?php 
+                <p class="description" style="font-weight: 400;"><?php 
                     if ( ! class_exists('wpdev_bk_personal') ) 
                         printf(__('%s - inserting data info about the booking' ,'booking'),'<code>[content]</code>');
                     else

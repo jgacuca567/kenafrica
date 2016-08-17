@@ -22,7 +22,7 @@
     -ms-border-radius: 5px 5px 0 0;
     color: #333;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 600;
     margin: 0;
     padding: 2px 0px;
     text-shadow: 0 1px 1px #F5F5F5;
@@ -61,10 +61,9 @@
     border: 1px solid #FFF;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0 0 2px #888;
-    color: #EEE;
-    font-family: sans-serif;
+    color: #EEE;    
     font-size: 9px;
-    font-weight: bold;
+    font-weight: 600;
     padding: 2px 4px;
     text-shadow: 0 0 3px #333;
     margin: 0 10px;
@@ -90,11 +89,12 @@
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 1px #CCC;
     color: #FFF;
-    font-weight: bold;
-    line-height: 22px;
-    padding: 4px 10px 3px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    padding: 3px 10px 2px;
     text-decoration: none;
-    text-shadow: 0 -1px 0 #CCC;
+    text-shadow: 0 0px 0 #CCC;
     white-space: nowrap;
 }
 .booking-listing-collumn .field-booking-date.approved,
@@ -115,7 +115,7 @@
 .booking-listing-collumn .cost-fields-group {
     color: #444;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 600;
     white-space: nowrap;
     float:left;
     margin-left: 5px;
@@ -136,7 +136,7 @@
     color: #444;
     display: inline;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 28px;
     vertical-align: top;
 }
@@ -176,15 +176,16 @@
     background: none repeat scroll 0 0 #FE9;
     border-radius: 3px 3px 3px 3px;
     color: #333;
-    font-size: 11px;
-    font-weight: bold;
+    line-height: 21px;
+    font-size: 12px;
+    font-weight: 400;
     margin: 0 3px 0 0;
-    padding: 2px 3px;
+    padding: 1px 3px;
     text-shadow: 0 1px 1px #EEE;
 }
 .label_resource_not_exist {
     color: #000;
-    font-weight: bold;
+    font-weight: 600;
     text-shadow: 0 1px 0 #59D;
     text-transform: none;
 }
@@ -229,7 +230,7 @@
 }
 .date_tire {
     font-size: 17px;
-    font-weight: bold;
+    font-weight: 600;
 }
 .booking_dates_small,
 .booking_dates_full {

@@ -200,7 +200,12 @@ function wpbc_ajax_TRASH_RESTORE() {
         $approved_id_str = join( ',', $approved_id);
         $approved_id_str = wpbc_clean_string_for_db( $approved_id_str );
 
-        sendDeclineEmails($approved_id_str, $is_send_emeils,$denyreason);
+	// FixIn: 6.2.2.3
+        if ( $is_trash )
+            sendDeclineEmails($approved_id_str, $is_send_emeils,$denyreason);
+        else
+            sendApproveEmails($approved_id_str, $is_send_emeils,$denyreason);
+
 
                 
         if ( false === $wpdb->query( "UPDATE {$wpdb->prefix}booking AS bk SET bk.trash = {$is_trash} WHERE booking_id IN ({$approved_id_str})" ) ){

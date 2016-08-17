@@ -374,7 +374,7 @@ function wpdev_bk_custom_button_dalog_structure_DIV() { ?>
                                         <select id="calendar_type" name="calendar_type">
                                             <?php foreach ($types_list as $tl) { ?>
                                             <option value="<?php echo $tl->id; ?>"
-                                                        style="<?php if  (isset($tl->parent)) if ($tl->parent == 0 ) { echo 'font-weight:bold;'; } else { echo 'font-size:11px;padding-left:20px;'; } ?>"
+                                                        style="<?php if  (isset($tl->parent)) if ($tl->parent == 0 ) { echo 'font-weight: 600;'; } else { echo 'font-size:11px;padding-left:20px;'; } ?>"
                                                     ><?php echo $tl->title; ?></option>
                                             <?php } ?>
                                         </select>
@@ -458,11 +458,11 @@ function wpdev_bk_custom_button_dalog_structure_DIV() { ?>
                       <div style="height:1px;clear:both;width:100%;"></div>
 
 
-                        <div style="color:#21759B;cursor: pointer;font-weight: bold;float:left;"
+                        <div style="color:#21759B;cursor: pointer;font-weight: 600;float:left;"
                            onclick="javascript: jQuery('.bk_show_options_parameter').toggle(1);
                                                 jQuery('#togle_options_parameter').slideToggle('normal');
                                                 jQuery('#popup_new_reservation_main_content').slideToggle('normal');"
-                           style="text-decoration: none;font-weight: bold;font-size: 11px;">
+                           style="text-decoration: none;font-weight: 600;font-size: 12px;">
                             <span class="bk_show_options_parameter">+ <span style="border-bottom:1px dashed #21759B;"><?php _e('Show advanced settings' ,'booking'); ?></span></span>
                             <span class="bk_show_options_parameter" style="display:none;">- <span style="border-bottom:1px dashed #21759B;"><?php _e('Hide advanced settings' ,'booking'); ?></span></span>
                         </div>
@@ -550,7 +550,7 @@ function wpdev_bk_custom_button_dialog_CSS() {
         }
         #wpdev_bk-dialog .field label {
             display: inline-block;
-            font-weight: bold;
+            font-weight: 600;
             padding-right: 10px;
             text-align: left;
             vertical-align: baseline;

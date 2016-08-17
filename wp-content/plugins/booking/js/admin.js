@@ -222,6 +222,12 @@ function setCheckBoxInTable(el_stutus, el_class){
 function wpbc_get_selected_locale( booking_id, wpdev_active_locale ) {
     
     var id_to_check = "" + booking_id;
+    
+    if ( id_to_check.indexOf('|') == -1 ) {                                     //FixIn:6.2.2.3
+        id_to_check = id_to_check.split('|');
+        id_to_check = id_to_check[0];
+    }
+    
     if ( id_to_check.indexOf('|') == -1 ) {
         var selected_locale = jQuery('#locale_for_booking' + booking_id).val();
 

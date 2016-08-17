@@ -297,7 +297,7 @@ td.timespartly.check_in_time.check_out_time.check_out_time_date_approved.check_i
 .datepick-inline .datepick .datepick-unselectable.check_in_time.date2approve,
 .datepick-inline .datepick .datepick-unselectable.check_out_time.date2approve {
     background-color: transparent;
-    font-weight: normal;
+    font-weight: 400;
 }
 /*******************************************************************************/
 
@@ -396,7 +396,7 @@ div#datepick-div textarea {
 .block_free ,
 .wpdev_hint_with_text .block_check_in_out {
     font-size: 13px;
-    font-weight: normal;
+    font-weight: 400;
 }
 /* Clear Line */
 .wpdev_clear_hint{ 
@@ -439,7 +439,7 @@ div#datepick-div textarea {
     }
     .booking_form_div input[type=button]{
         font-size: 1.1em;
-        font-weight: bold;
+        font-weight: 600;
         padding: 5px 20px !important;
     }
 

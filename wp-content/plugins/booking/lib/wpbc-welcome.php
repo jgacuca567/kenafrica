@@ -183,7 +183,7 @@ class WPBC_Welcome {
                 box-shadow: 0 1px 3px #EEEEEE;
                 color: #998877;
                 font-size: 12px;
-                font-weight: bold;
+                font-weight: 600;
                 margin: 15px 0 0;   
                 width:90%;
             }
@@ -798,7 +798,7 @@ class WPBC_Welcome {
                             </a>
                         </td>
                         <td style="width:50%">                            
-                            <a class="button button-primary" style="font-weight: bold;float: right; height: 36px; line-height: 34px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank">&nbsp;<?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?>&nbsp;&nbsp;</a>
+                            <a class="button button-primary" style="font-weight: 600;float: right; height: 36px; line-height: 34px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank">&nbsp;<?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?>&nbsp;&nbsp;</a>
                         </td>
                     </tr>
                 </table>                        
@@ -1247,7 +1247,7 @@ at the popup configuration dialog, during inserting booking shortcode into post 
                                     , '</a>' 
                                     );
                             ?>
-                            <a class="button button-primary" style="font-weight: bold; height: 36px; line-height: 32px;font-size:15px;margin-top: -3px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank">&nbsp;<?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?>&nbsp;&nbsp;</a>
+                            <a class="button button-primary" style="font-weight: 600; height: 36px; line-height: 32px;font-size:15px;margin-top: -3px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank">&nbsp;<?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?>&nbsp;&nbsp;</a>
                     </td>
                 </tr>
             </table> 
@@ -1284,9 +1284,8 @@ function wpbc_welcome_panel() {
         }
         .wpbc-panel .welcome-panel h3 {
             margin: 0;
-            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
             font-size: 21px;
-            font-weight: normal;
+            font-weight: 400;
             line-height: 1.2;
         }
         .wpbc-panel .welcome-panel h4 {

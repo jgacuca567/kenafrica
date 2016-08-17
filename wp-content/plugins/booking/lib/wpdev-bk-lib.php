@@ -693,7 +693,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
             <li><a href="http://wpbookingcalendar.com/faq/" target="_blank"><?php _e('FAQ' ,'booking'); ?></a></li>
             <li><a href="http://wpbookingcalendar.com/support/" target="_blank"><?php _e('Technical Support' ,'booking'); ?></a></li>
             <li class="divider"></li>
-            <li><a style="font-size: 1.1em;font-weight: bold;" href="<?php echo wpbc_up_link(); ?>" target="_blank"><?php if ( wpbc_get_ver_sufix() == '' ) { _e('Upgrade Now' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?></a></li>
+            <li><a style="font-size: 1.1em;font-weight: 600;" href="<?php echo wpbc_up_link(); ?>" target="_blank"><?php if ( wpbc_get_ver_sufix() == '' ) { _e('Upgrade Now' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?></a></li>
           </ul>
         </span>
         <?php

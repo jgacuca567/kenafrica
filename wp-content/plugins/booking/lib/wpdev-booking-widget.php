@@ -120,7 +120,7 @@ class BookingWidget extends WP_Widget {
                        style="width:100%;line-height: 1.5em;">
                             <?php foreach ($types_list as $tl) { ?>
                     <option  <?php if($booking_widget_type == $tl->id ) echo "selected"; ?>
-                        style="<?php if  (isset($tl->parent)) if ($tl->parent == 0 ) { echo 'font-weight:bold;'; } else { echo 'font-size:11px;padding-left:20px;'; } ?>"
+                        style="<?php if  (isset($tl->parent)) if ($tl->parent == 0 ) { echo 'font-weight: 600;'; } else { echo 'font-size:11px;padding-left:20px;'; } ?>"
                         value="<?php echo $tl->id; ?>"><?php echo $tl->title; ?></option>
                                 <?php } ?>
                 </select>
@@ -137,7 +137,7 @@ class BookingWidget extends WP_Widget {
             >
             <?php foreach ( array(1,2,3,4,5,6,7,8,9,10,11,12) as $tl) { ?>
                 <option  <?php if($booking_widget_calendar_count == $tl ) echo "selected"; ?>
-                        style="font-weight:bold;"
+                        style="font-weight: 600;"
                         value="<?php echo $tl; ?>"><?php echo $tl; ?></option>
             <?php } ?>
             </select>

@@ -378,7 +378,7 @@ class wpdev_booking {
                     <div style="padding:0px 10px;width:96%;">
                         <h4><?php _e('Upgrade to higher versions' ,'booking') ?>:</h4>
                         <p> Check additional advanced functionality, which exist in higher versions and can be interesting for you <a href="http://wpbookingcalendar.com/features/" target="_blank">here &raquo;</a></p>
-                        <p> <a class="button button-primary" style="font-size: 1.1em;font-weight: bold;height: 2.5em;line-height: 1.1em;padding: 8px 25px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank"><?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?></a> </p>
+                        <p> <a class="button button-primary" style="font-size: 1.1em;font-weight: 600;height: 2.5em;line-height: 1.1em;padding: 8px 25px;"  href="<?php echo wpbc_up_link(); ?>" target="_blank"><?php if ( wpbc_get_ver_sufix() == '' ) { _e('Purchase' ,'booking'); } else { _e('Upgrade Now' ,'booking'); } ?></a> </p>
                     </div>
                 </div>
                 <div style="clear:both;"></div>
@@ -397,7 +397,7 @@ class wpdev_booking {
                 <table class="bk_table">
                     <tr class="first">
                         <td style="width:35%;text-align: right;;" class=""><?php _e('Version' ,'booking');?>:</td>
-                        <td style="color: #e50;font-family: Arial;font-size: 13px;font-weight: bold;text-align: left;text-shadow: 0 -1px 0 #eee;;" 
+                        <td style="color: #e50;font-size: 13px;font-weight: 600;text-align: left;text-shadow: 0 -1px 0 #eee;;" 
                             class="bk_spec_font"><?php 
                         if ( substr( WPDEV_BK_VERSION, 0, 2 ) == '9.' ) {
                             $show_version =  substr( WPDEV_BK_VERSION , 2 ) ;                            
@@ -413,11 +413,11 @@ class wpdev_booking {
                     <?php if ($version != 'free') { ?>
                     <tr>
                         <td style="width:35%;text-align: right;" class="first b"><?php _e('Type' ,'booking');?>:</td>
-                        <td style="text-align: left;  font-weight: bold;" class="bk_spec_font"><?php $ver = get_bk_version();if (class_exists('wpdev_bk_multiuser')) $ver = 'multiUser';$ver = str_replace('_m', ' Medium',$ver);$ver = str_replace('_l', ' Large',$ver);$ver = str_replace('_s', ' Small',$ver);$ver = str_replace('biz', 'Business',$ver); echo ucwords($ver);  ?></td>
+                        <td style="text-align: left;  font-weight: 600;" class="bk_spec_font"><?php $ver = get_bk_version();if (class_exists('wpdev_bk_multiuser')) $ver = 'multiUser';$ver = str_replace('_m', ' Medium',$ver);$ver = str_replace('_l', ' Large',$ver);$ver = str_replace('_s', ' Small',$ver);$ver = str_replace('biz', 'Business',$ver); echo ucwords($ver);  ?></td>
                     </tr>
                     <tr>
                         <td style="width:35%;text-align: right;" class="first b"><?php _e('Used for' ,'booking');?>:</td>
-                        <td style="text-align: left;  font-weight: bold;" class="bk_spec_font"><?php 
+                        <td style="text-align: left;  font-weight: 600;" class="bk_spec_font"><?php 
                                 $v_type = '';
                                 if( strpos( strtolower(WPDEV_BK_VERSION) , 'multisite') !== false  ) {
                                     $v_type = '5';
@@ -434,7 +434,7 @@ class wpdev_booking {
                     <?php } ?>
                     <tr>
                         <td style="width:35%;text-align: right;" class="first b"><?php _e('Release date' ,'booking');?>:</td>
-                        <td style="text-align: left;  font-weight: bold;" class="bk_spec_font"><?php echo date ("d.m.Y", filemtime(WPDEV_BK_FILE)); ?></td>
+                        <td style="text-align: left;  font-weight: 600;" class="bk_spec_font"><?php echo date ("d.m.Y", filemtime(WPDEV_BK_FILE)); ?></td>
                     </tr>
                     
                 </table>
@@ -443,7 +443,7 @@ class wpdev_booking {
                     <tr >
                         <td colspan="2" style="border:none;text-align:center;" class=""><?php 
                             if ($version == 'free') { 
-                                ?><a class="button-primary button" style="font-weight:bold;" target="_blank" href="http://wpbookingcalendar.com/overview/"><?php _e('Check Premium Features' ,'booking');?></a><?php                             
+                                ?><a class="button-primary button" style="font-weight: 600;" target="_blank" href="http://wpbookingcalendar.com/overview/"><?php _e('Check Premium Features' ,'booking');?></a><?php                             
                             } elseif  ( wpbc_get_ver_sufix() != '' )  { 
                                 ?><a class="button-primary button"  href="admin.php?page=<?php echo WPDEV_BK_PLUGIN_DIRNAME . '/'. WPDEV_BK_PLUGIN_FILENAME ; ?>wpdev-booking-option&tab=upgrade"><?php _e('Upgrade' ,'booking');?></a><?php                                                             
                             } else {

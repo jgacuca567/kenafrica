@@ -3,8 +3,8 @@ Contributors: wpdevelop
 Donate link: http://wpbookingcalendar.com/buy/
 Tags: booking calendar, availability calendar, event calendar, booking system, booking form, reservation, events, appointment, availability, schedule, calendar, contact form
 Requires at least: 3.3
-Tested up to: 4.5
-Stable tag: 6.2.1
+Tested up to: 4.6
+Stable tag: 6.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -152,6 +152,14 @@ If you have any further questions, please fill free to <a href="mailto:support@w
 11. **Calendar Skins**. Select calendar skin for better fitting to your web-site design.
 
 == Changelog ==
+= 6.2.2 =
+- Features and issue fixings in All versions:
+ * **Compatibility** Fix CSS for correctly showing fonts in new WordPress 4.6
+ * **Fix** Improve security checking during saving settings.
+- Personal / Business Small / Business Medium / Business Large / MultiUser versions features:
+ * **Fix** Checking string parameter during payment request (fix:6.2.2.1) *(Business Small/Medium/Large, MultiUser)*
+ * Ability to customize to open the "Payment page" with Payment Form(s) at actual website instead of showing payment form(s) at  same page after submit of booking. (fix:6.2.2.2) *(Business Small/Medium/Large, MultiUser)*
+
 = 6.2.1 =
 - Features and issue fixings in All versions:
  * **Fix** Improve security checking during saving settings and searching in booking listing pages.

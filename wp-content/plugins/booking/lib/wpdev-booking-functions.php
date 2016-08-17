@@ -451,8 +451,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
 
         
         foreach ( $all_fields_array_without_types as $key_param=>$value_param) {                                  //FixIn: 6.1.1.4
-            if ( ! is_object( $value_param ) )
-                $booking_form_show = str_replace( '['. $key_param .']', $value_param ,$booking_form_show);
+            if ( ! is_object( $value_param ) ) {
+                if ( is_string( $value_param ) )                                                                  //FixIn: 6.2.2.1      
+                    $booking_form_show = str_replace( '['. $key_param .']', $value_param ,$booking_form_show);
+            }
         }
         // Remove all shortcodes, which is not replaced early.
         $booking_form_show = preg_replace ('/[\s]{0,}\[[a-zA-Z0-9.,-_]{0,}\][\s]{0,}/', '', $booking_form_show);  //FixIn: 6.1.1.4
@@ -2669,7 +2671,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;                                             
            
         } else  /**/
             { // Some error appear
-            echo '<div id="bk_errror_loading" class="warning_message" style="font-weight:normal;font-size:1.2em;">';
+            echo '<div id="bk_errror_loading" class="warning_message" style="font-weight: 400;font-size:1.2em;">';
             echo '<h3>'; _e('Warning! Some error occur, during sending registration request.' ,'booking'); echo '</h3>';
             
             if (is_wp_error($result))  echo $result->get_error_message();
