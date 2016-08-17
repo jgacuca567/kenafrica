@@ -7,8 +7,9 @@
  */
 ?>
 <footer class="navbar navbar-default navbar-fixed-bottom text-center">
-  <!--2015 - 2016 Kenafrica Add using PHP-->
-  <br>
-    <i class="fa fa-copyright"></i> Designed by <a href="https://dosbranding.com">DOSBRANDING</a> <?php echo the_date('Y'); ?>
+	    <i class="fa fa-copyright"></i>
+	    Powered by <a href="https://wordpress.org" target="_blank">Wordpress </a> |
+	      <a href="https://dosbranding.com" target="_blank">DosBranding </a>
+	    <?php echo the_date('Y'); ?>
 </footer>
 <?php wp_footer();?>
