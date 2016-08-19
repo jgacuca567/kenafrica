@@ -6,7 +6,7 @@
 ?>
 <footer class="navbar navbar-default navbar-fixed-bottom text-center">
 	    <i class="fa fa-copyright"></i>
-	    Powered by <a href="https://wordpress.org" target="_blank">Wordpress </a> |
+	    Powered by <a href="https://woocommerce.com/" target="_blank">WooCommerce </a> |
 	      <a href="https://dosbranding.com" target="_blank">DosBranding </a>
 	    <?php echo the_date('Y'); ?>
 </footer>
