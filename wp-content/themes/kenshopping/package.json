@@ -21,6 +21,7 @@
   "devDependencies": {
     "bootstrap-material-design": "^0.5.10",
     "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.6.3",
     "grunt": "^1.0.1",
     "grunt-autoupdate": "0.0.1",
     "grunt-contrib-jshint": "^1.0.0",
