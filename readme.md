@@ -16,3 +16,4 @@
 12. Watch Lynda Wordpress WooCommerce
 13. Add the MailChimp API for the ReadMe Key
 14. Convert Wordpress to iOS App and Android App
+15. Install Bootstrap JS in the functions page
