@@ -1,12 +1,7 @@
 <?php
 /**
  * Template Name: WooCommerce
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * The template for displaying the WooCommerce Section.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -14,11 +9,11 @@
  */
 
 get_header();?>
-<div class="container">
-	<main class="row">
+<div id="primary" class="container-fluid">
+		<main id="main" class="row" role="main">
 		<?php woocommerce_content();?>
 	</main><!--#main-->
-</div><!--#container-->
+</div><!--#primary .container-fluid-->
 
 <?php
 get_sidebar();
