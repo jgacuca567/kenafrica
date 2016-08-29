@@ -5,23 +5,15 @@
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function kenshopping_widgets_init() {
-	register_sidebar(array(
-		'name' => esc_html__('Sidebar', 'kenshopping'),
-		'id' => 'sidebar-1',
-		'description' => '',
+	$args = array(
+		'name' => __('Sidebar name', 'kenshopping'),
+		'id' => 'sidebar-one',
+		'description' => 'Displays the information on the sidebar',
+		'class' => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget' => '</section>',
-		'before_title' => '<h3 class="widget-title">',
+		'before_title' => '<h3 class="widgettitle">',
 		'after_title' => '</h3>',
-	));
-
-	$args = array(
-		'name' => __('Contact Information', 'kenshopping'),
-		'id' => 'contact-sidebar',
-		'description' => 'Displays the contact information about the company',
-		'class' => '',
-		'before_widget' => '',
-		'after_widget' => '',
 	);
 
 	register_sidebar($args);
