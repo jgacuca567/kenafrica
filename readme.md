@@ -10,10 +10,10 @@
 7. <del>Add Coffee as an image</del>
 8. <del>Complete Stripe Information</del>
 9. <del>Add Favicon to the Website</del>
-10. Add Social Media to Website
-	a. Start at https://developers.facebook.com/docs/plugins/page-plugin
+10. <del>Add Social Media to Website</del>
+	<del>a. Start at https://developers.facebook.com/docs/plugins/page-plugin</del>
 11. Add Dashiki Wrap Skirts to the site.
-12. Watch Lynda Wordpress WooCommerce
+12. <del>Watch Lynda Wordpress WooCommerce</del>
 13. Add the MailChimp API for the ReadMe Key
 14. Convert Wordpress to iOS App and Android App
 15. <del>Install Bootstrap JS in the functions page</del>
