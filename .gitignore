@@ -3,5 +3,11 @@ wp-content/uploads/
 wp-content/themes/kenshopping/images/
 wp-content/themes/shopaholic/
 wp-content/themes/storefront/
+wp-content/uploads/GeoIPv6.dat
+wp-content/uploads/GeoIP.dat
+*.dat
+wp-content/themes/kenshopping/.DS_Store
+*.DS_Store
+*.dat
 
 *.dat
