@@ -25,6 +25,7 @@
 </head>
 
 <body <?php body_class();?>>
+<<<<<<< HEAD
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,6 +40,10 @@
                 <?php bloginfo('name');?>
             </a>
     </div>
+=======
+	<nav  class="navbar navbar-default">
+		<ul class="nav navbar-nav"></ul>
+>>>>>>> origin/master
 <?php
 wp_nav_menu(array(
 	'menu' => 'primary',
@@ -47,10 +52,24 @@ wp_nav_menu(array(
 	'container' => 'div',
 	'container_class' => 'collapse navbar-collapse',
 	'container_id' => 'collapsenavbar',
+<<<<<<< HEAD
 	'menu_class' => 'nav navbar-nav pull-right',
+=======
+	'menu_class' => 'nav navbar-nav',
+>>>>>>> origin/master
 	'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
 	'walker' => new wp_bootstrap_navwalker())
 );
 ?>
+<<<<<<< HEAD
     </div>
 </nav>
+=======
+		</ul>
+		<button type="button" name="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsenavbar" aria-expanded="false"></button>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<a href="<?php ?>">Kenafrica</a>
+	</nav>
+>>>>>>> origin/master
