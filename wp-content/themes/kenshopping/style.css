@@ -1,10 +1,6 @@
 @charset "UTF-8";
 /** Google Fonts */
-<<<<<<< HEAD
 @import url("//fonts.googleapis.com/css?family=Arimo");
-=======
-@import url("//fonts.googleapis.com/css?family=Fjalla%20One");
->>>>>>> origin/master
 @import url("//fonts.googleapis.com/css?family=Quicksand");
 @import url("//fonts.googleapis.com/css?family=Anonymous%20Pro");
 /*!
@@ -1388,11 +1384,7 @@ html {
 }
 
 body {
-<<<<<<< HEAD
   font-family: "Arimo", Helvetica, Arial, sans-serif;
-=======
-  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
->>>>>>> origin/master
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -6921,11 +6913,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-<<<<<<< HEAD
   font-family: "Arimo", Helvetica, Arial, sans-serif;
-=======
-  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
->>>>>>> origin/master
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7059,11 +7047,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-<<<<<<< HEAD
   font-family: "Arimo", Helvetica, Arial, sans-serif;
-=======
-  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
->>>>>>> origin/master
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7756,7 +7740,6 @@ button.close {
   }
 }
 
-<<<<<<< HEAD
 /**
  * Table of Contents
  * 1. WP-Login
@@ -7771,201 +7754,6 @@ body.login div#login h1 a {
   background-repeat: no-repeat;
   height: 160px;
   width: 160px;
-=======
-/*
-
-To get this list of colors inject jQuery at http://www.google.com/design/spec/style/color.html#color-color-palette
-
-Then, run this script to get the list@mixin (function(){
-  var colors = {}, main = {};
-  $(".color-group")@mixin each(function(){
-    var color = $(this).find(".name").text().trim().toLowerCase().replace(" ", "-");
-    colors[color] = {};
-
-    $(this)@mixin find(".color").not(".main-color").each(function(){
-      var shade = $(this).find(".shade").text().trim(),
-          hex   = $(this).find(".hex").text().trim();
-
-      colors[color][shade] = hex;
-    });
-    main[color] = color + "-" + $(this).find(".main-color .shade").text().trim();
-
-  });
-  var LESS = "";
-  $@mixin each(colors, function(name, shades){
-    LESS += "\n\n";
-    $@mixin each(shades, function(shade, hex){
-      LESS += "$" + name + "-" + shade + ": " + hex + ";\n" !default;
-    });
-    if (main[name]) {
-      LESS += "$" + name + ": " + main[name] + ";\n" !default;
-    }
-  });
-  console.log(LESS);
-})();
-
-
-*/
-/* ANIMATION */
-/* SHADOWS */
-/* Shadows (from mdl http://www.getmdl.io/) */
-body {
-  background-color: #fff;
-}
-
-body.inverse {
-  background: #333333;
-}
-
-body.inverse, body.inverse .form-control {
-  color: rgba(255,255,255, 0.84);
-}
-
-body.inverse .modal,
-body.inverse .modal .form-control,
-body.inverse .panel-default,
-body.inverse .panel-default .form-control,
-body.inverse .card,
-body.inverse .card .form-control {
-  background-color: initial;
-  color: initial;
-}
-
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
-  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
-
-h5, h6 {
-  font-weight: 400;
-}
-
-a, a:hover, a:focus {
-  color: #337ab7;
-}
-
-a .material-icons, a:hover .material-icons, a:focus .material-icons {
-  vertical-align: middle;
-}
-
-.form-horizontal .radio,
-.form-horizontal .checkbox,
-.form-horizontal .radio-inline,
-.form-horizontal .checkbox-inline {
-  padding-top: 0;
-}
-
-.form-horizontal .radio {
-  margin-bottom: 10px;
-}
-
-.form-horizontal label {
-  text-align: right;
-}
-
-.form-horizontal label.control-label {
-  margin: 0;
-}
-
-body .container .well.well-sm,
-body .container-fluid .well.well-sm {
-  padding: 10px;
-}
-
-body .container .well.well-lg,
-body .container-fluid .well.well-lg {
-  padding: 26px;
-}
-
-body .container .well,
-body .container .jumbotron,
-body .container-fluid .well,
-body .container-fluid .jumbotron {
-  background-color: #fff;
-  padding: 19px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 4px;
-  border: 0;
-}
-
-body .container .well p,
-body .container .jumbotron p,
-body .container-fluid .well p,
-body .container-fluid .jumbotron p {
-  font-weight: 300;
-}
-
-body .container .well, body .container .well-default,
-body .container .jumbotron,
-body .container .jumbotron-default,
-body .container-fluid .well,
-body .container-fluid .well-default,
-body .container-fluid .jumbotron,
-body .container-fluid .jumbotron-default {
-  background-color: #ffffff;
-}
-
-body .container .well-inverse,
-body .container .jumbotron-inverse,
-body .container-fluid .well-inverse,
-body .container-fluid .jumbotron-inverse {
-  background-color: #3f51b5;
-}
-
-body .container .well-primary,
-body .container .jumbotron-primary,
-body .container-fluid .well-primary,
-body .container-fluid .jumbotron-primary {
-  background-color: #337ab7;
-}
-
-body .container .well-success,
-body .container .jumbotron-success,
-body .container-fluid .well-success,
-body .container-fluid .jumbotron-success {
-  background-color: #5cb85c;
-}
-
-body .container .well-info,
-body .container .jumbotron-info,
-body .container-fluid .well-info,
-body .container-fluid .jumbotron-info {
-  background-color: #5bc0de;
-}
-
-body .container .well-warning,
-body .container .jumbotron-warning,
-body .container-fluid .well-warning,
-body .container-fluid .jumbotron-warning {
-  background-color: #f0ad4e;
-}
-
-body .container .well-danger,
-body .container .jumbotron-danger,
-body .container-fluid .well-danger,
-body .container-fluid .jumbotron-danger {
-  background-color: #d9534f;
-}
-
-.btn,
-.input-group-btn .btn {
-  border: none;
-  border-radius: 4px;
-  position: relative;
-  padding: 8px 30px;
-  margin: 10px 1px;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  will-change: box-shadow, transform;
-  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: 0;
-  cursor: pointer;
-  text-decoration: none;
-  background: transparent;
->>>>>>> origin/master
 }
 
 body.login div#login .wp-core-ui {
@@ -8016,82 +7804,10 @@ body.login div#login .button-primary:active {
   color: white;
 }
 
-/** Footer */
-footer {
-  background-color: #EF8030;
-}
-
-footer a {
-  color: white;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-  color: white;
-}
-
-/**
- * Table of Contents
- * 1. WP-Login
- * 2. Footer
- */
-/** WP-Login */
-body.login div#login h1 a {
-  background-image: url("images/site-login-logo.png");
-  background-size: 160px 160px;
-  background-position: center top;
-  background-repeat: no-repeat;
-  height: 160px;
-  width: 160px;
-}
-
-body.login div#login .wp-core-ui {
-  background: #19eaff;
-  border-color: white;
-  color: white;
-}
-
-body.login div#login .wp-core-ui .button-primary {
-  background: #EF8030;
-  border-color: white;
-  text-shadow: none;
-  box-shadow: none;
-  color: white;
-  transition: all 0.25s ease;
-}
-
-body.login div#login .wp-core-ui .button:hover {
-  background: #00A2B2;
-  border-color: white;
-  color: white;
-}
-
-body.login div#login .button {
-  background: #EF8030;
-  border-color: white;
-  text-shadow: none;
-  box-shadow: none;
-  color: white;
-  transition: all 0.25s ease;
-}
-
-body.login div#login .button:active {
-  background: #19eaff;
-  border-color: white;
-  color: white;
-}
-
-body.login div#login .button-primary:hover {
-  background: #00A2B2;
-  border-color: white;
-  color: white;
-}
-
-body.login div#login .button-primary:active {
-  background: #19eaff;
-  border-color: white;
-  color: white;
+@media (min-width: 1200px) {
+  .navbar {
+    height: 100px;
+  }
 }
 
 /** Footer */
@@ -8106,4 +7822,5 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+  color: white;
 }
