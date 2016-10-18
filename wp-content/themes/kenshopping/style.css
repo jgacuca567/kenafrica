@@ -7804,12 +7804,6 @@ body.login div#login .button-primary:active {
   color: white;
 }
 
-@media (min-width: 1200px) {
-  .navbar {
-    height: 100px;
-  }
-}
-
 /** Footer */
 footer {
   background-color: #EF8030;
