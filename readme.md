@@ -1,6 +1,8 @@
 # ToDo
 1. Install Algolia WP Plugin
+
   a. <del>Add Keys to the Plugin and Pay Algolia</del>
+
 2. <del>Add Gruntfile.js</del>
 3. <del>Update Node_Modules</del>
 4. <del>Update WooCommerce</del>
@@ -11,7 +13,9 @@
 8. <del>Complete Stripe Information</del>
 9. <del>Add Favicon to the Website</del>
 10. <del>Add Social Media to Website</del>
+
 	<del>a. Start at https://developers.facebook.com/docs/plugins/page-plugin</del>
+    
 11. <del>Install Bootstrap JS in the functions page</del>
 12. <del>Watch Lynda Wordpress WooCommerce</del>
 13. Fix the Navbar
