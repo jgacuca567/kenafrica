@@ -19,6 +19,10 @@
 11. <del>Install Bootstrap JS in the functions page</del>
 12. <del>Watch Lynda Wordpress WooCommerce</del>
 13. Fix the Navbar
+    
+    a. Add the x to the toggle icon
+    b. Change color scheme to match UI
+
 14. Update the search buttons
 15. Add Dashiki Wrap Skirts to the site.
 16. Add the MailChimp API for the ReadMe Key
