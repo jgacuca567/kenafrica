@@ -25,42 +25,29 @@
 </head>
 
 <body <?php body_class();?>>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsenavbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<?php echo home_url(); ?>">
-                <?php bloginfo('name');?>
-            </a>
-    </div>
-	<nav  class="navbar navbar-default">
-		<ul class="nav navbar-nav"></ul>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name');?></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
 <?php
-wp_nav_menu(array(
-    'menu' => 'primary',
-    'theme_location' => 'primary',
-    'depth' => 2,
-    'container' => 'div',
-    'container_class' => 'collapse navbar-collapse',
-    'container_id' => 'collapsenavbar',
-    'menu_class' => 'nav navbar-nav pull-right',
-    'menu_class' => 'nav navbar-nav',
-    'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-    'walker' => new wp_bootstrap_navwalker())
+wp_nav_menu(
+    array(
+        'menu' => 'MainMenu',
+        'menu_class' =>
+        'nav navbar-nav navbar-right',
+        'depth' => 3,
+        'container' => false,
+        'walker' => new wp_bootstrap_navwalker())
 );
 ?>
-    </div>
-</nav>
-		</ul>
-		<button type="button" name="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsenavbar" aria-expanded="false"></button>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<a href="<?php ?>">Kenafrica</a>
-	</nav>
+        </div><!-- /.navbar-collapse -->
+    </nav>
